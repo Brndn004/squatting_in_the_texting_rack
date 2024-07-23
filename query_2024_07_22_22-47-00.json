@@ -1,0 +1,1922 @@
+[
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 1860.2,
+    "moving_time": 645,
+    "elapsed_time": 684,
+    "total_elevation_gain": 16,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Afternoon Run",
+    "distance": 204.2,
+    "moving_time": 75,
+    "elapsed_time": 4589,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 1008.2,
+    "moving_time": 446,
+    "elapsed_time": 453,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 21199.9,
+    "moving_time": 6553,
+    "elapsed_time": 6764,
+    "total_elevation_gain": 71,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 3562.3,
+    "moving_time": 1160,
+    "elapsed_time": 1163,
+    "total_elevation_gain": 10.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Jay",
+      "lastname": "M."
+    },
+    "name": "Night Run",
+    "distance": 1609.3,
+    "moving_time": 608,
+    "elapsed_time": 608,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "william",
+      "lastname": "O."
+    },
+    "name": "Evening Run",
+    "distance": 9117,
+    "moving_time": 3089,
+    "elapsed_time": 3145,
+    "total_elevation_gain": 19.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Afternoon Run",
+    "distance": 1429,
+    "moving_time": 489,
+    "elapsed_time": 536,
+    "total_elevation_gain": 11,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Afternoon Run",
+    "distance": 1732.7,
+    "moving_time": 900,
+    "elapsed_time": 910,
+    "total_elevation_gain": 3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 6294.2,
+    "moving_time": 2032,
+    "elapsed_time": 2346,
+    "total_elevation_gain": 43.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Portland Trails",
+    "distance": 14766.9,
+    "moving_time": 5413,
+    "elapsed_time": 7188,
+    "total_elevation_gain": 459.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Pre-🏀",
+    "distance": 17302.7,
+    "moving_time": 5648,
+    "elapsed_time": 6005,
+    "total_elevation_gain": 51,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "william",
+      "lastname": "O."
+    },
+    "name": "Night Run",
+    "distance": 8546.2,
+    "moving_time": 2984,
+    "elapsed_time": 3705,
+    "total_elevation_gain": 19.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Austin",
+      "lastname": "S."
+    },
+    "name": "Live at Fillmore West",
+    "distance": 5691.8,
+    "moving_time": 1846,
+    "elapsed_time": 2065,
+    "total_elevation_gain": 104.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Lunch Run",
+    "distance": 737.5,
+    "moving_time": 223,
+    "elapsed_time": 262,
+    "total_elevation_gain": 3.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Lunch Run",
+    "distance": 1011.6,
+    "moving_time": 469,
+    "elapsed_time": 478,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Jay",
+      "lastname": "M."
+    },
+    "name": "Morning Run",
+    "distance": 1501.1,
+    "moving_time": 481,
+    "elapsed_time": 481,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "5k 3x1mile",
+    "distance": 13764,
+    "moving_time": 3667,
+    "elapsed_time": 5064,
+    "total_elevation_gain": 31,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 5393.9,
+    "moving_time": 1953,
+    "elapsed_time": 2225,
+    "total_elevation_gain": 44.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Evening Run",
+    "distance": 884.3,
+    "moving_time": 388,
+    "elapsed_time": 398,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Some docker container takes forever to pull 🫠",
+    "distance": 7003.1,
+    "moving_time": 2276,
+    "elapsed_time": 2455,
+    "total_elevation_gain": 40,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 10064.3,
+    "moving_time": 3183,
+    "elapsed_time": 3975,
+    "total_elevation_gain": 50,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 4844.4,
+    "moving_time": 1566,
+    "elapsed_time": 1571,
+    "total_elevation_gain": 14.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "I ran 13.98 miles today before this and it bothers me",
+    "distance": 33.7,
+    "moving_time": 2,
+    "elapsed_time": 2,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Jay",
+      "lastname": "M."
+    },
+    "name": "Evening Run",
+    "distance": 849.7,
+    "moving_time": 336,
+    "elapsed_time": 336,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 2416,
+    "moving_time": 1168,
+    "elapsed_time": 1173,
+    "total_elevation_gain": 8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Evening Run",
+    "distance": 12290.3,
+    "moving_time": 3657,
+    "elapsed_time": 4067,
+    "total_elevation_gain": 72,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 1625.5,
+    "moving_time": 698,
+    "elapsed_time": 705,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 10202.3,
+    "moving_time": 3163,
+    "elapsed_time": 3181,
+    "total_elevation_gain": 47,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 1686.8,
+    "moving_time": 692,
+    "elapsed_time": 772,
+    "total_elevation_gain": 57.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Night Run",
+    "distance": 870.8,
+    "moving_time": 233,
+    "elapsed_time": 244,
+    "total_elevation_gain": 4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Jay",
+      "lastname": "M."
+    },
+    "name": "Night Run",
+    "distance": 944.5,
+    "moving_time": 313,
+    "elapsed_time": 313,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Evening Run",
+    "distance": 5004.3,
+    "moving_time": 1250,
+    "elapsed_time": 1250,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Micah",
+      "lastname": "Y."
+    },
+    "name": "Evening Run",
+    "distance": 7516.7,
+    "moving_time": 3374,
+    "elapsed_time": 3396,
+    "total_elevation_gain": 4.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Tracksmith 5k",
+    "distance": 5100.7,
+    "moving_time": 1187,
+    "elapsed_time": 1192,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 1
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Evening Run",
+    "distance": 2320,
+    "moving_time": 731,
+    "elapsed_time": 842,
+    "total_elevation_gain": 15,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 1014.7,
+    "moving_time": 428,
+    "elapsed_time": 428,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 1613.5,
+    "moving_time": 656,
+    "elapsed_time": 662,
+    "total_elevation_gain": 8.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "Bella hangs tight, phones and passports recovered, sweat ingested",
+    "distance": 5362.7,
+    "moving_time": 1682,
+    "elapsed_time": 2026,
+    "total_elevation_gain": 104.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Night Run",
+    "distance": 1687.5,
+    "moving_time": 551,
+    "elapsed_time": 569,
+    "total_elevation_gain": 17,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Evening Run",
+    "distance": 5444,
+    "moving_time": 1709,
+    "elapsed_time": 15955,
+    "total_elevation_gain": 23.4,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Evening Run",
+    "distance": 8071.2,
+    "moving_time": 2509,
+    "elapsed_time": 2532,
+    "total_elevation_gain": 42,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Austin",
+      "lastname": "S."
+    },
+    "name": "Afternoon Run",
+    "distance": 6293.3,
+    "moving_time": 2258,
+    "elapsed_time": 2280,
+    "total_elevation_gain": 50.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Micah",
+      "lastname": "Y."
+    },
+    "name": "Afternoon Ride",
+    "distance": 6595.1,
+    "moving_time": 2285,
+    "elapsed_time": 2285,
+    "total_elevation_gain": 47.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 1509.5,
+    "moving_time": 590,
+    "elapsed_time": 603,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "kugisaki?",
+    "distance": 5074.4,
+    "moving_time": 1464,
+    "elapsed_time": 1745,
+    "total_elevation_gain": 7.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 10161.9,
+    "moving_time": 3099,
+    "elapsed_time": 3182,
+    "total_elevation_gain": 49,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Evening Run",
+    "distance": 1624.2,
+    "moving_time": 512,
+    "elapsed_time": 521,
+    "total_elevation_gain": 15,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Afternoon Run",
+    "distance": 8058.6,
+    "moving_time": 2502,
+    "elapsed_time": 2607,
+    "total_elevation_gain": 62,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 1296.3,
+    "moving_time": 479,
+    "elapsed_time": 479,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Hugh",
+      "lastname": "Z."
+    },
+    "name": "Morning Run",
+    "distance": 8368.4,
+    "moving_time": 2392,
+    "elapsed_time": 2398,
+    "total_elevation_gain": 84,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Post-lift",
+    "distance": 6511,
+    "moving_time": 1980,
+    "elapsed_time": 2012,
+    "total_elevation_gain": 21,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 3730.7,
+    "moving_time": 1280,
+    "elapsed_time": 1282,
+    "total_elevation_gain": 44.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "First run w Azhari???",
+    "distance": 5182.1,
+    "moving_time": 1498,
+    "elapsed_time": 1510,
+    "total_elevation_gain": 7.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Night Run",
+    "distance": 1208.1,
+    "moving_time": 369,
+    "elapsed_time": 369,
+    "total_elevation_gain": 8.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Grant",
+      "lastname": "S."
+    },
+    "name": "Evening Run",
+    "distance": 15674.7,
+    "moving_time": 5545,
+    "elapsed_time": 6805,
+    "total_elevation_gain": 123,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Afternoon Run",
+    "distance": 743.4,
+    "moving_time": 292,
+    "elapsed_time": 292,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "william",
+      "lastname": "O."
+    },
+    "name": "Morning Run",
+    "distance": 12363.2,
+    "moving_time": 4899,
+    "elapsed_time": 6583,
+    "total_elevation_gain": 33.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 24146.6,
+    "moving_time": 7089,
+    "elapsed_time": 7237,
+    "total_elevation_gain": 35,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "william",
+      "lastname": "O."
+    },
+    "name": "Evening Run",
+    "distance": 8172.8,
+    "moving_time": 2993,
+    "elapsed_time": 4249,
+    "total_elevation_gain": 18.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Pre-dinner run",
+    "distance": 1635.1,
+    "moving_time": 760,
+    "elapsed_time": 760,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "2x 5k tempo",
+    "distance": 18351.9,
+    "moving_time": 5320,
+    "elapsed_time": 6266,
+    "total_elevation_gain": 76,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Saturday FBRC Track",
+    "distance": 5133,
+    "moving_time": 1413,
+    "elapsed_time": 2905,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Morning Run",
+    "distance": 702.1,
+    "moving_time": 202,
+    "elapsed_time": 223,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Hugh",
+      "lastname": "Z."
+    },
+    "name": "NETC",
+    "distance": 12657,
+    "moving_time": 4061,
+    "elapsed_time": 4759,
+    "total_elevation_gain": 86,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Adhoc post work run",
+    "distance": 8052.9,
+    "moving_time": 2685,
+    "elapsed_time": 2691,
+    "total_elevation_gain": 67,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Samantha",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 1820.9,
+    "moving_time": 793,
+    "elapsed_time": 793,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 6510.5,
+    "moving_time": 2050,
+    "elapsed_time": 2062,
+    "total_elevation_gain": 23,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Brandon",
+      "lastname": "D."
+    },
+    "name": "Morning Run",
+    "distance": 1552.3,
+    "moving_time": 466,
+    "elapsed_time": 529,
+    "total_elevation_gain": 17.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 18622.8,
+    "moving_time": 6303,
+    "elapsed_time": 229265,
+    "total_elevation_gain": 174.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Evening Run",
+    "distance": 6042.2,
+    "moving_time": 1891,
+    "elapsed_time": 2624,
+    "total_elevation_gain": 57.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Evening Run",
+    "distance": 11324.3,
+    "moving_time": 3364,
+    "elapsed_time": 3365,
+    "total_elevation_gain": 63,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Post-lift",
+    "distance": 6487,
+    "moving_time": 1990,
+    "elapsed_time": 2004,
+    "total_elevation_gain": 20,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 5838.9,
+    "moving_time": 2074,
+    "elapsed_time": 2084,
+    "total_elevation_gain": 36.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Hugh",
+      "lastname": "Z."
+    },
+    "name": "Morning Run",
+    "distance": 7638.7,
+    "moving_time": 2089,
+    "elapsed_time": 2578,
+    "total_elevation_gain": 46,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "Run",
+    "distance": 10162,
+    "moving_time": 2935,
+    "elapsed_time": 2996,
+    "total_elevation_gain": 65.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Evening Run",
+    "distance": 19319.3,
+    "moving_time": 5391,
+    "elapsed_time": 5697,
+    "total_elevation_gain": 52,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Post-🏀",
+    "distance": 5163.1,
+    "moving_time": 1550,
+    "elapsed_time": 1556,
+    "total_elevation_gain": 16,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Pre-lift",
+    "distance": 6479.5,
+    "moving_time": 1978,
+    "elapsed_time": 1994,
+    "total_elevation_gain": 56,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Another FBRC Tuesday 😊",
+    "distance": 8205.6,
+    "moving_time": 2735,
+    "elapsed_time": 4936,
+    "total_elevation_gain": 62.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Post-🏀",
+    "distance": 6468.1,
+    "moving_time": 1872,
+    "elapsed_time": 1877,
+    "total_elevation_gain": 20,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 3456.1,
+    "moving_time": 1280,
+    "elapsed_time": 1328,
+    "total_elevation_gain": 64.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Pre-🥏",
+    "distance": 3270.5,
+    "moving_time": 1037,
+    "elapsed_time": 1054,
+    "total_elevation_gain": 30,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Grant",
+      "lastname": "S."
+    },
+    "name": "Huy's in town!!",
+    "distance": 6556.1,
+    "moving_time": 2375,
+    "elapsed_time": 3222,
+    "total_elevation_gain": 103,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Post-lift",
+    "distance": 6533.3,
+    "moving_time": 2003,
+    "elapsed_time": 2088,
+    "total_elevation_gain": 20,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 5816.2,
+    "moving_time": 1883,
+    "elapsed_time": 1955,
+    "total_elevation_gain": 13.7,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Hugh",
+      "lastname": "Z."
+    },
+    "name": "Pre-leg day",
+    "distance": 6530.5,
+    "moving_time": 1702,
+    "elapsed_time": 1748,
+    "total_elevation_gain": 64,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Big Loopity Loop",
+    "distance": 33183,
+    "moving_time": 12564,
+    "elapsed_time": 14524,
+    "total_elevation_gain": 334.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Grant",
+      "lastname": "S."
+    },
+    "name": "Morning Run",
+    "distance": 6929.1,
+    "moving_time": 2371,
+    "elapsed_time": 3117,
+    "total_elevation_gain": 40,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 21330.3,
+    "moving_time": 6116,
+    "elapsed_time": 6153,
+    "total_elevation_gain": 25,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "Run",
+    "distance": 3020.3,
+    "moving_time": 913,
+    "elapsed_time": 978,
+    "total_elevation_gain": 24.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Austin",
+      "lastname": "S."
+    },
+    "name": "Old stomping grounds",
+    "distance": 6707.2,
+    "moving_time": 2142,
+    "elapsed_time": 2182,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "5k tempo x2 🧱🧱🧱",
+    "distance": 17962.3,
+    "moving_time": 5183,
+    "elapsed_time": 6137,
+    "total_elevation_gain": 65,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 6101.5,
+    "moving_time": 1705,
+    "elapsed_time": 4262,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Arun",
+      "lastname": "K."
+    },
+    "name": "Morning Run",
+    "distance": 5209.8,
+    "moving_time": 2597,
+    "elapsed_time": 2636,
+    "total_elevation_gain": 7.8,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Michael",
+      "lastname": "D."
+    },
+    "name": "Byxbee Parkrun #186",
+    "distance": 5160.3,
+    "moving_time": 1971,
+    "elapsed_time": 2009,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 1
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 4999.5,
+    "moving_time": 1714,
+    "elapsed_time": 1762,
+    "total_elevation_gain": 57.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "william",
+      "lastname": "O."
+    },
+    "name": "Evening Run",
+    "distance": 7982.6,
+    "moving_time": 2679,
+    "elapsed_time": 3416,
+    "total_elevation_gain": 14.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Afternoon Run",
+    "distance": 6476.2,
+    "moving_time": 2002,
+    "elapsed_time": 2119,
+    "total_elevation_gain": 17,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "Run",
+    "distance": 5091.1,
+    "moving_time": 1625,
+    "elapsed_time": 1718,
+    "total_elevation_gain": 75.1,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Pre-lift",
+    "distance": 6714.1,
+    "moving_time": 2063,
+    "elapsed_time": 2114,
+    "total_elevation_gain": 20,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Hugh",
+      "lastname": "Z."
+    },
+    "name": "Afternoon Run",
+    "distance": 6690.3,
+    "moving_time": 2108,
+    "elapsed_time": 2320,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Michael",
+      "lastname": "D."
+    },
+    "name": "Lunch Run",
+    "distance": 2699.4,
+    "moving_time": 1049,
+    "elapsed_time": 2065,
+    "total_elevation_gain": 2.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "Afternoon Run",
+    "distance": 7455.7,
+    "moving_time": 2572,
+    "elapsed_time": 2652,
+    "total_elevation_gain": 111.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "william",
+      "lastname": "O."
+    },
+    "name": "Morning Run",
+    "distance": 6950.1,
+    "moving_time": 2132,
+    "elapsed_time": 3010,
+    "total_elevation_gain": 13.5,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning bounce",
+    "distance": 12880.4,
+    "moving_time": 3980,
+    "elapsed_time": 4287,
+    "total_elevation_gain": 34,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Hugh",
+      "lastname": "Z."
+    },
+    "name": "4th amble with the boys",
+    "distance": 6114.9,
+    "moving_time": 2504,
+    "elapsed_time": 2966,
+    "total_elevation_gain": 52.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Planned workout",
+    "distance": 14349.2,
+    "moving_time": 4110,
+    "elapsed_time": 6549,
+    "total_elevation_gain": 56,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "Run",
+    "distance": 5004.3,
+    "moving_time": 1647,
+    "elapsed_time": 1647,
+    "total_elevation_gain": 28.2,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Tom",
+      "lastname": "C."
+    },
+    "name": "Morning Run",
+    "distance": 5837.5,
+    "moving_time": 2031,
+    "elapsed_time": 2231,
+    "total_elevation_gain": 13.6,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Unplanned morning track",
+    "distance": 9590.2,
+    "moving_time": 2764,
+    "elapsed_time": 3796,
+    "total_elevation_gain": 19,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 11500,
+    "moving_time": 3727,
+    "elapsed_time": 5514,
+    "total_elevation_gain": 124,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Daniel",
+      "lastname": "J."
+    },
+    "name": "Run",
+    "distance": 10206,
+    "moving_time": 3096,
+    "elapsed_time": 3096,
+    "total_elevation_gain": 71.9,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "william",
+      "lastname": "O."
+    },
+    "name": "Evening Run",
+    "distance": 7136.9,
+    "moving_time": 2508,
+    "elapsed_time": 3101,
+    "total_elevation_gain": 15.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Afternoon Run",
+    "distance": 10102.4,
+    "moving_time": 3503,
+    "elapsed_time": 3948,
+    "total_elevation_gain": 98,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 6487.1,
+    "moving_time": 2095,
+    "elapsed_time": 2121,
+    "total_elevation_gain": 22,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Chuck",
+      "lastname": "T."
+    },
+    "name": "Morning Run",
+    "distance": 6067.9,
+    "moving_time": 2390,
+    "elapsed_time": 5312,
+    "total_elevation_gain": 223.3,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "Micah",
+      "lastname": "Y."
+    },
+    "name": "Evening Run",
+    "distance": 5339.4,
+    "moving_time": 1780,
+    "elapsed_time": 1780,
+    "total_elevation_gain": 0,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Evening Run",
+    "distance": 8121.5,
+    "moving_time": 2533,
+    "elapsed_time": 2629,
+    "total_elevation_gain": 58,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": null
+  },
+  {
+    "resource_state": 2,
+    "athlete": {
+      "resource_state": 2,
+      "firstname": "McFluffy",
+      "lastname": "X."
+    },
+    "name": "Morning Run",
+    "distance": 10145.2,
+    "moving_time": 3184,
+    "elapsed_time": 3296,
+    "total_elevation_gain": 44,
+    "type": "Run",
+    "sport_type": "Run",
+    "workout_type": 0
+  }
+]
