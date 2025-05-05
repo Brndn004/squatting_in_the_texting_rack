@@ -53,18 +53,18 @@ This program follows an enhanced training approach with twice-daily sessions on 
 - 1 active recovery day
 
 #### Weekly Schedule:
-- **Monday**: 
+- **Monday**: Full Body (Moderate Volume)
+- **Tuesday**: 
   - AM: Heavy Push (Strength-focused)
   - PM: Shoulders & Arms (Hypertrophy)
-- **Tuesday**: Full Body (Moderate Volume)
-- **Wednesday**: 
+- **Wednesday**: Upper Body (Chest, Back, Shoulders - Moderate Volume)
+- **Thursday**: 
   - AM: Heavy Pull (Strength-focused)
   - PM: Back & Biceps (Hypertrophy)
-- **Thursday**: Upper Body (Chest, Back, Shoulders - Moderate Volume)
-- **Friday**: 
+- **Friday**: Lower Body (Quads, Hamstrings, Glutes - Moderate Volume)
+- **Saturday**: 
   - AM: Heavy Legs (Strength-focused)
   - PM: Calves & Core (Hypertrophy)
-- **Saturday**: Lower Body (Quads, Hamstrings, Glutes - Moderate Volume)
 - **Sunday**: Active Recovery (Light cardio, mobility)
 
 #### Training Volume:
@@ -82,65 +82,94 @@ This program follows an enhanced training approach with twice-daily sessions on 
 
 ### Detailed Workout Plan
 
-#### Monday AM: Heavy Push (75-90 minutes)
+#### Monday: Full Body (90-100 minutes)
+**Warm-up**: 5-10 minutes light cardio + dynamic stretching
+
+1. **Squats**: 3 sets × 8-10 reps
+2. **Bench Press**: 3 sets × 8-10 reps
+3. **Overhead Press**: 3 sets × 8-10 reps
+4. **Barbell Rows**: 3 sets × 8-10 reps
+5. **Deadlifts**: 3 sets × 8-10 reps
+6. **Incline Dumbbell Press**: 3 sets × 10-12 reps
+7. **Weighted Pull-ups**: 3 sets × 8-10 reps
+8. **Walking Lunges**: 3 sets × 10 steps per leg
+9. **Lateral Raises**: 3 sets × 12-15 reps
+10. **Bicep Curls**: 3 sets 10-12 reps
+11. **Tricep Extensions**: 3 sets × 10-12 reps
+
+#### Tuesday AM: Heavy Push (75-90 minutes)
+**Warm-up**: 5-10 minutes light cardio + dynamic upper body stretching
+
 1. **Barbell Bench Press**: 5 sets × 4-6 reps
-2. **Incline Dumbbell Press**: 4 sets × 6-8 reps
-3. **Weighted Dips**: 4 sets × 6-8 reps
-4. **Seated Military Press**: 4 sets × 6-8 reps
+2. **Seated Overhead Press**: 4 sets × 6-8 reps
+3. **Incline Dumbbell Press**: 4 sets × 6-8 reps
+4. **Weighted Dips**: 4 sets × 6-8 reps
 5. **Close-Grip Bench Press**: 4 sets × 6-8 reps
 6. **Cable Flies**: 4 sets × 8-10 reps (drop set on final set)
 
-#### Monday PM: Shoulders & Arms (60-75 minutes)
-1. **Lateral Raises**: 4 sets × 12-15 reps
-2. **Rear Delt Flies**: 4 sets × 12-15 reps
-3. **Front Raises**: 3 sets × 12-15 reps
-4. **Tricep Pushdowns**: 4 sets × 10-12 reps
-5. **Overhead Tricep Extensions**: 4 sets × 10-12 reps
-6. **Tricep Dips**: 3 sets × Max reps
+#### Tuesday PM: Shoulders & Arms (60-75 minutes)
+**Warm-up**: 5 minutes light shoulder mobility work
+
+1. **Overhead Tricep Extensions**: 4 sets × 10-12 reps
+2. **Tricep Pushdowns**: 4 sets × 10-12 reps
+3. **Tricep Dips**: 3 sets × Max reps
+4. **Lateral Raises**: 4 sets × 12-15 reps
+5. **Rear Delt Flies**: 4 sets × 12-15 reps
+6. **Front Raises**: 3 sets × 12-15 reps
 7. **Tricep Kickbacks**: 3 sets × 12-15 reps (superset with stretching)
 
-#### Tuesday: Full Body (90-100 minutes)
-1. **Deadlifts**: 3 sets × 8-10 reps
-2. **Bench Press**: 3 sets × 8-10 reps
-3. **Squats**: 3 sets × 8-10 reps
-4. **Weighted Pull-ups**: 3 sets × 8-10 reps
-5. **Military Press**: 3 sets × 8-10 reps
-6. **Barbell Rows**: 3 sets × 8-10 reps
-7. **Walking Lunges**: 3 sets × 10 steps per leg
-8. **Incline Dumbbell Press**: 3 sets × 10-12 reps
-9. **Lateral Raises**: 3 sets × 12-15 reps
-10. **Cable Curls & Tricep Extensions**: 3 sets × 10-12 reps (superset)
+#### Wednesday: Upper Body (90-100 minutes)
+**Warm-up**: 5-10 minutes light cardio + dynamic upper body stretching
 
-#### Wednesday AM: Heavy Pull (75-90 minutes)
+1. **Incline Barbell Press**: 4 sets × 8-10 reps
+2. **Pull-ups**: 4 sets × 8-10 reps
+3. **Shoulder Press Machine**: 4 sets × 8-10 reps
+4. **Seated Cable Rows**: 4 sets × 8-10 reps
+5. **Dips**: 3 sets × 10-12 reps
+6. **Face Pulls**: 3 sets × 12-15 reps
+7. **Dumbbell Flies**: 3 sets × 10-12 reps
+8. **Lateral Raises**: 3 sets × 12-15 reps
+9. **EZ Bar Curls**: 3 sets × 10-12 reps
+10. **Tricep Pushdowns**: 3 sets × 10-12 reps
+
+#### Thursday AM: Heavy Pull (75-90 minutes)
+**Warm-up**: 5-10 minutes light cardio + dynamic back/posterior chain stretching
+
 1. **Deadlift**: 5 sets × 4-6 reps
-2. **Weighted Pull-ups**: 4 sets × 6-8 reps
-3. **Barbell Rows**: 4 sets × 6-8 reps
+2. **Barbell Rows**: 4 sets × 6-8 reps
+3. **Weighted Pull-ups**: 4 sets × 6-8 reps
 4. **T-Bar Rows**: 4 sets × 6-8 reps
 5. **Weighted Chin-ups**: 4 sets × 6-8 reps
 6. **Barbell Shrugs**: 4 sets × 8-10 reps (drop set on final set)
 
-#### Wednesday PM: Back & Biceps (60-75 minutes)
-1. **Lat Pulldowns**: 4 sets × 10-12 reps
-2. **Seated Cable Rows**: 4 sets × 10-12 reps
+#### Thursday PM: Back & Biceps (60-75 minutes)
+**Warm-up**: 5 minutes light mobility work for back
+
+1. **Seated Cable Rows**: 4 sets × 10-12 reps
+2. **Lat Pulldowns**: 4 sets × 10-12 reps
 3. **Straight-Arm Pulldowns**: 3 sets × 12-15 reps
 4. **Barbell Curls**: 4 sets × 8-10 reps
 5. **Hammer Curls**: 4 sets × 10-12 reps
 6. **Incline Dumbbell Curls**: 3 sets × 10-12 reps
 7. **Concentration Curls**: 3 sets × 12-15 reps (superset with stretching)
 
-#### Thursday: Upper Body (90-100 minutes)
-1. **Incline Barbell Press**: 4 sets × 8-10 reps
-2. **Seated Cable Rows**: 4 sets × 8-10 reps
-3. **Shoulder Press Machine**: 4 sets × 8-10 reps
-4. **Pull-ups**: 4 sets × 8-10 reps
-5. **Dumbbell Flies**: 3 sets × 10-12 reps
-6. **Face Pulls**: 3 sets × 12-15 reps
-7. **Lateral Raises**: 3 sets × 12-15 reps
-8. **Tricep Pushdowns**: 3 sets × 10-12 reps
-9. **EZ Bar Curls**: 3 sets × 10-12 reps
-10. **Dips**: 3 sets × 10-12 reps
+#### Friday: Lower Body (90-100 minutes)
+**Warm-up**: 5-10 minutes light cardio + dynamic lower body stretching
 
-#### Friday AM: Heavy Legs (75-90 minutes)
+1. **Front Squats**: 4 sets × 8-10 reps
+2. **Stiff-Legged Deadlifts**: 4 sets × 8-10 reps
+3. **Bulgarian Split Squats**: 4 sets × 8-10 reps per leg
+4. **Hip Thrusts**: 3 sets × 10-12 reps
+5. **Leg Extensions**: 4 sets × 10-12 reps
+6. **Leg Curls**: 4 sets × 10-12 reps
+7. **Adductor Machine**: 3 sets × 12-15 reps
+8. **Abductor Machine**: 3 sets × 12-15 reps
+9. **Standing Calf Raises**: 4 sets × 15-20 reps
+10. **Seated Calf Raises**: 4 sets × 15-20 reps
+
+#### Saturday AM: Heavy Legs (75-90 minutes)
+**Warm-up**: 5-10 minutes light cardio + dynamic lower body stretching
+
 1. **Back Squats**: 5 sets × 4-6 reps
 2. **Romanian Deadlifts**: 4 sets × 6-8 reps
 3. **Leg Press**: 4 sets × 6-8 reps
@@ -148,26 +177,16 @@ This program follows an enhanced training approach with twice-daily sessions on 
 5. **Walking Lunges**: 4 sets × 8-10 steps per leg
 6. **Leg Extensions**: 4 sets × 8-10 reps (drop set on final set)
 
-#### Friday PM: Calves & Core (60-75 minutes)
-1. **Standing Calf Raises**: 5 sets × 12-15 reps
-2. **Seated Calf Raises**: 5 sets × 15-20 reps
-3. **Donkey Calf Raises**: 4 sets × 15-20 reps
-4. **Weighted Decline Sit-ups**: 4 sets × 12-15 reps
-5. **Hanging Leg Raises**: 4 sets × 12-15 reps
-6. **Cable Crunches**: 4 sets × 12-15 reps
-7. **Ab Wheel Rollouts**: 3 sets × 10-15 reps
+#### Saturday PM: Calves & Core (60-75 minutes)
+**Warm-up**: 5 minutes light mobility work
 
-#### Saturday: Lower Body (90-100 minutes)
-1. **Front Squats**: 4 sets × 8-10 reps
-2. **Stiff-Legged Deadlifts**: 4 sets × 8-10 reps
-3. **Bulgarian Split Squats**: 4 sets × 8-10 reps per leg
-4. **Leg Curls**: 4 sets × 10-12 reps
-5. **Leg Extensions**: 4 sets × 10-12 reps
-6. **Hip Thrusts**: 3 sets × 10-12 reps
-7. **Adductor Machine**: 3 sets × 12-15 reps
-8. **Abductor Machine**: 3 sets × 12-15 reps
-9. **Standing Calf Raises**: 4 sets × 15-20 reps
-10. **Seated Calf Raises**: 4 sets × 15-20 reps
+1. **Weighted Decline Sit-ups**: 4 sets × 12-15 reps
+2. **Hanging Leg Raises**: 4 sets × 12-15 reps
+3. **Cable Crunches**: 4 sets × 12-15 reps
+4. **Ab Wheel Rollouts**: 3 sets × 10-15 reps
+5. **Standing Calf Raises**: 5 sets × 12-15 reps
+6. **Seated Calf Raises**: 5 sets × 15-20 reps
+7. **Donkey Calf Raises**: 4 sets × 15-20 reps
 
 #### Sunday: Active Recovery
 1. **Light Cardio**: 20-30 minutes (walking, cycling, or elliptical)
