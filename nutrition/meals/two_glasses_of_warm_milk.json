@@ -85,5 +85,19 @@
     "Lipids (g)": 0.0,
     "Fatty acids, total trans (g)": 0.0,
     "Amino acids (g)": 0.0
+  },
+  "macros": {
+    "protein": {
+      "grams": 16.1,
+      "percent": 15.0
+    },
+    "carbs": {
+      "grams": 55.8,
+      "percent": 52.1
+    },
+    "fat": {
+      "grams": 15.6,
+      "percent": 32.8
+    }
   }
 }

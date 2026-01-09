@@ -142,10 +142,10 @@ def _calculate_ingredient_nutrients(
 
 def _sum_nutrients(nutrient_lists: typing.List[typing.Dict[str, float]]) -> typing.Dict[str, float]:
     """Sum nutrients across multiple ingredient contributions.
-
+    
     Args:
         nutrient_lists: List of nutrient dictionaries to sum.
-
+        
     Returns:
         Dictionary with summed nutrients.
     """
@@ -154,6 +154,53 @@ def _sum_nutrients(nutrient_lists: typing.List[typing.Dict[str, float]]) -> typi
         for nutrient_name, amount in nutrients.items():
             summed[nutrient_name] = summed.get(nutrient_name, 0.0) + amount
     return summed
+
+
+def _calculate_macros(nutrition_facts: typing.Dict[str, float]) -> typing.Dict[str, typing.Any]:
+    """Calculate macros breakdown from nutrition facts.
+    
+    Args:
+        nutrition_facts: Dictionary mapping nutrient names to amounts.
+        
+    Returns:
+        Dictionary with macros information including grams and percentages.
+    """
+    # Extract macro values
+    protein_g = nutrition_facts.get("Protein (g)", 0.0)
+    carbs_g = nutrition_facts.get("Carbohydrate, by difference (g)", 0.0)
+    fat_g = nutrition_facts.get("Total lipid (fat) (g)", 0.0)
+    
+    # Calculate calories from each macro
+    # Protein: 4 cal/g, Carbs: 4 cal/g, Fat: 9 cal/g
+    protein_cals = protein_g * 4
+    carbs_cals = carbs_g * 4
+    fat_cals = fat_g * 9
+    total_cals = protein_cals + carbs_cals + fat_cals
+    
+    # Calculate percentages
+    if total_cals > 0:
+        protein_percent = round((protein_cals / total_cals) * 100, 1)
+        carbs_percent = round((carbs_cals / total_cals) * 100, 1)
+        fat_percent = round((fat_cals / total_cals) * 100, 1)
+    else:
+        protein_percent = 0.0
+        carbs_percent = 0.0
+        fat_percent = 0.0
+    
+    return {
+        "protein": {
+            "grams": round(protein_g, 1),
+            "percent": protein_percent
+        },
+        "carbs": {
+            "grams": round(carbs_g, 1),
+            "percent": carbs_percent
+        },
+        "fat": {
+            "grams": round(fat_g, 1),
+            "percent": fat_percent
+        }
+    }
 
 
 def _calculate_recipe_nutrition(recipe: typing.Dict[str, typing.Any]) -> typing.Dict[str, float]:
@@ -262,8 +309,12 @@ def _update_recipe_nutrition(recipe_path: Path) -> bool:
         for nutrient_name, total_amount in total_nutrition_facts.items():
             per_serving_nutrition[nutrient_name] = total_amount / serving_size
 
-        # Update recipe with per-serving nutrition
+        # Calculate macros from per-serving nutrition
+        macros = _calculate_macros(per_serving_nutrition)
+
+        # Update recipe with per-serving nutrition and macros
         recipe["nutrition_facts"] = per_serving_nutrition
+        recipe["macros"] = macros
 
         # Save updated recipe
         with open(recipe_path, "w", encoding="utf-8") as f:
