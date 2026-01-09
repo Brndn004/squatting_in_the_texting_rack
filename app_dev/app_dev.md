@@ -169,8 +169,7 @@ GET https://world.openfoodfacts.org/api/v0/product/{barcode}.json
 ### USDA FoodData Central Downloads
 
 **API key***
-I signed up with brandon_draper4@yahoo.com, and my key is:
-USDA_API_KEY=VtxAq8BlBaa7Fk4RI7LMpf70NiwEmfBjJ6SuaOru
+I signed up with brandon_draper4@yahoo.com, and my key is exported by my .zshrc with the variable name: USDA_API_KEY
 
 **Formats:**
 * CSV files

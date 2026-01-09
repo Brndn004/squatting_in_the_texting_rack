@@ -9,9 +9,6 @@ info:
 
     I obtained this yaml from:
       https://app.swaggerhub.com/apis/fdcnal/food-data_central_api/1.0.1#/
-
-    My personal API key is:
-      VtxAq8BlBaa7Fk4RI7LMpf70NiwEmfBjJ6SuaOru
   version: 1.0.1
   title: Food Data Central API
   contact:
