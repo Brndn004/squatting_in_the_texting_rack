@@ -7,8 +7,8 @@ Interactive REPL for searching and deleting ingredients.
 import json
 import logging
 import sys
+import typing
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
 
 # Configure logging
 logging.basicConfig(
@@ -27,7 +27,7 @@ def _get_ingredients_dir() -> Path:
     return Path(__file__).parent.parent / "ingredients"
 
 
-def _load_lookup_database() -> Dict[str, int]:
+def _load_lookup_database() -> typing.Dict[str, int]:
     """Load the reverse-lookup database.
 
     Returns:
@@ -53,7 +53,7 @@ def _load_lookup_database() -> Dict[str, int]:
         raise
 
 
-def _save_lookup_database(lookup_data: Dict[str, int]) -> None:
+def _save_lookup_database(lookup_data: typing.Dict[str, int]) -> None:
     """Save the reverse-lookup database.
 
     Args:
@@ -72,7 +72,7 @@ def _save_lookup_database(lookup_data: Dict[str, int]) -> None:
         raise
 
 
-def _rank_matches(query: str, lookup_data: Dict[str, int]) -> List[Tuple[int, str, int]]:
+def _rank_matches(query: str, lookup_data: typing.Dict[str, int]) -> typing.List[typing.Tuple[int, str, int]]:
     """Rank ingredient matches by relevance.
 
     Args:
@@ -105,7 +105,7 @@ def _rank_matches(query: str, lookup_data: Dict[str, int]) -> List[Tuple[int, st
     return matches
 
 
-def display_results(matches: List[Tuple[int, str, int]]) -> None:
+def display_results(matches: typing.List[typing.Tuple[int, str, int]]) -> None:
     """Display search results to the user.
 
     Args:
@@ -131,8 +131,8 @@ def display_results(matches: List[Tuple[int, str, int]]) -> None:
 
 
 def get_selected_ingredient(
-    matches: List[Tuple[int, str, int]], selection: str
-) -> Optional[Tuple[str, int]]:
+    matches: typing.List[typing.Tuple[int, str, int]], selection: str
+) -> typing.Optional[typing.Tuple[str, int]]:
     """Get the selected ingredient from matches.
 
     Args:
@@ -224,8 +224,8 @@ def main() -> None:
     _print_usage()
 
     # REPL loop
-    current_matches: List[Tuple[int, str, int]] = []
-    selected_ingredient: Optional[Tuple[str, int]] = None
+    current_matches: typing.List[typing.Tuple[int, str, int]] = []
+    selected_ingredient: typing.Optional[typing.Tuple[str, int]] = None
 
     try:
         while True:

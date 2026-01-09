@@ -4,12 +4,12 @@
 Simple library that matches quantity + MeasureUnit to foodPortions from ingredient data.
 """
 
+import enum
 import re
-from enum import Enum
-from typing import Dict, List, Tuple, Any
+import typing
 
 
-class MeasureUnit(str, Enum):
+class MeasureUnit(str, enum.Enum):
     """Enumeration of valid measure units for recipes.
     
     All units must be written exactly as shown (capitalized first letter).
@@ -41,7 +41,7 @@ class MeasureUnit(str, Enum):
     Bunch = "Bunch"
     
     @classmethod
-    def values(cls) -> List[str]:
+    def values(cls) -> typing.List[str]:
         """Get list of all valid unit values."""
         return [unit.value for unit in cls]
 
@@ -117,7 +117,7 @@ def _normalize_modifier(modifier: str) -> str:
 
 
 def _score_portion_match(
-    portion: Dict[str, Any],
+    portion: typing.Dict[str, typing.Any],
     unit_aliases: set[str]
 ) -> int:
     """Score how well a portion matches the unit.
@@ -171,7 +171,7 @@ def _extract_base_amount(desc: str) -> float:
     return 1.0
 
 
-def _format_available_portions(food_portions: List[Dict[str, Any]]) -> str:
+def _format_available_portions(food_portions: typing.List[typing.Dict[str, typing.Any]]) -> str:
     """Format available portions for error messages.
     
     Args:
@@ -203,8 +203,8 @@ def _format_available_portions(food_portions: List[Dict[str, Any]]) -> str:
 def find_food_portion(
     quantity: float,
     unit: MeasureUnit,
-    food_portions: List[Dict[str, Any]]
-) -> Tuple[Dict[str, Any], float]:
+    food_portions: typing.List[typing.Dict[str, typing.Any]]
+) -> typing.Tuple[typing.Dict[str, typing.Any], float]:
     """Find matching foodPortion for quantity and unit.
     
     This is the main entrypoint for the library. Given a quantity, unit enum,

@@ -10,8 +10,8 @@ import json
 import logging
 import os
 import sys
+import typing
 from pathlib import Path
-from typing import Any, Dict, List, Optional
 
 import requests
 
@@ -66,8 +66,8 @@ def _get_ingredients_dir() -> Path:
 
 
 def search_ingredient(
-    query: str, api_key: str, data_types: Optional[List[str]] = None
-) -> Dict[str, Any]:
+    query: str, api_key: str, data_types: typing.Optional[typing.List[str]] = None
+) -> typing.Dict[str, typing.Any]:
     """Search for ingredients matching the query.
 
     Args:
@@ -99,7 +99,7 @@ def search_ingredient(
         raise
 
 
-def search_ingredient_prioritized(query: str, api_key: str) -> Dict[str, Any]:
+def search_ingredient_prioritized(query: str, api_key: str) -> typing.Dict[str, typing.Any]:
     """Search for ingredients with priority ordering.
 
     Tries multiple search strategies to find Foundation foods:
@@ -219,7 +219,7 @@ def search_ingredient_prioritized(query: str, api_key: str) -> Dict[str, Any]:
         raise
 
 
-def get_food_details(fdc_id: int, api_key: str) -> Dict[str, Any]:
+def get_food_details(fdc_id: int, api_key: str) -> typing.Dict[str, typing.Any]:
     """Get full details for a specific FDC ID.
 
     Args:
@@ -268,7 +268,7 @@ def _get_data_type_priority(data_type: str) -> int:
     return priority_map.get(data_type, 99)
 
 
-def _sort_foods_by_priority(foods: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def _sort_foods_by_priority(foods: typing.List[typing.Dict[str, typing.Any]]) -> typing.List[typing.Dict[str, typing.Any]]:
     """Sort foods by data type priority.
 
     Args:
@@ -286,7 +286,7 @@ def _sort_foods_by_priority(foods: List[Dict[str, Any]]) -> List[Dict[str, Any]]
     )
 
 
-def display_search_results(foods: List[Dict[str, Any]]) -> None:
+def display_search_results(foods: typing.List[typing.Dict[str, typing.Any]]) -> None:
     """Display search results to the user.
 
     Args:
@@ -300,7 +300,7 @@ def display_search_results(foods: List[Dict[str, Any]]) -> None:
         print(f"{i}. [{fdc_id}] {description} ({data_type})")
 
 
-def get_user_selection(foods: List[Dict[str, Any]]) -> Dict[str, Any]:
+def get_user_selection(foods: typing.List[typing.Dict[str, typing.Any]]) -> typing.Dict[str, typing.Any]:
     """Prompt user to select an ingredient from search results.
 
     Args:
@@ -356,7 +356,7 @@ def update_reverse_lookup(fdc_id: int, description: str) -> None:
         logger.warning(f"Failed to update lookup database: {e}")
 
 
-def save_ingredient_file(food_data: Dict[str, Any], filepath: Path) -> None:
+def save_ingredient_file(food_data: typing.Dict[str, typing.Any], filepath: Path) -> None:
     """Save food data to a JSON file.
 
     Args:
