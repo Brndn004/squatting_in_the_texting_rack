@@ -1,5 +1,6 @@
 {
   "drink": "Liquid-based recipes meant to be consumed as beverages",
   "warm": "Recipes that are served warm or heated",
-  "simple": "Recipes with minimal ingredients and straightforward preparation"
+  "simple": "Recipes with minimal ingredients and straightforward preparation",
+  "sweet": "Recipes with sweet flavors, typically containing sugar or sweeteners"
 }

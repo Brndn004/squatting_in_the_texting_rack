@@ -1,9 +1,11 @@
 {
   "name": "Warm Milk",
+  "serving_size": 1,
   "tags": [
     "drink",
     "warm",
-    "simple"
+    "simple",
+    "sweet"
   ],
   "ingredients": [
     {

@@ -245,18 +245,32 @@ def _update_recipe_nutrition(recipe_path: Path) -> bool:
             logger.warning(f"Recipe file is not a valid JSON object: {recipe_path}")
             return False
 
-        # Calculate nutrition facts
-        nutrition_facts = _calculate_recipe_nutrition(recipe)
+        # Calculate total nutrition facts for the recipe
+        total_nutrition_facts = _calculate_recipe_nutrition(recipe)
 
-        # Update recipe
-        recipe["nutrition_facts"] = nutrition_facts
+        # Get serving size (defaults to 1 for backward compatibility)
+        serving_size = recipe.get("serving_size", 1.0)
+        if not isinstance(serving_size, (int, float)) or serving_size <= 0:
+            logger.warning(
+                f"Recipe {recipe_path.name} has invalid serving_size '{serving_size}'. "
+                "Using 1.0 as default."
+            )
+            serving_size = 1.0
+
+        # Convert to per-serving nutrition
+        per_serving_nutrition = {}
+        for nutrient_name, total_amount in total_nutrition_facts.items():
+            per_serving_nutrition[nutrient_name] = total_amount / serving_size
+
+        # Update recipe with per-serving nutrition
+        recipe["nutrition_facts"] = per_serving_nutrition
 
         # Save updated recipe
         with open(recipe_path, "w", encoding="utf-8") as f:
             json.dump(recipe, f, indent=_JSON_INDENT, ensure_ascii=False)
             f.write("\n")
 
-        logger.info(f"✓ Updated {recipe_path.name}: {len(nutrition_facts)} nutrients")
+        logger.info(f"✓ Updated {recipe_path.name}: {len(per_serving_nutrition)} nutrients")
         return True
 
     except (FileNotFoundError, ValueError) as e:
