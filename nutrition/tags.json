@@ -2,5 +2,10 @@
   "drink": "Liquid-based recipes meant to be consumed as beverages",
   "warm": "Recipes that are served warm or heated",
   "simple": "Recipes with minimal ingredients and straightforward preparation",
-  "sweet": "Recipes with sweet flavors, typically containing sugar or sweeteners"
+  "sweet": "Recipes with sweet flavors, typically containing sugar or sweeteners",
+  "main": "Main dish or entree recipes",
+  "meat": "Recipes containing meat or poultry",
+  "meal_prep": "Recipes designed for meal preparation and portioning",
+  "comfort": "Comfort food recipes",
+  "baked": "Recipes that are baked or roasted in an oven"
 }

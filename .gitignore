@@ -7,3 +7,10 @@ __pycache__/
 *$py.class
 *.pyc
 *.pyo
+
+my_recipes/
+
+# macOS Finder metadata
+.DS_Store
+
+nutrition/logs/

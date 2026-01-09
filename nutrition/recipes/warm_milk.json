@@ -10,15 +10,21 @@
   "ingredients": [
     {
       "fdc_id": 2705385,
-      "amount": "1 Cup"
+      "name": "Milk, whole",
+      "quantity": 1.0,
+      "measure_unit": "Cup"
     },
     {
       "fdc_id": 2710281,
-      "amount": "1 Tbsp"
+      "name": "Honey",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
     },
     {
       "fdc_id": 173471,
-      "amount": "0.25 Tsp"
+      "name": "Vanilla extract",
+      "quantity": 0.25,
+      "measure_unit": "Tsp"
     }
   ],
   "instructions": [
@@ -31,7 +37,6 @@
     "Protein (g)": 8.03943,
     "Total lipid (fat) (g)": 7.80863,
     "Carbohydrate, by difference (g)": 27.910025,
-    "Energy (kcal)": 212.66400000000002,
     "Alcohol, ethyl (g)": 0.3612,
     "Water (g)": 218.93608999999995,
     "Caffeine (mg)": 0.0,
@@ -93,6 +98,7 @@
     "PUFA 22:5 n-3 (DPA) (g)": 0.00488,
     "Fatty acids, total monounsaturated (g)": 1.6788249999999998,
     "Fatty acids, total polyunsaturated (g)": 0.26356199999999996,
+    "Energy (kcal)": 212.66400000000002,
     "Proximates (g)": 0.0,
     "Energy (kJ)": 12.652500000000002,
     "Ash (g)": 0.0027300000000000002,
