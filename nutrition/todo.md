@@ -5,6 +5,7 @@
 - [x] Create reverse-lookup database for ingredient-name-to-FDC-ID mapping
 - [x] Script to convert human-readable measures (cups, tablespoons, etc.) to USDA foodPortions units using USDA foodPortions data
 - [x] Script to calculate and update recipe nutrition facts from ingredients (recomputes all recipes based on current ingredient data, includes all nutrients from all ingredients)
-- [ ] Script to generate simple nutrition facts label for each recipe
+- [x] Script to generate simple nutrition facts for each recipe (ended up just adding a macros section to recipes and meals)
+- [ ] Define a bunch of recipes to use
 - [ ] Script/functionality to filter recipes by tags
 

@@ -138,6 +138,10 @@ def _score_portion_match(
         normalized_modifier = _normalize_modifier(modifier)
         if normalized_modifier in unit_aliases:
             return 100
+        # Check if any unit alias is contained in the modifier (e.g., "tsp, ground" contains "tsp")
+        for alias in unit_aliases:
+            if alias in normalized_modifier:
+                return 100
     
     # Description match (medium priority)
     if desc:
@@ -239,9 +243,33 @@ def find_food_portion(
     if quantity <= 0:
         raise ValueError(f"Quantity must be greater than zero, got {quantity}")
     
+    # Handle weight units (Oz, Lb, Gram, Kg) FIRST - they should never match portions
+    # Since USDA data is per 100g, we can calculate directly from weight
+    weight_units = {MeasureUnit.Oz, MeasureUnit.Lb, MeasureUnit.Gram, MeasureUnit.Kg}
+    
+    if unit in weight_units:
+        # Convert to grams directly - weight units should never match portions
+        if unit == MeasureUnit.Oz:
+            gram_weight = quantity * 28.3495  # 1 oz = 28.3495 g
+        elif unit == MeasureUnit.Lb:
+            gram_weight = quantity * 453.592  # 1 lb = 453.592 g
+        elif unit == MeasureUnit.Gram:
+            gram_weight = quantity
+        elif unit == MeasureUnit.Kg:
+            gram_weight = quantity * 1000  # 1 kg = 1000 g
+        
+        # Return a dummy portion with the calculated weight
+        # The caller will use this weight directly with per-100g nutrition data
+        dummy_portion = {
+            "modifier": "",
+            "portionDescription": f"{quantity} {unit.value}",
+            "gramWeight": gram_weight
+        }
+        return (dummy_portion, gram_weight)
+    
     unit_aliases = _get_unit_aliases(unit)
     
-    # Find best matching portion
+    # Find best matching portion (for non-weight units only)
     best_match = None
     best_score = 0
     
@@ -255,7 +283,23 @@ def find_food_portion(
             best_score = score
             best_match = portion
     
-    # Require a valid match
+    # Handle volume/count units when only one portion exists (use it as reference)
+    if (not best_match or best_score == 0) and len(food_portions) == 1:
+        single_portion = food_portions[0]
+        portion_weight = single_portion.get("gramWeight", 0)
+        if portion_weight > 0:
+            # For volume/count units, use the single portion as reference
+            # Calculate ratio: (requested_amount / 1) * portion_weight
+            gram_weight = quantity * portion_weight
+            
+            dummy_portion = {
+                "modifier": "",
+                "portionDescription": f"{quantity} {unit.value}",
+                "gramWeight": gram_weight
+            }
+            return (dummy_portion, gram_weight)
+    
+    # Require a valid match for non-weight units
     if not best_match or best_score == 0:
         available_str = _format_available_portions(food_portions)
         raise MeasureMatchError(

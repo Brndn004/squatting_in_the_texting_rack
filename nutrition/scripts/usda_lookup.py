@@ -11,6 +11,7 @@ import logging
 import os
 import sys
 import typing
+from datetime import datetime
 from pathlib import Path
 
 import requests
@@ -65,6 +66,94 @@ def _get_ingredients_dir() -> Path:
     return Path(__file__).parent.parent / "ingredients"
 
 
+def _get_logs_dir() -> Path:
+    """Get the logs directory path.
+
+    Returns:
+        Path to the logs directory.
+    """
+    logs_dir = Path(__file__).parent.parent / "logs"
+    logs_dir.mkdir(exist_ok=True)
+    return logs_dir
+
+
+def _format_api_call_for_logging(url: str, params: typing.Dict[str, typing.Any]) -> str:
+    """Format API call for logging, masking the API key.
+    
+    Args:
+        url: API endpoint URL.
+        params: Request parameters.
+        
+    Returns:
+        Formatted string showing the API call.
+    """
+    # Create a copy of params with masked API key
+    masked_params = params.copy()
+    if "api_key" in masked_params:
+        masked_params["api_key"] = "***MASKED***"
+    
+    # Build the full URL with parameters
+    from urllib.parse import urlencode
+    param_string = urlencode(masked_params)
+    full_url = f"{url}?{param_string}"
+    
+    return full_url
+
+
+def _save_error_log(
+    url: str,
+    params: typing.Dict[str, typing.Any],
+    response: typing.Optional[requests.Response],
+    error: Exception,
+    operation: str
+) -> Path:
+    """Save error log to file.
+    
+    Args:
+        url: API endpoint URL.
+        params: Request parameters.
+        response: Response object (if available).
+        error: Exception that occurred.
+        operation: Description of the operation (e.g., "search", "get_details").
+        
+    Returns:
+        Path to the saved log file.
+    """
+    logs_dir = _get_logs_dir()
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    
+    # Create log entry
+    log_data = {
+        "timestamp": datetime.now().isoformat(),
+        "operation": operation,
+        "url": url,
+        "params": {k: ("***MASKED***" if k == "api_key" else v) for k, v in params.items()},
+        "error_type": type(error).__name__,
+        "error_message": str(error),
+    }
+    
+    # Add response data if available
+    if response is not None:
+        log_data["response_status_code"] = response.status_code
+        log_data["response_headers"] = dict(response.headers)
+        try:
+            log_data["response_body"] = response.text
+        except Exception:
+            log_data["response_body"] = "Unable to read response body"
+    else:
+        log_data["response_status_code"] = None
+        log_data["response_body"] = None
+    
+    # Save to file
+    log_filename = f"usda_api_error_{operation}_{timestamp}.json"
+    log_filepath = logs_dir / log_filename
+    
+    with open(log_filepath, "w", encoding="utf-8") as f:
+        json.dump(log_data, f, indent=2, ensure_ascii=False)
+    
+    return log_filepath
+
+
 def search_ingredient(
     query: str, api_key: str, data_types: typing.Optional[typing.List[str]] = None
 ) -> typing.Dict[str, typing.Any]:
@@ -90,12 +179,20 @@ def search_ingredient(
     if data_types:
         params["dataType"] = data_types
 
+    response = None
     try:
         response = requests.get(_SEARCH_ENDPOINT, params=params, timeout=10)
         response.raise_for_status()
         return response.json()
     except requests.RequestException as e:
+        api_call = _format_api_call_for_logging(_SEARCH_ENDPOINT, params)
         logger.error(f"Failed to search for '{query}': {e}")
+        logger.error(f"API call: {api_call}")
+        
+        # Save error log
+        log_filepath = _save_error_log(_SEARCH_ENDPOINT, params, response, e, "search")
+        logger.error(f"Error log saved to: {log_filepath}")
+        
         raise
 
 
@@ -238,12 +335,20 @@ def get_food_details(fdc_id: int, api_key: str) -> typing.Dict[str, typing.Any]:
         "format": "full",
     }
 
+    response = None
     try:
         response = requests.get(url, params=params, timeout=10)
         response.raise_for_status()
         return response.json()
     except requests.RequestException as e:
+        api_call = _format_api_call_for_logging(url, params)
         logger.error(f"Failed to fetch details for FDC ID {fdc_id}: {e}")
+        logger.error(f"API call: {api_call}")
+        
+        # Save error log
+        log_filepath = _save_error_log(url, params, response, e, f"get_details_fdc_{fdc_id}")
+        logger.error(f"Error log saved to: {log_filepath}")
+        
         raise
 
 
@@ -381,12 +486,23 @@ def main() -> None:
     parser = argparse.ArgumentParser(
         description="Search and download USDA Foundation ingredient data"
     )
-    parser.add_argument(
-        "ingredient",
+    
+    # Create mutually exclusive group for search vs direct ID lookup
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument(
+        "--search",
         nargs="+",
         type=str,
-        help="Name of the ingredient to search for (can be multiple words)",
+        metavar="TERM",
+        help="Search for ingredient by name (can be multiple words)",
     )
+    group.add_argument(
+        "--id",
+        type=int,
+        metavar="FDC_ID",
+        help="Directly fetch ingredient by FDC ID",
+    )
+    
     args = parser.parse_args()
 
     # Get API key from environment
@@ -395,7 +511,37 @@ def main() -> None:
     except SystemExit:
         sys.exit(1)
 
-    query = " ".join(args.ingredient)
+    # Handle direct FDC ID lookup
+    if args.id is not None:
+        fdc_id = args.id
+        logger.info(f"Fetching ingredient details for FDC ID {fdc_id}...")
+        
+        try:
+            food_data = get_food_details(fdc_id, api_key)
+        except requests.RequestException:
+            sys.exit(1)
+        
+        # Extract description from food data
+        description = food_data.get("description", f"FDC ID {fdc_id}")
+        
+        # Generate filename
+        filename = f"{fdc_id}.json"
+        filepath = _get_ingredients_dir() / filename
+
+        # Save as pretty-printed JSON
+        try:
+            save_ingredient_file(food_data, filepath)
+        except OSError:
+            sys.exit(1)
+
+        # Update reverse-lookup database
+        update_reverse_lookup(fdc_id, description)
+
+        logger.info(f"Description: {description}")
+        return
+
+    # Handle search mode
+    query = " ".join(args.search)
     logger.info(f"Searching for '{query}' in USDA FoodData Central...")
 
     # Search for ingredients with priority ordering
