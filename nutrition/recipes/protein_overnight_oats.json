@@ -1,11 +1,20 @@
 {
   "name": "Protein Overnight Oats",
+  "sources": [
+    "https://www.theconsciousplantkitchen.com/protein-overnight-oats/#h-how-to-make-protein-overnight-oats"
+  ],
   "serving_size": 1,
   "tags": [
     "breakfast",
     "meal_prep",
     "simple",
     "sweet"
+  ],
+  "changes": [
+    "Soy Milk Protein Plus (⅔ cup) → Whole Milk (0.67 cup) - following lifting-focused substitution rules",
+    "Vanilla Protein Powder (plant-based, 2 Tbsp) → EAS Whey Protein Powder (2 Tbsp) - following lifting-focused substitution rules",
+    "Plant-Based Yogurt (½ cup) → Greek nonfat yogurt (0.5 cup) - following lifting-focused substitution rules",
+    "Berries (generic, ½ cup) → Blueberries (specific, 0.5 cup) - following lifting-focused substitution rules"
   ],
   "ingredients": [
     {

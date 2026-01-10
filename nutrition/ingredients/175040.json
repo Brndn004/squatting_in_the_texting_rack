@@ -1,0 +1,128 @@
+{
+    "fdcId": 175040,
+    "description": "Leavening agents, baking soda",
+    "publicationDate": "4/1/2019",
+    "foodNutrients": [
+        {
+            "nutrient": {
+                "id": 2045,
+                "number": "951",
+                "name": "Proximates",
+                "rank": 50,
+                "unitName": "g"
+            },
+            "type": "FoodNutrient"
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1051,
+                "number": "255",
+                "name": "Water",
+                "rank": 100,
+                "unitName": "g"
+            },
+            "id": 1909135,
+            "amount": 0.2,
+            "dataPoints": 1
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1008,
+                "number": "208",
+                "name": "Energy",
+                "rank": 300,
+                "unitName": "kcal"
+            },
+            "foodNutrientDerivation": {
+                "id": 49,
+                "code": "NC",
+                "description": "Calculated"
+            },
+            "id": 1909134,
+            "amount": 0,
+            "dataPoints": 0
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1003,
+                "number": "203",
+                "name": "Protein",
+                "rank": 600,
+                "unitName": "g"
+            },
+            "id": 1909146,
+            "amount": 0,
+            "dataPoints": 1
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1004,
+                "number": "204",
+                "name": "Total lipid (fat)",
+                "rank": 800,
+                "unitName": "g"
+            },
+            "id": 1909132,
+            "amount": 0,
+            "dataPoints": 1
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1005,
+                "number": "205",
+                "name": "Carbohydrate, by difference",
+                "rank": 1110,
+                "unitName": "g"
+            },
+            "id": 1909133,
+            "amount": 0,
+            "dataPoints": 0
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1093,
+                "number": "307",
+                "name": "Sodium, Na",
+                "rank": 5800,
+                "unitName": "mg"
+            },
+            "id": 1909151,
+            "amount": 27360,
+            "dataPoints": 1
+        }
+    ],
+    "foodPortions": [
+        {
+            "id": 95485,
+            "gramWeight": 2.3,
+            "sequenceNumber": 2,
+            "amount": 0.5,
+            "modifier": "tsp",
+            "measureUnit": {
+                "id": 9999,
+                "name": "undetermined",
+                "abbreviation": "undetermined"
+            }
+        },
+        {
+            "id": 95484,
+            "gramWeight": 4.6,
+            "sequenceNumber": 1,
+            "amount": 1,
+            "modifier": "tsp",
+            "measureUnit": {
+                "id": 9999,
+                "name": "undetermined",
+                "abbreviation": "undetermined"
+            }
+        }
+    ],
+    "dataType": "SR Legacy",
+    "foodClass": "FinalFood"
+}

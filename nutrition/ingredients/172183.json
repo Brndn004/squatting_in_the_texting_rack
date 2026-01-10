@@ -1,0 +1,108 @@
+{
+    "fdcId": 172183,
+    "description": "Egg, white, raw, fresh",
+    "publicationDate": "4/1/2019",
+    "foodNutrients": [
+        {
+            "nutrient": {
+                "id": 2045,
+                "number": "951",
+                "name": "Proximates",
+                "rank": 50,
+                "unitName": "g"
+            },
+            "type": "FoodNutrient"
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1051,
+                "number": "255",
+                "name": "Water",
+                "rank": 100,
+                "unitName": "g"
+            },
+            "id": 1674692,
+            "amount": 87.57,
+            "dataPoints": 12
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1008,
+                "number": "208",
+                "name": "Energy",
+                "rank": 300,
+                "unitName": "kcal"
+            },
+            "foodNutrientDerivation": {
+                "id": 49,
+                "code": "NC",
+                "description": "Calculated"
+            },
+            "id": 1674704,
+            "amount": 52,
+            "dataPoints": 0
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1003,
+                "number": "203",
+                "name": "Protein",
+                "rank": 600,
+                "unitName": "g"
+            },
+            "id": 1674685,
+            "amount": 10.9,
+            "dataPoints": 12
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1004,
+                "number": "204",
+                "name": "Total lipid (fat)",
+                "rank": 800,
+                "unitName": "g"
+            },
+            "id": 1674691,
+            "amount": 0.17,
+            "dataPoints": 12
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1005,
+                "number": "205",
+                "name": "Carbohydrate, by difference",
+                "rank": 1110,
+                "unitName": "g"
+            },
+            "foodNutrientDerivation": {
+                "id": 49,
+                "code": "NC",
+                "description": "Calculated"
+            },
+            "id": 1674706,
+            "amount": 0.73,
+            "dataPoints": 0
+        }
+    ],
+    "foodPortions": [
+        {
+            "id": 90044,
+            "gramWeight": 243,
+            "sequenceNumber": 2,
+            "amount": 1,
+            "modifier": "cup",
+            "measureUnit": {
+                "id": 9999,
+                "name": "undetermined",
+                "abbreviation": "undetermined"
+            }
+        }
+    ],
+    "dataType": "SR Legacy",
+    "foodClass": "FinalFood"
+}

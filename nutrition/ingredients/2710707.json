@@ -1,0 +1,89 @@
+{
+    "fdcId": 2710707,
+    "description": "Water, tap",
+    "publicationDate": "10/31/2024",
+    "foodNutrients": [
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1003,
+                "number": "203",
+                "name": "Protein",
+                "rank": 600,
+                "unitName": "g"
+            },
+            "amount": 0
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1004,
+                "number": "204",
+                "name": "Total lipid (fat)",
+                "rank": 800,
+                "unitName": "g"
+            },
+            "amount": 0
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1005,
+                "number": "205",
+                "name": "Carbohydrate, by difference",
+                "rank": 1110,
+                "unitName": "g"
+            },
+            "amount": 0
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1008,
+                "number": "208",
+                "name": "Energy",
+                "rank": 300,
+                "unitName": "kcal"
+            },
+            "amount": 0
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1051,
+                "number": "255",
+                "name": "Water",
+                "rank": 100,
+                "unitName": "g"
+            },
+            "amount": 99.9
+        }
+    ],
+    "foodPortions": [
+        {
+            "id": 312220,
+            "measureUnit": {
+                "id": 9999,
+                "name": "undetermined",
+                "abbreviation": "undetermined"
+            },
+            "modifier": "10205",
+            "gramWeight": 240,
+            "portionDescription": "1 cup",
+            "sequenceNumber": 1
+        },
+        {
+            "id": 312221,
+            "measureUnit": {
+                "id": 9999,
+                "name": "undetermined",
+                "abbreviation": "undetermined"
+            },
+            "modifier": "30000",
+            "gramWeight": 30,
+            "portionDescription": "1 fl oz",
+            "sequenceNumber": 2
+        }
+    ],
+    "dataType": "Survey (FNDDS)"
+}
