@@ -1920,7 +1920,9 @@
             },
             "id": 1316202,
             "amount": 0,
-            "dataPoints": 0
+            "dataPoints": 4,
+            "max": 0,
+            "min": 0
         },
         {
             "type": "FoodNutrient",

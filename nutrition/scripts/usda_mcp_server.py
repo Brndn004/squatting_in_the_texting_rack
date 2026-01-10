@@ -12,6 +12,7 @@ import requests
 
 from mcp.server import fastmcp
 
+import ingredient_management_lib
 import usda_lib
 
 # Initialize FastMCP server
@@ -211,6 +212,59 @@ async def save_ingredient(food_data: dict[str, Any]) -> str:
             "status": "failure",
             "stdout": "",
             "stderr": f"Missing required field in food_data: {e}",
+        }
+        return _dict_to_json_string(result)
+    except OSError as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"File operation failed: {e}",
+        }
+        return _dict_to_json_string(result)
+    except Exception as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Unexpected error: {e}",
+        }
+        return _dict_to_json_string(result)
+
+
+@mcp.tool(
+    description=(
+        "Delete an ingredient from the local database. This tool removes the ingredient "
+        "JSON file from nutrition/ingredients/{fdc_id}.json and removes the entry from "
+        "ingredient_lookup.json. Use this tool when you want to remove an ingredient that "
+        "was previously saved. The description and fdc_id are required parameters. The "
+        "response includes a success status. Check the 'status' key in the returned JSON "
+        "to determine if the deletion was successful."
+    )
+)
+async def delete_ingredient(description: str, fdc_id: int) -> str:
+    """Delete an ingredient from the local database.
+
+    Args:
+        description: Ingredient description/name.
+        fdc_id: FoodData Central ID (integer).
+
+    Returns:
+        JSON string with success status.
+    """
+    try:
+        ingredient_management_lib.delete_ingredient(description, fdc_id)
+        
+        result = {
+            "status": "success",
+            "stdout": "",
+            "stderr": "",
+            "message": f"Successfully deleted ingredient: {description} (FDC ID: {fdc_id})",
+        }
+        return _dict_to_json_string(result)
+    except FileNotFoundError as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Lookup database not found: {e}",
         }
         return _dict_to_json_string(result)
     except OSError as e:
