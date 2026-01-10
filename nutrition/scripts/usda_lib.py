@@ -5,12 +5,18 @@ This module contains pure functions without user interaction.
 """
 
 import json
+import os
 import typing
 from datetime import datetime
 from pathlib import Path
 from urllib.parse import urlencode
 
 import requests
+
+
+class UsdaApiKeyError(Exception):
+    """Exception raised when USDA API key is not found in environment."""
+    pass
 
 # Constants
 _API_KEY_ENV_VAR = "USDA_API_KEY"
@@ -19,6 +25,29 @@ _SEARCH_ENDPOINT = f"{_BASE_URL}/foods/search"
 _DETAILS_ENDPOINT = f"{_BASE_URL}/food"
 _DEFAULT_PAGE_SIZE = 20
 _JSON_INDENT = 4
+
+
+def get_api_key() -> str:
+    """Get USDA API key from environment variable.
+
+    Returns:
+        USDA API key string.
+
+    Raises:
+        UsdaApiKeyError: If API key is not found in environment.
+    """
+    api_key = os.getenv(_API_KEY_ENV_VAR)
+    if not api_key:
+        error_message = (
+            f"USDA API key not found. Please set the {_API_KEY_ENV_VAR} "
+            "environment variable.\n\n"
+            f"To set it, add this line to your ~/.zshrc file:\n"
+            f"export {_API_KEY_ENV_VAR}=your_api_key_here\n\n"
+            f"Then reload your shell configuration:\n"
+            f"source ~/.zshrc"
+        )
+        raise UsdaApiKeyError(error_message)
+    return api_key
 
 
 def _get_ingredients_dir() -> Path:
