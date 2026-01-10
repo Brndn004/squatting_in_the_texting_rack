@@ -82,7 +82,12 @@ def _get_unit_aliases(unit: MeasureUnit) -> set[str]:
         MeasureUnit.Stalk: ["stalk", "stalks"],
         MeasureUnit.Bunch: ["bunch", "bunches"],
     }
-    return set(unit_map.get(unit, [unit.value.lower()]))
+    if unit not in unit_map:
+        raise ValueError(
+            f"Unit {unit.value} is not supported. "
+            f"Supported units: {', '.join(sorted(u.value for u in unit_map.keys()))}"
+        )
+    return set(unit_map[unit])
 
 
 def _normalize_portion_description(desc: str) -> str:
@@ -128,7 +133,7 @@ def _score_portion_match(
     
     Returns:
         Score: 100 = exact modifier match, 80 = description starts with unit,
-               50 = description contains unit, 0 = no match.
+               50 = description contains unit at word boundary, 0 = no match.
     """
     modifier = portion.get("modifier", "")
     desc = portion.get("portionDescription", "")
@@ -136,72 +141,151 @@ def _score_portion_match(
     # Exact modifier match (highest priority)
     if modifier:
         normalized_modifier = _normalize_modifier(modifier)
+        # First check for exact match
         if normalized_modifier in unit_aliases:
             return 100
-        # Check if any unit alias is contained in the modifier (e.g., "tsp, ground" contains "tsp")
+        
+        # Check for word-boundary matches in modifier (e.g., "tsp, ground" contains "tsp" as a word)
+        # Use word boundaries to avoid false positives like "scoop" matching "c"
         for alias in unit_aliases:
-            if alias in normalized_modifier:
-                return 100
+            # For single-character aliases, only match if modifier is exactly that character
+            if len(alias) == 1:
+                if normalized_modifier == alias:
+                    return 100
+            else:
+                # For multi-character aliases, use word boundary matching
+                # Match if alias appears as a whole word (not substring)
+                pattern = r'\b' + re.escape(alias) + r'\b'
+                if re.search(pattern, normalized_modifier):
+                    return 100
     
     # Description match (medium priority)
     if desc:
         normalized_desc = _normalize_portion_description(desc)
         for alias in unit_aliases:
-            if alias in normalized_desc:
-                if normalized_desc.startswith(alias):
+            # For single-character aliases, only match if description starts with that character followed by space/end
+            if len(alias) == 1:
+                if normalized_desc.startswith(alias + ' ') or normalized_desc == alias:
                     return 80
-                else:
-                    return 50
+            else:
+                # For multi-character aliases, check word boundaries
+                pattern = r'\b' + re.escape(alias) + r'\b'
+                if re.search(pattern, normalized_desc):
+                    if normalized_desc.startswith(alias):
+                        return 80
+                    else:
+                        return 50
     
     return 0
 
 
-def _extract_base_amount(desc: str) -> float:
-    """Extract base amount from portion description.
+def _convert_volume_unit(
+    quantity: float,
+    from_unit: MeasureUnit,
+    to_unit: MeasureUnit
+) -> float:
+    """Convert quantity from one volume unit to another.
     
     Args:
-        desc: Portion description (e.g., "1 cup", "2 tablespoons").
+        quantity: Amount in from_unit.
+        from_unit: Source unit (must be a volume unit).
+        to_unit: Target unit (must be a volume unit).
     
     Returns:
-        Base amount (defaults to 1.0 if not found).
+        Converted quantity in to_unit.
+    
+    Raises:
+        ValueError: If units are not volume units or conversion is not supported.
     """
-    if not desc:
-        return 1.0
+    # Convert everything to teaspoons as the base unit
+    volume_units = {
+        MeasureUnit.Tsp, MeasureUnit.Tbsp, MeasureUnit.Cup, MeasureUnit.Fl_Oz,
+        MeasureUnit.Pint, MeasureUnit.Quart, MeasureUnit.Gallon, MeasureUnit.Ml, MeasureUnit.Liter
+    }
     
-    base_match = re.search(r'^(\d+(?:\.\d+)?)', desc)
-    if base_match:
-        return float(base_match.group(1))
+    if from_unit not in volume_units or to_unit not in volume_units:
+        raise ValueError(f"Cannot convert between {from_unit.value} and {to_unit.value}")
     
-    return 1.0
+    # Convert from_unit to teaspoons
+    tsp_conversions = {
+        MeasureUnit.Tsp: 1.0,
+        MeasureUnit.Tbsp: 3.0,  # 1 tbsp = 3 tsp
+        MeasureUnit.Cup: 48.0,  # 1 cup = 16 tbsp = 48 tsp
+        MeasureUnit.Fl_Oz: 6.0,  # 1 fl oz = 2 tbsp = 6 tsp
+        MeasureUnit.Pint: 96.0,  # 1 pint = 2 cups = 96 tsp
+        MeasureUnit.Quart: 192.0,  # 1 quart = 2 pints = 192 tsp
+        MeasureUnit.Gallon: 768.0,  # 1 gallon = 4 quarts = 768 tsp
+        MeasureUnit.Ml: 0.202884,  # 1 ml = 0.202884 tsp
+        MeasureUnit.Liter: 202.884,  # 1 liter = 1000 ml = 202.884 tsp
+    }
+    
+    # Convert to teaspoons
+    tsp_quantity = quantity * tsp_conversions[from_unit]
+    
+    # Convert from teaspoons to to_unit
+    return tsp_quantity / tsp_conversions[to_unit]
 
 
-def _format_available_portions(food_portions: typing.List[typing.Dict[str, typing.Any]]) -> str:
-    """Format available portions for error messages.
+def _get_related_volume_units(unit: MeasureUnit) -> typing.List[MeasureUnit]:
+    """Get list of related volume units that can be converted to/from.
     
     Args:
-        food_portions: List of foodPortion dictionaries.
+        unit: Volume unit.
     
     Returns:
-        Formatted string listing available portions.
+        List of related volume units (excluding the input unit itself).
     """
-    available = []
-    for portion in food_portions:
-        modifier = portion.get("modifier", "")
-        desc = portion.get("portionDescription", "")
-        gram_weight = portion.get("gramWeight", 0)
-        
-        if gram_weight > 0:
-            info = []
-            if modifier:
-                info.append(f"modifier='{modifier}'")
-            if desc:
-                info.append(f"description='{desc}'")
-            if info:
-                available.append(f"  - {', '.join(info)}")
+    volume_units = [
+        MeasureUnit.Tsp, MeasureUnit.Tbsp, MeasureUnit.Cup, MeasureUnit.Fl_Oz,
+        MeasureUnit.Pint, MeasureUnit.Quart, MeasureUnit.Gallon, MeasureUnit.Ml, MeasureUnit.Liter
+    ]
     
-    if available:
-        return "\n".join(available)
-    return "  (none with valid gramWeight)"
+    if unit not in volume_units:
+        return []
+    
+    return [u for u in volume_units if u != unit]
+
+
+def _extract_base_amount(portion: typing.Dict[str, typing.Any]) -> float:
+    """Extract base amount from portion description or amount field.
+    
+    Args:
+        portion: FoodPortion dictionary with 'portionDescription' and/or 'amount' fields.
+    
+    Returns:
+        Base amount.
+    
+    Raises:
+        MeasureMatchError: If no numeric amount can be extracted from portion description
+            or amount field.
+    """
+    desc = portion.get("portionDescription", "")
+    
+    # First, try to extract amount from portionDescription
+    if desc and desc != "(none)":
+        base_match = re.search(r'^(\d+(?:\.\d+)?)', desc)
+        if base_match:
+            return float(base_match.group(1))
+    
+    # If portionDescription is empty or doesn't contain a number, check amount field
+    amount = portion.get("amount")
+    if amount is not None:
+        try:
+            amount_float = float(amount)
+            if amount_float > 0:
+                return amount_float
+        except (ValueError, TypeError):
+            pass
+    
+    # Neither portionDescription nor amount field provides a valid amount
+    desc_str = f"'{desc}'" if desc else "empty"
+    amount_str = f"{amount}" if amount is not None else "missing"
+    raise MeasureMatchError(
+        f"Cannot extract base amount from foodPortion. "
+        f"portionDescription is {desc_str}, amount field is {amount_str}. "
+        f"Either portionDescription must start with a numeric amount (e.g., '1 cup', '2 tablespoons') "
+        f"or amount field must be a positive number."
+    )
 
 
 def find_food_portion(
@@ -269,49 +353,106 @@ def find_food_portion(
     
     unit_aliases = _get_unit_aliases(unit)
     
+    # Track the actual unit and quantity used for calculation (may be converted)
+    actual_unit = unit
+    actual_quantity = quantity
+    actual_unit_aliases = unit_aliases
+    
     # Find best matching portion (for non-weight units only)
+    # First try exact match
     best_match = None
     best_score = 0
     
     for portion in food_portions:
-        gram_weight = portion.get("gramWeight", 0)
+        if "gramWeight" not in portion:
+            raise MeasureMatchError(
+                f"FoodPortion missing required 'gramWeight' field. "
+                f"All foodPortions must have a 'gramWeight' field. "
+                f"Portion: {portion}"
+            )
+        gram_weight = portion["gramWeight"]
         if gram_weight <= 0:
             continue
         
-        score = _score_portion_match(portion, unit_aliases)
+        score = _score_portion_match(portion, actual_unit_aliases)
         if score > best_score:
             best_score = score
             best_match = portion
     
-    # Handle volume/count units when only one portion exists (use it as reference)
-    if (not best_match or best_score == 0) and len(food_portions) == 1:
-        single_portion = food_portions[0]
-        portion_weight = single_portion.get("gramWeight", 0)
-        if portion_weight > 0:
-            # For volume/count units, use the single portion as reference
-            # Calculate ratio: (requested_amount / 1) * portion_weight
-            gram_weight = quantity * portion_weight
-            
-            dummy_portion = {
-                "modifier": "",
-                "portionDescription": f"{quantity} {unit.value}",
-                "gramWeight": gram_weight
-            }
-            return (dummy_portion, gram_weight)
-    
-    # Require a valid match for non-weight units
+    # If no exact match found, try converting to related volume units
     if not best_match or best_score == 0:
-        available_str = _format_available_portions(food_portions)
-        raise MeasureMatchError(
-            f"Could not find matching foodPortion for {quantity} {unit.value}. "
-            f"No foodPortion found with matching modifier or description. "
-            f"\nAvailable foodPortions:\n{available_str}"
-        )
+        # Check if this is a volume unit that can be converted
+        related_units = _get_related_volume_units(unit)
+        
+        if related_units:
+            # Try each related unit
+            for related_unit in related_units:
+                # Convert quantity to related unit
+                try:
+                    converted_quantity = _convert_volume_unit(quantity, unit, related_unit)
+                except ValueError:
+                    continue
+                
+                # Get aliases for the related unit
+                related_aliases = _get_unit_aliases(related_unit)
+                
+                # Try to find a match with the related unit
+                for portion in food_portions:
+                    gram_weight = portion.get("gramWeight", 0)
+                    if gram_weight <= 0:
+                        continue
+                    
+                    score = _score_portion_match(portion, related_aliases)
+                    if score > best_score:
+                        best_score = score
+                        best_match = portion
+                        # Update actual unit and quantity to the converted values
+                        actual_unit = related_unit
+                        actual_quantity = converted_quantity
+                        actual_unit_aliases = related_aliases
+        
+        # If still no match, raise error
+        if not best_match or best_score == 0:
+            raise MeasureMatchError(
+                f"Could not find matching foodPortion for {quantity} {unit.value}. "
+                f"No foodPortion found with matching modifier or description."
+            )
     
     # Calculate gram weight
-    desc = best_match.get("portionDescription", "")
-    base_amount = _extract_base_amount(desc)
-    gram_weight = best_match.get("gramWeight", 0)
-    calculated_weight = (quantity / base_amount) * gram_weight
+    # Try to extract base amount - if this fails, provide context about the matched portion
+    try:
+        base_amount = _extract_base_amount(best_match)
+    except MeasureMatchError as e:
+        # Re-raise with context about the matched portion
+        modifier = best_match.get("modifier", "")
+        desc = best_match.get("portionDescription", "")
+        amount = best_match.get("amount")
+        gram_weight = best_match.get("gramWeight", 0)
+        
+        modifier_info = f"modifier='{modifier}'" if modifier else "modifier missing"
+        desc_info = f"portionDescription='{desc}'" if desc else "portionDescription missing"
+        amount_info = f"amount={amount}" if amount is not None else "amount missing"
+        
+        raise MeasureMatchError(
+            f"Found matching foodPortion by {unit.value} unit, but cannot determine base amount. "
+            f"The portion matched by modifier/description but lacks valid amount information."
+        ) from e
+    
+    # best_match is guaranteed to exist and have gramWeight > 0 from earlier check
+    # but verify to avoid silent failures
+    if "gramWeight" not in best_match:
+        raise MeasureMatchError(
+            f"Matched foodPortion missing required 'gramWeight' field. "
+            f"This should not happen - foodPortion was matched but lacks gramWeight. "
+            f"Portion: {best_match}"
+        )
+    gram_weight = best_match["gramWeight"]
+    if gram_weight <= 0:
+        raise MeasureMatchError(
+            f"Matched foodPortion has invalid gramWeight ({gram_weight}). "
+            f"gramWeight must be greater than zero. "
+            f"Portion: {best_match}"
+        )
+    calculated_weight = (actual_quantity / base_amount) * gram_weight
     
     return (best_match, calculated_weight)

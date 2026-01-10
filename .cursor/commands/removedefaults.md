@@ -1,0 +1,1 @@
+Check the specified file and remove any implicit defaults or fallbacks. Any such solution should instead use hard exceptions with clear error messages.

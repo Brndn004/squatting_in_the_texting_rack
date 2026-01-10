@@ -23,6 +23,7 @@ class RecipeTag(str, enum.Enum):
     MEAL_PREP = "meal_prep"
     COMFORT = "comfort"
     BAKED = "baked"
+    BREAKFAST = "breakfast"
 
     def __init__(self, value: str) -> None:
         """Initialize tag with value and description."""
@@ -38,6 +39,7 @@ class RecipeTag(str, enum.Enum):
             "meal_prep": "Recipes designed for meal preparation and portioning",
             "comfort": "Comfort food recipes",
             "baked": "Recipes that are baked or roasted in an oven",
+            "breakfast": "Breakfast recipes",
         }
         self._description = descriptions.get(value, "")
 

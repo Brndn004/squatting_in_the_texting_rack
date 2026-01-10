@@ -8,7 +8,8 @@ import json
 import logging
 import sys
 import typing
-from pathlib import Path
+
+import ingredient_management_lib
 
 # Configure logging
 logging.basicConfig(
@@ -16,93 +17,6 @@ logging.basicConfig(
     format="%(levelname)s: %(message)s",
 )
 logger = logging.getLogger(__name__)
-
-
-def _get_ingredients_dir() -> Path:
-    """Get the ingredients directory path.
-
-    Returns:
-        Path to the ingredients directory.
-    """
-    return Path(__file__).parent.parent / "ingredients"
-
-
-def _load_lookup_database() -> typing.Dict[str, int]:
-    """Load the reverse-lookup database.
-
-    Returns:
-        Dictionary mapping ingredient descriptions to FDC IDs.
-
-    Raises:
-        FileNotFoundError: If lookup database doesn't exist.
-        json.JSONDecodeError: If lookup database is invalid JSON.
-    """
-    lookup_file = _get_ingredients_dir() / "ingredient_lookup.json"
-    
-    if not lookup_file.exists():
-        raise FileNotFoundError(
-            f"Lookup database not found at {lookup_file}. "
-            "Run usda_lookup.py to add ingredients first."
-        )
-    
-    try:
-        with open(lookup_file, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except json.JSONDecodeError as e:
-        logger.error(f"Invalid JSON in lookup database: {e}")
-        raise
-
-
-def _save_lookup_database(lookup_data: typing.Dict[str, int]) -> None:
-    """Save the reverse-lookup database.
-
-    Args:
-        lookup_data: Dictionary mapping ingredient descriptions to FDC IDs.
-
-    Raises:
-        OSError: If file cannot be written.
-    """
-    lookup_file = _get_ingredients_dir() / "ingredient_lookup.json"
-    
-    try:
-        with open(lookup_file, "w", encoding="utf-8") as f:
-            json.dump(lookup_data, f, indent=2, ensure_ascii=False)
-    except OSError as e:
-        logger.error(f"Failed to save lookup database: {e}")
-        raise
-
-
-def _rank_matches(query: str, lookup_data: typing.Dict[str, int]) -> typing.List[typing.Tuple[int, str, int]]:
-    """Rank ingredient matches by relevance.
-
-    Args:
-        query: Search query (lowercased).
-        lookup_data: Dictionary mapping descriptions to FDC IDs.
-
-    Returns:
-        List of tuples (score, description, fdc_id) sorted by score (highest first).
-        Score: 3 = exact match, 2 = starts with, 1 = contains, 0 = no match.
-    """
-    query_lower = query.lower()
-    matches = []
-    
-    for description, fdc_id in lookup_data.items():
-        desc_lower = description.lower()
-        score = 0
-        
-        if desc_lower == query_lower:
-            score = 3  # Exact match
-        elif desc_lower.startswith(query_lower):
-            score = 2  # Starts with query
-        elif query_lower in desc_lower:
-            score = 1  # Contains query
-        
-        if score > 0:
-            matches.append((score, description, fdc_id))
-    
-    # Sort by score (descending), then by description (ascending)
-    matches.sort(key=lambda x: (-x[0], x[1]))
-    return matches
 
 
 def display_results(matches: typing.List[typing.Tuple[int, str, int]]) -> None:
@@ -155,44 +69,6 @@ def get_selected_ingredient(
         return None
 
 
-def delete_ingredient(description: str, fdc_id: int) -> bool:
-    """Delete an ingredient from the database.
-
-    Args:
-        description: Ingredient description.
-        fdc_id: FoodData Central ID.
-
-    Returns:
-        True if deletion was successful, False otherwise.
-    """
-    ingredients_dir = _get_ingredients_dir()
-    
-    # Delete JSON file
-    json_file = ingredients_dir / f"{fdc_id}.json"
-    if json_file.exists():
-        try:
-            json_file.unlink()
-            logger.info(f"Deleted file: {json_file}")
-        except OSError as e:
-            logger.error(f"Failed to delete file {json_file}: {e}")
-            return False
-    else:
-        logger.warning(f"File not found: {json_file}")
-    
-    # Remove from lookup database
-    try:
-        lookup_data = _load_lookup_database()
-        if description in lookup_data:
-            del lookup_data[description]
-            _save_lookup_database(lookup_data)
-            logger.info(f"Removed from lookup database: {description}")
-        else:
-            logger.warning(f"Entry not found in lookup database: {description}")
-    except (FileNotFoundError, json.JSONDecodeError, OSError) as e:
-        logger.error(f"Failed to update lookup database: {e}")
-        return False
-    
-    return True
 
 
 def _print_usage() -> None:
@@ -211,8 +87,8 @@ def main() -> None:
     """Main entry point for the script."""
     # Load lookup database
     try:
-        lookup_data = _load_lookup_database()
-    except (FileNotFoundError, json.JSONDecodeError) as e:
+        lookup_data = ingredient_management_lib.load_lookup_database()
+    except (FileNotFoundError, json.JSONDecodeError, OSError) as e:
         logger.error(str(e))
         sys.exit(1)
 
@@ -244,15 +120,20 @@ def main() -> None:
                     description, fdc_id = selected_ingredient
                     print(f"\nDeleting: [{fdc_id}] {description}")
                     
-                    if delete_ingredient(description, fdc_id):
+                    try:
+                        ingredient_management_lib.delete_ingredient(description, fdc_id)
                         print("✓ Successfully deleted.")
                         # Reload lookup database after deletion
-                        lookup_data = _load_lookup_database()
+                        try:
+                            lookup_data = ingredient_management_lib.load_lookup_database()
+                        except (FileNotFoundError, OSError):
+                            logger.error("Failed to reload lookup database")
+                            sys.exit(1)
                         # Clear selection and matches
                         selected_ingredient = None
                         current_matches = []
-                    else:
-                        print("✗ Deletion failed.")
+                    except (FileNotFoundError, OSError) as e:
+                        print(f"✗ Deletion failed: {e}")
                     print()
                     continue
                 
@@ -274,7 +155,7 @@ def main() -> None:
                     pass  # Not a number, treat as search query
                 
                 # Treat as search query
-                matches = _rank_matches(user_input, lookup_data)
+                matches = ingredient_management_lib.rank_matches(user_input, lookup_data)
                 current_matches = matches
                 selected_ingredient = None  # Clear selection on new search
                 

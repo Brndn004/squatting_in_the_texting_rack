@@ -16683,23 +16683,36 @@
             ]
         }
     ],
-    "foodPortions": [
+    "foodPortions":                     [
         {
-            "id": 192355,
-            "dataPoints": 6,
-            "gramWeight": 90.7,
-            "sequenceNumber": 1,
-            "amount": 100.0,
-            "modifier": "",
-            "minDateAcquired": "6/20/2019",
-            "measureUnit": {
-                "id": 1004,
-                "name": "milliliter",
-                "abbreviation": "ml"
+                "id": 192355,
+                "dataPoints": 6,
+                "gramWeight": 90.7,
+                "sequenceNumber": 1,
+                "amount": 100.0,
+                "modifier": "",
+                "minDateAcquired": "6/20/2019",
+                "measureUnit": {
+                    "id": 1004,
+                    "name": "milliliter",
+                    "abbreviation": "ml"
+                },
+                "minYearAcquired": 2019
             },
-            "minYearAcquired": 2019
+        {
+                "id": 192356,
+                "sequenceNumber": 2,
+                "amount": 1.0,
+                "modifier": "cup",
+                "portionDescription": "1 Cup",
+                "gramWeight": 215.0,
+                "measureUnit": {
+                    "id": 9999,
+                    "name": "undetermined",
+                    "abbreviation": "undetermined"
         }
-    ],
+        }
+                    ],
     "dataType": "Foundation",
     "foodClass": "FinalFood",
     "inputFoods": [

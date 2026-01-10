@@ -1,0 +1,407 @@
+{
+    "fdcId": 2346396,
+    "description": "Oats, whole grain, rolled, old fashioned",
+    "publicationDate": "10/28/2022",
+    "foodNutrients": [
+        {
+            "nutrient": {
+                "id": 2045,
+                "number": "951",
+                "name": "Proximates",
+                "rank": 50,
+                "unitName": "g"
+            },
+            "type": "FoodNutrient"
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1051,
+                "number": "255",
+                "name": "Water",
+                "rank": 100,
+                "unitName": "g"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912744,
+            "amount": 10.25,
+            "dataPoints": 8,
+            "max": 11.13,
+            "min": 9.45,
+            "median": 10.25,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 2047,
+                "number": "957",
+                "name": "Energy (Atwater General Factors)",
+                "rank": 280,
+                "unitName": "kcal"
+            },
+            "foodNutrientDerivation": {
+                "id": 49,
+                "code": "NC",
+                "description": "Calculated",
+                "foodNutrientSource": {
+                    "id": 2,
+                    "code": "4",
+                    "description": "Calculated or imputed"
+                }
+            },
+            "id": 28912806,
+            "amount": 381.626
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 2048,
+                "number": "958",
+                "name": "Energy (Atwater Specific Factors)",
+                "rank": 290,
+                "unitName": "kcal"
+            },
+            "foodNutrientDerivation": {
+                "id": 49,
+                "code": "NC",
+                "description": "Calculated",
+                "foodNutrientSource": {
+                    "id": 2,
+                    "code": "4",
+                    "description": "Calculated or imputed"
+                }
+            },
+            "id": 28912807,
+            "amount": 378.866123
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1003,
+                "number": "203",
+                "name": "Protein",
+                "rank": 600,
+                "unitName": "g"
+            },
+            "foodNutrientDerivation": {
+                "id": 49,
+                "code": "NC",
+                "description": "Calculated",
+                "foodNutrientSource": {
+                    "id": 2,
+                    "code": "4",
+                    "description": "Calculated or imputed"
+                }
+            },
+            "id": 28912804,
+            "amount": 13.49645,
+            "max": 14.4584,
+            "min": 11.8349,
+            "median": 14.07945
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1004,
+                "number": "204",
+                "name": "Total lipid (fat)",
+                "rank": 800,
+                "unitName": "g"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912746,
+            "amount": 5.89,
+            "dataPoints": 8,
+            "max": 6.54,
+            "min": 5.4,
+            "median": 5.915,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1005,
+                "number": "205",
+                "name": "Carbohydrate, by difference",
+                "rank": 1110,
+                "unitName": "g"
+            },
+            "foodNutrientDerivation": {
+                "id": 49,
+                "code": "NC",
+                "description": "Calculated",
+                "foodNutrientSource": {
+                    "id": 2,
+                    "code": "4",
+                    "description": "Calculated or imputed"
+                }
+            },
+            "id": 28912805,
+            "amount": 68.65755
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 2033,
+                "number": "293",
+                "name": "Total dietary fiber (AOAC 2011.25)",
+                "rank": 1300,
+                "unitName": "g"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912749,
+            "amount": 10.42,
+            "dataPoints": 8,
+            "max": 11,
+            "min": 9.84,
+            "median": 10.35,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1087,
+                "number": "301",
+                "name": "Calcium, Ca",
+                "rank": 5300,
+                "unitName": "mg"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912751,
+            "amount": 45.53,
+            "dataPoints": 8,
+            "max": 58.1,
+            "min": 38.6,
+            "median": 42.4,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1089,
+                "number": "303",
+                "name": "Iron, Fe",
+                "rank": 5400,
+                "unitName": "mg"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912727,
+            "amount": 4.339,
+            "dataPoints": 8,
+            "max": 5.25,
+            "min": 3.23,
+            "median": 4.66,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1090,
+                "number": "304",
+                "name": "Magnesium, Mg",
+                "rank": 5500,
+                "unitName": "mg"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912728,
+            "amount": 126.3,
+            "dataPoints": 8,
+            "max": 140,
+            "min": 118,
+            "median": 124.5,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1091,
+                "number": "305",
+                "name": "Phosphorus, P",
+                "rank": 5600,
+                "unitName": "mg"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912729,
+            "amount": 387.3,
+            "dataPoints": 8,
+            "max": 467,
+            "min": 340,
+            "median": 369,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1092,
+                "number": "306",
+                "name": "Potassium, K",
+                "rank": 5700,
+                "unitName": "mg"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912730,
+            "amount": 350.1,
+            "dataPoints": 8,
+            "max": 386,
+            "min": 321,
+            "median": 341.3,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1093,
+                "number": "307",
+                "name": "Sodium, Na",
+                "rank": 5800,
+                "unitName": "mg"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912731,
+            "amount": 0.6675,
+            "dataPoints": 8,
+            "max": 2.8,
+            "min": 0,
+            "median": 0,
+            "minYearAcquired": 2022
+        },
+        {
+            "type": "FoodNutrient",
+            "nutrient": {
+                "id": 1095,
+                "number": "309",
+                "name": "Zinc, Zn",
+                "rank": 5900,
+                "unitName": "mg"
+            },
+            "foodNutrientDerivation": {
+                "id": 1,
+                "code": "A",
+                "description": "Analytical",
+                "foodNutrientSource": {
+                    "id": 1,
+                    "code": "1",
+                    "description": "Analytical or derived from analytical"
+                }
+            },
+            "id": 28912732,
+            "amount": 2.744,
+            "dataPoints": 8,
+            "max": 3.1,
+            "min": 2.33,
+            "median": 2.775,
+            "minYearAcquired": 2022
+        }
+    ],
+    "foodPortions":                     [
+        {
+                "id": 312593,
+                "dataPoints": 0,
+                "gramWeight": 40,
+                "sequenceNumber": 1,
+                "amount": 1,
+                "measureUnit": {
+                    "id": 1121,
+                    "name": "RACC",
+                    "abbreviation": "RACC"
+        }
+            },
+        {
+                "id": 312594,
+                "sequenceNumber": 2,
+                "amount": 1.0,
+                "modifier": "cup",
+                "portionDescription": "1 Cup",
+                "gramWeight": 85.0,
+                "measureUnit": {
+                    "id": 9999,
+                    "name": "undetermined",
+                    "abbreviation": "undetermined"
+        }
+        }
+                    ],
+    "dataType": "Foundation",
+    "foodClass": "FinalFood"
+}
