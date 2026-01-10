@@ -315,10 +315,34 @@ def find_food_portion(
             f"This is a hard error - no fallback assumptions are made. "
             f"Please use a weight unit (Gram, Oz, Lb, Kg) or ensure the ingredient has a matching portion. "
             f"\nAvailable foodPortions:\n{available_str}"
+            f"\n\nTo add volume information, run: python3 add_volume_to_ingredient.py <fdc_id> <amount> <unit> <grams>"
+            f"\nExample: python3 add_volume_to_ingredient.py <fdc_id> 1.0 {unit.value} <grams_per_unit>"
         )
     
     # Calculate gram weight
-    base_amount = _extract_base_amount(best_match)
+    # Try to extract base amount - if this fails, provide context about the matched portion
+    try:
+        base_amount = _extract_base_amount(best_match)
+    except MeasureMatchError as e:
+        # Re-raise with context about the matched portion
+        modifier = best_match.get("modifier", "")
+        desc = best_match.get("portionDescription", "")
+        amount = best_match.get("amount")
+        gram_weight = best_match.get("gramWeight", 0)
+        
+        modifier_info = f"modifier='{modifier}'" if modifier else "modifier missing"
+        desc_info = f"portionDescription='{desc}'" if desc else "portionDescription missing"
+        amount_info = f"amount={amount}" if amount is not None else "amount missing"
+        
+        raise MeasureMatchError(
+            f"Found matching foodPortion by {unit.value} unit, but cannot determine base amount. "
+            f"The portion matched by modifier/description but lacks valid amount information. "
+            f"\nMatched portion details: {modifier_info}, {desc_info}, {amount_info}, gramWeight={gram_weight}g. "
+            f"\nOriginal error: {str(e)}"
+            f"\n\nTo fix this issue, run: python3 add_volume_to_ingredient.py <fdc_id> <amount> <unit> <grams>"
+            f"\nExample: python3 add_volume_to_ingredient.py <fdc_id> 1.0 {unit.value} {gram_weight}"
+        ) from e
+    
     gram_weight = best_match.get("gramWeight", 0)
     calculated_weight = (quantity / base_amount) * gram_weight
     
