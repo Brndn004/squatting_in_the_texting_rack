@@ -69,11 +69,18 @@
 2. Check `ingredient_lookup.json` for existing ingredients
 
 3. Look up missing ingredients using MCP tools:
-   - Use the `search_ingredient` MCP tool to search for ingredients by name
-   - Use the `get_ingredient_details` MCP tool to retrieve full nutrition data for selected ingredients
-   - Use the `save_ingredient` MCP tool to save ingredients to the local database
-   - Select the most basic/appropriate ingredient from results
-   - If no good match exists, note it for user assistance
+   - **Process ingredients ONE AT A TIME** (do not batch operations):
+     - For each missing ingredient, complete the full cycle before moving to the next:
+       1. **Before using `search_ingredient` tool:**
+          - Verify ingredient is NOT in `ingredient_lookup.json`
+          - Verify ingredient file does NOT exist in `nutrition/ingredients/` directory (as `<fdc_id>.json`)
+          - Only search if both checks confirm the ingredient is missing
+       2. Use the `search_ingredient` MCP tool to search for the ingredient by name
+       3. Select the most basic/appropriate ingredient from results
+       4. Use the `get_ingredient_details` MCP tool to retrieve full nutrition data for the selected ingredient
+       5. Use the `save_ingredient` MCP tool to save the ingredient to the local database
+       6. Only then proceed to the next ingredient
+     - If no good match exists for an ingredient, note it for user assistance before moving on
 
 4. Ensure all ingredients exist in `nutrition/ingredients/` directory (as `<fdc_id>.json` files)
 

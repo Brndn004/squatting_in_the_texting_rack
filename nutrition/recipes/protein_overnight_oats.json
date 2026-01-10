@@ -1,0 +1,155 @@
+{
+  "name": "Protein Overnight Oats",
+  "serving_size": 1,
+  "tags": [
+    "simple",
+    "sweet",
+    "meal_prep"
+  ],
+  "ingredients": [
+    {
+      "fdc_id": 2346396,
+      "name": "Oats, whole grain, rolled, old fashioned",
+      "quantity": 0.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2710819,
+      "name": "Chia seeds, dry, raw",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2705385,
+      "name": "Milk, whole",
+      "quantity": 0.667,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 169661,
+      "name": "Syrups, maple",
+      "quantity": 2.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 173177,
+      "name": "Beverages, Whey protein powder isolate",
+      "quantity": 2.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2259794,
+      "name": "Yogurt, Greek, plain, whole milk",
+      "quantity": 0.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2346411,
+      "name": "Blueberries, raw",
+      "quantity": 0.5,
+      "measure_unit": "Cup"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "Combine dry ingredients: In a glass mason jar, mix together the rolled oats, chia seeds, and whey protein powder."
+    },
+    {
+      "step_id": 2,
+      "text": "Add wet ingredients: Pour in the milk and maple syrup. Stir well to ensure all ingredients are thoroughly combined."
+    },
+    {
+      "step_id": 3,
+      "text": "Refrigerate: Seal the jar and place it in the refrigerator overnight, or for at least 6 hours, to allow the oats to absorb the liquid and soften."
+    },
+    {
+      "step_id": 4,
+      "text": "Serve: Before serving, top the overnight oats with Greek yogurt and fresh blueberries."
+    }
+  ],
+  "nutrition_facts": {
+    "Proximates (g)": 0.0,
+    "Water (g)": 291.274138,
+    "Protein (g)": 123.6480351,
+    "Total lipid (fat) (g)": 27.154946000000002,
+    "Carbohydrate, by difference (g)": 129.5471519,
+    "Total dietary fiber (AOAC 2011.25) (g)": 2.084,
+    "Calcium, Ca (mg)": 1821.02404,
+    "Iron, Fe (mg)": 5.79835,
+    "Magnesium, Mg (mg)": 600.78476,
+    "Phosphorus, P (mg)": 1553.04048,
+    "Potassium, K (mg)": 2187.727,
+    "Sodium, Na (mg)": 735.31374,
+    "Zinc, Zn (mg)": 19.318941600000002,
+    "Energy (kcal)": 897.08148,
+    "Alcohol, ethyl (g)": 0.0,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Total Sugars (g)": 34.0073788,
+    "Fiber, total dietary (g)": 0.0,
+    "Copper, Cu (mg)": 0.0016274800000000004,
+    "Selenium, Se (µg)": 3.0922120000000004,
+    "Retinol (µg)": 50.45188000000001,
+    "Vitamin A, RAE (µg)": 52.07936000000001,
+    "Carotene, beta (µg)": 11.392360000000002,
+    "Carotene, alpha (µg)": 0.0,
+    "Vitamin E (alpha-tocopherol) (mg)": 0.08137400000000002,
+    "Vitamin D (D2 + D3) (µg)": 1.7902280000000004,
+    "Cryptoxanthin, beta (µg)": 0.0,
+    "Lycopene (µg)": 0.0,
+    "Lutein + zeaxanthin (µg)": 0.0,
+    "Vitamin C, total ascorbic acid (mg)": 0.0,
+    "Thiamin (mg)": 0.09113888000000002,
+    "Riboflavin (mg)": 0.22459224000000005,
+    "Niacin (mg)": 0.17088540000000002,
+    "Vitamin B-6 (mg)": 0.09927628000000001,
+    "Folate, total (µg)": 0.0,
+    "Vitamin B-12 (µg)": 0.8788392000000002,
+    "Choline, total (mg)": 28.969144000000007,
+    "Vitamin K (phylloquinone) (µg)": 0.48824400000000007,
+    "Folic acid (µg)": 0.0,
+    "Folate, food (µg)": 0.0,
+    "Folate, DFE (µg)": 0.0,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Cholesterol (mg)": 19.529760000000003,
+    "Fatty acids, total saturated (g)": 3.0271128000000007,
+    "SFA 4:0 (g)": 0.10904116000000003,
+    "SFA 6:0 (g)": 0.08788392000000002,
+    "SFA 8:0 (g)": 0.05533432000000001,
+    "SFA 10:0 (g)": 0.13670832000000002,
+    "SFA 12:0 (g)": 0.15786556000000004,
+    "SFA 14:0 (g)": 0.49312644000000005,
+    "SFA 16:0 (g)": 1.3947503600000002,
+    "SFA 18:0 (g)": 0.50289132,
+    "MUFA 18:1 (g)": 1.12947112,
+    "PUFA 18:2 (g)": 0.18716020000000003,
+    "PUFA 18:3 (g)": 0.02115724,
+    "PUFA 20:4 (g)": 0.0065099200000000015,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "MUFA 16:1 (g)": 0.07649156000000001,
+    "PUFA 18:4 (g)": 0.0,
+    "MUFA 20:1 (g)": 0.0065099200000000015,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.0016274800000000004,
+    "MUFA 22:1 (g)": 0.0,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.0032549600000000008,
+    "Fatty acids, total monounsaturated (g)": 1.1197062400000002,
+    "Fatty acids, total polyunsaturated (g)": 0.17576784000000004,
+    "Sugars, Total (g)": 9.30949
+  },
+  "macros": {
+    "protein": {
+      "grams": 123.6,
+      "percent": 39.3
+    },
+    "carbs": {
+      "grams": 129.5,
+      "percent": 41.2
+    },
+    "fat": {
+      "grams": 27.2,
+      "percent": 19.4
+    }
+  }
+}
