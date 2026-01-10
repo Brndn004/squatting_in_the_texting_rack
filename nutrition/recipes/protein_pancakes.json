@@ -1,0 +1,204 @@
+{
+  "name": "Meal Prepped Protein Pancakes",
+  "sources": [
+    "https://mealprepmanual.com/meal-prepped-protein-pancakes/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 35,
+  "tags": [
+    "breakfast",
+    "meal_prep",
+    "simple",
+    "sweet"
+  ],
+  "changes": [
+    "Vanilla casein protein (4 scoops, 125g) → Nutritional powder mix (EAS Whey Protein Powder) (125g) - casein not available in USDA database",
+    "Baking powder simplified from 'double-acting, straight phosphate' to 'low-sodium' variant for better usability",
+    "Oat flour volume measurement added manually (1 Cup = 100g) to preserve original recipe format"
+  ],
+  "ingredients": [
+    {
+      "fdc_id": 2710731,
+      "name": "Nutritional powder mix (EAS Whey Protein Powder)",
+      "quantity": 125.0,
+      "measure_unit": "Gram"
+    },
+    {
+      "fdc_id": 2710731,
+      "name": "Nutritional powder mix (EAS Whey Protein Powder)",
+      "quantity": 125.0,
+      "measure_unit": "Gram"
+    },
+    {
+      "fdc_id": 2261421,
+      "name": "Flour, oat, whole grain",
+      "quantity": 1.67,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 169698,
+      "name": "Cornstarch",
+      "quantity": 0.75,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 172805,
+      "name": "Leavening agents, baking powder, low-sodium",
+      "quantity": 1.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 175040,
+      "name": "Leavening agents, baking soda",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 172183,
+      "name": "Egg, white, raw, fresh",
+      "quantity": 2.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2705424,
+      "name": "Yogurt, Greek, nonfat milk, plain",
+      "quantity": 3.33,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2710707,
+      "name": "Water, tap",
+      "quantity": 1.0,
+      "measure_unit": "Cup"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "Mix all the dry ingredients together so no clumps are present."
+    },
+    {
+      "step_id": 2,
+      "text": "Add in the wet ingredients and mix thoroughly. The amount of water required may be variable depending on the protein you use. You need the batter to be pourable but not too watery. Let the batter sit for 10-15 minutes to thicken up a bit for fluffier pancakes."
+    },
+    {
+      "step_id": 3,
+      "text": "Heat your griddle or skillet over medium heat and spray with oil. Add the batter and cook for a 2-3 minutes each side or until browned and set."
+    },
+    {
+      "step_id": 4,
+      "text": "Continue working your way through the batter until all of it has been used up and your pancakes are cooked. As your pancakes come out of the skillet, allow them to cool on a wire lined sheet pan."
+    },
+    {
+      "step_id": 5,
+      "text": "Once all of your pancakes have cooked and cooled to room temperature, align them on your sheet pan and place them into the freezer uncovered until they have frozen solid."
+    },
+    {
+      "step_id": 6,
+      "text": "Transfer the pancakes to zip top bags and use a vacuum pump to remove the air if desired. If you try to vacuum seal the pancakes before they have frozen solid, they will get smushed."
+    }
+  ],
+  "nutrition_facts": {
+    "Protein (g)": 9.6928275,
+    "Total lipid (fat) (g)": 0.7854407142857143,
+    "Carbohydrate, by difference (g)": 8.200862785714284,
+    "Alcohol, ethyl (g)": 0.0,
+    "Water (g)": 43.00003371428571,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Total Sugars (g)": 1.1286655714285714,
+    "Fiber, total dietary (g)": 0.5304,
+    "Calcium, Ca (mg)": 55.485319999999994,
+    "Iron, Fe (mg)": 0.2902524285714286,
+    "Magnesium, Mg (mg)": 21.47127142857143,
+    "Phosphorus, P (mg)": 110.08962857142858,
+    "Potassium, K (mg)": 112.59787142857144,
+    "Sodium, Na (mg)": 72.21599228571428,
+    "Zinc, Zn (mg)": 0.7664909999999999,
+    "Copper, Cu (mg)": 0.0965885,
+    "Selenium, Se (µg)": 5.902232857142858,
+    "Retinol (µg)": 1.3045285714285715,
+    "Vitamin A, RAE (µg)": 1.3045285714285715,
+    "Carotene, beta (µg)": 0.0,
+    "Carotene, alpha (µg)": 0.0,
+    "Vitamin E (alpha-tocopherol) (mg)": 0.029473857142857142,
+    "Vitamin D (D2 + D3) (µg)": 0.0,
+    "Cryptoxanthin, beta (µg)": 0.0,
+    "Lycopene (µg)": 0.0,
+    "Lutein + zeaxanthin (µg)": 0.0,
+    "Vitamin C, total ascorbic acid (mg)": 0.05714285714285714,
+    "Thiamin (mg)": 0.07473677142857144,
+    "Riboflavin (mg)": 0.13441170000000002,
+    "Niacin (mg)": 0.8562740999999999,
+    "Vitamin B-6 (mg)": 0.0933896,
+    "Folate, total (µg)": 17.572622857142857,
+    "Vitamin B-12 (µg)": 0.3253128571428571,
+    "Choline, total (mg)": 9.348381428571429,
+    "Vitamin K (phylloquinone) (µg)": 0.03571428571428571,
+    "Folic acid (µg)": 14.285714285714286,
+    "Folate, food (µg)": 1.6317,
+    "Folate, DFE (µg)": 25.917414285714287,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Cholesterol (mg)": 15.808357142857144,
+    "Fatty acids, total saturated (g)": 0.2081883714285714,
+    "SFA 4:0 (g)": 0.003928571428571429,
+    "SFA 6:0 (g)": 0.001823342857142857,
+    "SFA 8:0 (g)": 0.001789542857142857,
+    "SFA 10:0 (g)": 0.004515771428571428,
+    "SFA 12:0 (g)": 0.0024178857142857146,
+    "SFA 14:0 (g)": 0.011981971428571428,
+    "SFA 16:0 (g)": 0.14058807142857144,
+    "SFA 18:0 (g)": 0.04032414285714286,
+    "MUFA 18:1 (g)": 0.029048542857142857,
+    "PUFA 18:2 (g)": 0.061166714285714276,
+    "PUFA 18:3 (g)": 0.0077952428571428575,
+    "PUFA 20:4 (g)": 0.0,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "MUFA 16:1 (g)": 0.0017561999999999999,
+    "PUFA 18:4 (g)": 0.0,
+    "MUFA 20:1 (g)": 0.00046620000000000006,
+    "PUFA 20:5 n-3 (EPA) (µg)": 0.0,
+    "MUFA 22:1 (g)": 0.0,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.0,
+    "Fatty acids, total monounsaturated (g)": 0.030107585714285717,
+    "Fatty acids, total polyunsaturated (g)": 0.06896624285714285,
+    "Energy (kcal)": 79.50357857142858,
+    "Proximates (g)": 0.0,
+    "Nitrogen (g)": 0.10053400000000001,
+    "Ash (g)": 0.1827377142857143,
+    "Carbohydrates (g)": 0.0,
+    "Total dietary fiber (AOAC 2011.25) (g)": 0.6140828571428572,
+    "High Molecular Weight Dietary Fiber (HMWDF) (g)": 0.5549171428571429,
+    "Low Molecular Weight Dietary Fiber (LMWDF) (g)": 0.05916571428571428,
+    "Beta-glucan (g)": 0.2004,
+    "Starch (g)": 2.547465714285714,
+    "Minerals (mg)": 0.0,
+    "Manganese, Mn (mg)": 0.15630542857142857,
+    "Molybdenum, Mo (µg)": 5.983371428571429,
+    "Vitamins and Other Components (g)": 0.0,
+    "Biotin (µg)": 0.9614428571428569,
+    "Energy (kJ)": 0.87,
+    "Magnesium, Mg (g)": 0.06214285714285714,
+    "Pantothenic acid (mg)": 0.0,
+    "Betaine (mg)": 0.0,
+    "Vitamin A, IU (IU)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 0.0,
+    "Lipids (g)": 0.0,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.0,
+    "Amino acids (g)": 0.0
+  },
+  "macros": {
+    "protein": {
+      "grams": 9.7,
+      "percent": 49.3
+    },
+    "carbs": {
+      "grams": 8.2,
+      "percent": 41.7
+    },
+    "fat": {
+      "grams": 0.8,
+      "percent": 9.0
+    }
+  }
+}

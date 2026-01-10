@@ -13,11 +13,13 @@ import requests
 from mcp.server import fastmcp
 
 import calculate_meal_nutrition as meal_nutrition_module
-import calculate_recipe_nutrition as recipe_nutrition_module
+import calculate_recipe_nutrition
 import ingredient_management_lib
 import recipe_tags
 import tag_management
 import usda_lib
+import validate_ingredients
+import validate_recipes
 
 # Initialize FastMCP server
 mcp = fastmcp.FastMCP("USDA Ingredient Lookup")
@@ -338,7 +340,7 @@ async def update_tags_database() -> str:
         "calculation was successful."
     )
 )
-async def calculate_recipe_nutrition(recipe_path: str) -> str:
+async def calculate_recipe_nutrition_tool(recipe_path: str) -> str:
     """Calculate nutrition facts for a recipe.
 
     Args:
@@ -349,7 +351,7 @@ async def calculate_recipe_nutrition(recipe_path: str) -> str:
     """
     try:
         # Resolve recipe path
-        recipes_dir = recipe_nutrition_module._get_recipes_dir()
+        recipes_dir = calculate_recipe_nutrition._get_recipes_dir()
         if Path(recipe_path).is_absolute():
             recipe_file = Path(recipe_path)
         else:
@@ -368,7 +370,7 @@ async def calculate_recipe_nutrition(recipe_path: str) -> str:
             recipe_before = json.load(f)
         
         # Calculate and update nutrition
-        updated = recipe_nutrition_module._update_recipe_nutrition(recipe_file)
+        updated = calculate_recipe_nutrition._update_recipe_nutrition(recipe_file)
         
         if not updated:
             result = {
@@ -509,6 +511,189 @@ async def calculate_meal_nutrition(meal_path: str) -> str:
             "status": "failure",
             "stdout": "",
             "stderr": f"Unexpected error: {e}",
+        }
+        return _dict_to_json_string(result)
+
+
+@mcp.tool(
+    description=(
+        "Validate all ingredient files in the database. This tool checks that all ingredient "
+        "JSON files have energy (kcal) data required for recipe nutrition calculations. "
+        "Returns a list of ingredients missing energy data if any are found. Check the 'status' "
+        "key in the returned JSON to determine if validation was successful. If 'status' is "
+        "'success' and 'all_valid' is True, all ingredients are valid. If 'all_valid' is False, "
+        "check the 'missing_energy' array for details about ingredients that need to be fixed."
+    )
+)
+async def validate_ingredients_tool() -> str:
+    """Validate all ingredient files.
+
+    Returns:
+        JSON string with validation results including list of ingredients missing energy data.
+    """
+    try:
+        # Import the validation functions
+        ingredients_dir = validate_ingredients._get_ingredients_dir()
+        
+        if not ingredients_dir.exists():
+            result = {
+                "status": "success",
+                "stdout": "",
+                "stderr": "",
+                "all_valid": True,
+                "message": f"Ingredients directory not found: {ingredients_dir}",
+                "missing_energy": [],
+            }
+            return _dict_to_json_string(result)
+        
+        ingredient_files = list(ingredients_dir.glob("*.json"))
+        # Exclude ingredient_lookup.json from validation
+        ingredient_files = [f for f in ingredient_files if f.name != "ingredient_lookup.json"]
+        
+        if not ingredient_files:
+            result = {
+                "status": "success",
+                "stdout": "",
+                "stderr": "",
+                "all_valid": True,
+                "message": "No ingredient files found.",
+                "missing_energy": [],
+            }
+            return _dict_to_json_string(result)
+        
+        missing_energy = []
+        for ingredient_file in ingredient_files:
+            if not validate_ingredients._validate_ingredient_energy(ingredient_file):
+                # Extract FDC ID from filename
+                fdc_id = ingredient_file.stem
+                try:
+                    # Try to get ingredient name from the file
+                    with open(ingredient_file, "r", encoding="utf-8") as f:
+                        ingredient_data = json.load(f)
+                        ingredient_name = ingredient_data.get("description", "Unknown")
+                except Exception:
+                    ingredient_name = "Unknown"
+                
+                missing_energy.append({
+                    "fdc_id": fdc_id,
+                    "name": ingredient_name,
+                })
+        
+        all_valid = len(missing_energy) == 0
+        
+        result = {
+            "status": "success",
+            "stdout": "",
+            "stderr": "",
+            "all_valid": all_valid,
+            "total_ingredients": len(ingredient_files),
+            "missing_energy": missing_energy,
+            "message": (
+                f"All {len(ingredient_files)} ingredients are valid."
+                if all_valid
+                else f"{len(missing_energy)} ingredient(s) missing energy (kcal) data."
+            ),
+        }
+        return _dict_to_json_string(result)
+    except Exception as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Unexpected error during validation: {e}",
+        }
+        return _dict_to_json_string(result)
+
+
+@mcp.tool(
+    description=(
+        "Validate all recipe files in the database. This tool checks that all recipe JSON files "
+        "use valid tags from the RecipeTag enum and reference ingredients that exist in the "
+        "ingredients directory. Returns lists of invalid tags and missing ingredients if any are "
+        "found. Check the 'status' key in the returned JSON to determine if validation was "
+        "successful. If 'status' is 'success' and 'all_valid' is True, all recipes are valid. "
+        "If 'all_valid' is False, check the 'invalid_recipes' array for details about recipes "
+        "that need to be fixed."
+    )
+)
+async def validate_recipes_tool() -> str:
+    """Validate all recipe files.
+
+    Returns:
+        JSON string with validation results including lists of invalid tags and missing ingredients.
+    """
+    try:
+        # Import the validation functions
+        recipes_dir = validate_recipes._get_recipes_dir()
+        
+        if not recipes_dir.exists():
+            result = {
+                "status": "success",
+                "stdout": "",
+                "stderr": "",
+                "all_valid": True,
+                "message": f"Recipes directory not found: {recipes_dir}",
+                "invalid_recipes": [],
+            }
+            return _dict_to_json_string(result)
+        
+        recipe_files = list(recipes_dir.glob("*.json"))
+        
+        if not recipe_files:
+            result = {
+                "status": "success",
+                "stdout": "",
+                "stderr": "",
+                "all_valid": True,
+                "message": "No recipe files found.",
+                "invalid_recipes": [],
+            }
+            return _dict_to_json_string(result)
+        
+        invalid_recipes = []
+        for recipe_file in recipe_files:
+            recipe_issues = {
+                "recipe": recipe_file.name,
+                "invalid_tags": [],
+                "missing_ingredients": [],
+            }
+            
+            # Validate tags
+            invalid_tags = validate_recipes._validate_recipe_tags(recipe_file)
+            if invalid_tags:
+                recipe_issues["invalid_tags"] = invalid_tags
+            
+            # Validate ingredients
+            missing_ingredients = validate_recipes._validate_recipe_ingredients(recipe_file)
+            if missing_ingredients:
+                recipe_issues["missing_ingredients"] = [
+                    {"fdc_id": fdc_id, "name": name}
+                    for fdc_id, name in missing_ingredients
+                ]
+            
+            if recipe_issues["invalid_tags"] or recipe_issues["missing_ingredients"]:
+                invalid_recipes.append(recipe_issues)
+        
+        all_valid = len(invalid_recipes) == 0
+        
+        result = {
+            "status": "success",
+            "stdout": "",
+            "stderr": "",
+            "all_valid": all_valid,
+            "total_recipes": len(recipe_files),
+            "invalid_recipes": invalid_recipes,
+            "message": (
+                f"All {len(recipe_files)} recipes are valid."
+                if all_valid
+                else f"{len(invalid_recipes)} recipe(s) contain invalid tags or missing ingredients."
+            ),
+        }
+        return _dict_to_json_string(result)
+    except Exception as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Unexpected error during validation: {e}",
         }
         return _dict_to_json_string(result)
 

@@ -70,30 +70,57 @@
 2. Check `ingredient_lookup.json` for existing ingredients
 
 3. Look up missing ingredients using MCP tools:
-   - **Process ingredients ONE AT A TIME** (do not batch operations):
-     - For each missing ingredient, complete the full cycle before moving to the next:
+   - **CRITICAL: NEVER search for an ingredient if a valid option already exists**
+     - If an ingredient exists in `ingredient_lookup.json` OR if the ingredient file exists in `nutrition/ingredients/` directory, use that existing ingredient
+     - Do NOT use `search_ingredient` if a suitable ingredient is already available
+     - Only search for ingredients that are completely missing from the database
+   - **CRITICAL: Process ingredients ONE AT A TIME** (do NOT batch operations):
+     - For each missing ingredient, complete the FULL cycle before moving to the next:
        1. **Before using `search_ingredient` tool:**
           - Verify ingredient is NOT in `ingredient_lookup.json`
           - Verify ingredient file does NOT exist in `nutrition/ingredients/` directory (as `<fdc_id>.json`)
-          - Only search if both checks confirm the ingredient is missing
+          - **If either check finds the ingredient, use it and skip to the next ingredient**
+          - Only search if BOTH checks confirm the ingredient is completely missing
        2. Use the `search_ingredient` MCP tool to search for the ingredient by name
        3. Select the most basic/appropriate ingredient from results
        4. Use the `get_ingredient_details` MCP tool to retrieve full nutrition data for the selected ingredient
        5. Use the `save_ingredient` MCP tool to save the ingredient to the local database
-       6. Only then proceed to the next ingredient
+       6. **Wait for the save to complete successfully before proceeding**
+       7. Only then proceed to the next ingredient
+     - **Do NOT batch multiple searches, get_details, or save operations**
+     - **Do NOT start processing the next ingredient until the current one is fully saved**
      - If no good match exists for an ingredient, note it for user assistance before moving on
 
 4. Ensure all ingredients exist in `nutrition/ingredients/` directory (as `<fdc_id>.json` files)
 
-5. Create recipe JSON file with:
+5. **Handle missing volume measurements:**
+   - If any ingredient in the recipe uses a volume unit (Cup, Tbsp, Tsp, etc.) but the ingredient file doesn't have a matching foodPortion, you must manually add it
+   - Use the `add_volume_to_ingredient.py` script to add volume-to-weight conversions
+   - **Do NOT change the recipe to use grams instead** - preserve the original recipe's volume measurements
+   - Example: If recipe calls for "1⅔ cups oat flour" but the ingredient only has RACC (30g), run:
+     ```
+     python3 nutrition/scripts/add_volume_to_ingredient.py <fdc_id> 1.0 Cup <grams_per_cup>
+     ```
+   - You may need to look up standard conversions or use the recipe's specified weight (e.g., if recipe says "1⅔ cups (200g)", then 1 cup ≈ 120g)
+   - After adding volume measurements, verify the ingredient file was updated correctly
+
+6. Create recipe JSON file with:
    - Name
+   - Sources: List of strings containing URLs or filenames that were provided as recipe sources (array of strings)
+     - If multiple sources are provided (e.g., a markdown file with multiple links), include all of them
+     - If a single source is provided, use an array with one element: `["https://example.com/recipe"]`
+     - If no source is available, use an empty array: `[]`
    - Tags (use existing tags or create new generic taxonomy tags if needed)
    - Ingredients (with fdc_id, name, quantity, and measure_unit)
    - Instructions (with step_id and text)
+   - Changes: List of strings describing any substitutions or modifications made to the recipe
+     - Each change should be a clear description (e.g., "Vanilla casein protein (125g) → Nutritional powder mix (EAS Whey Protein Powder) (125g) - casein not available in USDA database")
+     - Include ingredient substitutions, simplifications, volume measurement additions, etc.
+     - If no changes were made, use an empty array: `[]`
    - Empty `nutrition_facts: {}`
    - Empty `macros: {}`
 
-6. Calculate nutrition facts:
+7. Calculate nutrition facts:
    - **After** creating the recipe JSON file with all ingredients properly specified
    - Use the `calculate_recipe_nutrition` MCP tool with the recipe file path
    - The recipe path should be relative to the `nutrition/recipes/` directory (e.g., `"protein_overnight_oats.json"`)
@@ -106,12 +133,20 @@
      - Update the recipe file **in place** with calculated `nutrition_facts` and `macros` fields
    - The `nutrition_facts` object will contain all USDA nutrient data (protein, carbs, fats, vitamins, minerals, etc.)
    - The `macros` object will contain simplified protein, carbs, and fat breakdown with grams and percentages
-   - If the calculation fails, report the error to the user immediately - do not attempt workarounds
+   - **If the calculation fails due to missing volume measurements:**
+     - The error will indicate which ingredient(s) are missing the required foodPortion
+     - Use `add_volume_to_ingredient.py` to add the missing volume measurement(s)
+     - Re-run the calculation after adding the volume measurements
+     - **Do NOT change the recipe to use grams** - add the volume measurement to the ingredient file instead
+   - If the calculation fails for other reasons, report the error to the user immediately - do not attempt workarounds
 
-7. Compare output with original source recipe:
+8. Compare output with original source recipe:
    - **After** nutrition facts have been calculated, compare the final recipe with the original source
    - Extract the original recipe's nutrition information (calories, macros) if available from the source
    - Report the following to the user:
+     - **New ingredients added**: List all ingredients that were newly added to the database during this recipe creation
+       - Include FDC ID, name, and description for each new ingredient
+       - Example: "Added new ingredient: [2710731] Nutritional powder mix (EAS Whey Protein Powder)"
      - **Ingredient substitutions made**: List each substitution (original → substituted ingredient) with quantities
        - Example: "Soy Milk Protein Plus (⅔ cup) → Whole Milk (⅔ cup)"
      - **Calorie comparison**: 
