@@ -301,8 +301,14 @@ def _calculate_recipe_nutrition(recipe: typing.Dict[str, typing.Any]) -> typing.
             )
         except measure_converter.MeasureMatchError as e:
             ingredient_name = ingredient.get("name", f"FDC {fdc_id}")
+            error_str = str(e)
+            
+            # Replace <fdc_id> placeholder with actual FDC ID in error message
+            error_str = error_str.replace("<fdc_id>", str(fdc_id))
+            
             raise ValueError(
-                f"Cannot convert {quantity} {unit.value} for ingredient {ingredient_name} (FDC {fdc_id}): {e}"
+                f"Cannot convert {quantity} {unit.value} for ingredient {ingredient_name} (FDC {fdc_id}). "
+                f"{error_str}"
             )
 
         # Calculate nutrients for this ingredient

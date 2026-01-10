@@ -316,7 +316,9 @@ def find_food_portion(
             f"Please use a weight unit (Gram, Oz, Lb, Kg) or ensure the ingredient has a matching portion. "
             f"\nAvailable foodPortions:\n{available_str}"
             f"\n\nTo add volume information, run: python3 add_volume_to_ingredient.py <fdc_id> <amount> <unit> <grams>"
-            f"\nExample: python3 add_volume_to_ingredient.py <fdc_id> 1.0 {unit.value} <grams_per_unit>"
+            f"\n  amount: Base quantity for the unit (e.g., 1.0 for '1 cup')"
+            f"\n  unit: MeasureUnit enum value (e.g., 'Cup', 'Tbsp', 'Tsp')"
+            f"\nExample: python3 add_volume_to_ingredient.py <fdc_id> 1.0 {unit.value} 100.0"
         )
     
     # Calculate gram weight
@@ -340,7 +342,9 @@ def find_food_portion(
             f"\nMatched portion details: {modifier_info}, {desc_info}, {amount_info}, gramWeight={gram_weight}g. "
             f"\nOriginal error: {str(e)}"
             f"\n\nTo fix this issue, run: python3 add_volume_to_ingredient.py <fdc_id> <amount> <unit> <grams>"
-            f"\nExample: python3 add_volume_to_ingredient.py <fdc_id> 1.0 {unit.value} {gram_weight}"
+            f"\n  amount: Base quantity for the unit (e.g., 1.0 for '1 cup')"
+            f"\n  unit: MeasureUnit enum value (e.g., 'Cup', 'Tbsp', 'Tsp')"
+            f"\nExample: python3 add_volume_to_ingredient.py <fdc_id> 1.0 {unit.value} {gram_weight if gram_weight > 0 else 100.0}"
         ) from e
     
     gram_weight = best_match.get("gramWeight", 0)
