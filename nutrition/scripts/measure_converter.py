@@ -156,23 +156,46 @@ def _score_portion_match(
     return 0
 
 
-def _extract_base_amount(desc: str) -> float:
-    """Extract base amount from portion description.
+def _extract_base_amount(portion: typing.Dict[str, typing.Any]) -> float:
+    """Extract base amount from portion description or amount field.
     
     Args:
-        desc: Portion description (e.g., "1 cup", "2 tablespoons").
+        portion: FoodPortion dictionary with 'portionDescription' and/or 'amount' fields.
     
     Returns:
-        Base amount (defaults to 1.0 if not found).
+        Base amount.
+    
+    Raises:
+        MeasureMatchError: If no numeric amount can be extracted from portion description
+            or amount field.
     """
-    if not desc:
-        return 1.0
+    desc = portion.get("portionDescription", "")
     
-    base_match = re.search(r'^(\d+(?:\.\d+)?)', desc)
-    if base_match:
-        return float(base_match.group(1))
+    # First, try to extract amount from portionDescription
+    if desc and desc != "(none)":
+        base_match = re.search(r'^(\d+(?:\.\d+)?)', desc)
+        if base_match:
+            return float(base_match.group(1))
     
-    return 1.0
+    # If portionDescription is empty or doesn't contain a number, check amount field
+    amount = portion.get("amount")
+    if amount is not None:
+        try:
+            amount_float = float(amount)
+            if amount_float > 0:
+                return amount_float
+        except (ValueError, TypeError):
+            pass
+    
+    # Neither portionDescription nor amount field provides a valid amount
+    desc_str = f"'{desc}'" if desc else "empty"
+    amount_str = f"{amount}" if amount is not None else "missing"
+    raise MeasureMatchError(
+        f"Cannot extract base amount from foodPortion. "
+        f"portionDescription is {desc_str}, amount field is {amount_str}. "
+        f"Either portionDescription must start with a numeric amount (e.g., '1 cup', '2 tablespoons') "
+        f"or amount field must be a positive number."
+    )
 
 
 def _format_available_portions(food_portions: typing.List[typing.Dict[str, typing.Any]]) -> str:
@@ -283,34 +306,19 @@ def find_food_portion(
             best_score = score
             best_match = portion
     
-    # Handle volume/count units when only one portion exists (use it as reference)
-    if (not best_match or best_score == 0) and len(food_portions) == 1:
-        single_portion = food_portions[0]
-        portion_weight = single_portion.get("gramWeight", 0)
-        if portion_weight > 0:
-            # For volume/count units, use the single portion as reference
-            # Calculate ratio: (requested_amount / 1) * portion_weight
-            gram_weight = quantity * portion_weight
-            
-            dummy_portion = {
-                "modifier": "",
-                "portionDescription": f"{quantity} {unit.value}",
-                "gramWeight": gram_weight
-            }
-            return (dummy_portion, gram_weight)
-    
-    # Require a valid match for non-weight units
+    # Require a valid match for non-weight units - no fallbacks allowed
     if not best_match or best_score == 0:
         available_str = _format_available_portions(food_portions)
         raise MeasureMatchError(
             f"Could not find matching foodPortion for {quantity} {unit.value}. "
             f"No foodPortion found with matching modifier or description. "
+            f"This is a hard error - no fallback assumptions are made. "
+            f"Please use a weight unit (Gram, Oz, Lb, Kg) or ensure the ingredient has a matching portion. "
             f"\nAvailable foodPortions:\n{available_str}"
         )
     
     # Calculate gram weight
-    desc = best_match.get("portionDescription", "")
-    base_amount = _extract_base_amount(desc)
+    base_amount = _extract_base_amount(best_match)
     gram_weight = best_match.get("gramWeight", 0)
     calculated_weight = (quantity / base_amount) * gram_weight
     
