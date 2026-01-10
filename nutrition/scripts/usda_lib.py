@@ -382,3 +382,53 @@ def sort_foods_by_priority(foods: typing.List[typing.Dict[str, typing.Any]]) -> 
         ),
     )
 
+
+def save_ingredient_file(food_data: typing.Dict[str, typing.Any], filepath: Path) -> None:
+    """Save food data to a JSON file.
+
+    Args:
+        food_data: Food data dictionary to save.
+        filepath: Path where the file should be saved.
+
+    Raises:
+        OSError: If file cannot be written.
+    """
+    try:
+        filepath.parent.mkdir(parents=True, exist_ok=True)
+        with open(filepath, "w", encoding="utf-8") as f:
+            json.dump(food_data, f, indent=_JSON_INDENT, ensure_ascii=False)
+        print(f"Saved to: {filepath}")
+    except OSError as e:
+        print(f"Failed to save file to {filepath}: {e}")
+        raise
+
+
+def update_reverse_lookup(fdc_id: int, description: str) -> None:
+    """Update the reverse-lookup database with a new ingredient.
+
+    Args:
+        fdc_id: FoodData Central ID.
+        description: Ingredient description/name.
+    """
+    lookup_file = _get_ingredients_dir() / "ingredient_lookup.json"
+    
+    # Load existing lookup data
+    lookup_data = {}
+    if lookup_file.exists():
+        try:
+            with open(lookup_file, "r", encoding="utf-8") as f:
+                lookup_data = json.load(f)
+        except (OSError, json.JSONDecodeError) as e:
+            print(f"Failed to load lookup database: {e}")
+    
+    # Add or update entry
+    lookup_data[description] = fdc_id
+    
+    # Save updated lookup data
+    try:
+        with open(lookup_file, "w", encoding="utf-8") as f:
+            json.dump(lookup_data, f, indent=2, ensure_ascii=False)
+        print(f"Updated reverse-lookup database: {description} -> {fdc_id}")
+    except OSError as e:
+        print(f"Failed to update lookup database: {e}")
+
