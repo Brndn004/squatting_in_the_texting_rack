@@ -7,6 +7,7 @@ when USDA data doesn't include the necessary volume portions.
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -191,10 +192,11 @@ def add_volume_to_ingredient(
             f"Make sure FDC ID {fdc_id} is correct."
         )
     
-    # Load ingredient data
+    # Load ingredient data - read as text first to preserve formatting
     try:
         with open(ingredient_file, "r", encoding="utf-8") as f:
-            ingredient_data = json.load(f)
+            file_content = f.read()
+            ingredient_data = json.loads(file_content)
     except json.JSONDecodeError as e:
         raise json.JSONDecodeError(
             f"Invalid JSON in ingredient file {ingredient_file}: {e.msg}",
@@ -238,8 +240,31 @@ def add_volume_to_ingredient(
         )
     
     # Generate new ID and sequenceNumber
-    max_id = max((p.get("id", 0) for p in food_portions), default=0)
-    max_sequence = max((p.get("sequenceNumber", 0) for p in food_portions), default=0)
+    # Require all portions to have id and sequenceNumber - no defaults allowed
+    if not food_portions:
+        raise ValueError(
+            f"Ingredient file {ingredient_file} has empty 'foodPortions' array. "
+            f"Cannot determine next ID and sequenceNumber."
+        )
+    
+    ids = []
+    sequences = []
+    for i, p in enumerate(food_portions):
+        if "id" not in p:
+            raise ValueError(
+                f"Ingredient file {ingredient_file} has foodPortion at index {i} missing required 'id' field. "
+                f"All foodPortions must have an 'id' field."
+            )
+        if "sequenceNumber" not in p:
+            raise ValueError(
+                f"Ingredient file {ingredient_file} has foodPortion at index {i} missing required 'sequenceNumber' field. "
+                f"All foodPortions must have a 'sequenceNumber' field."
+            )
+        ids.append(p["id"])
+        sequences.append(p["sequenceNumber"])
+    
+    max_id = max(ids)
+    max_sequence = max(sequences)
     
     new_id = max_id + 1
     new_sequence = max_sequence + 1
@@ -263,20 +288,222 @@ def add_volume_to_ingredient(
     if existing_portion and force:
         # Replace existing portion
         index = food_portions.index(existing_portion)
+        existing_id = existing_portion.get("id")
+        if existing_id is None:
+            raise ValueError(
+                f"Existing foodPortion at index {index} missing required 'id' field. "
+                f"Cannot update portion without an ID."
+            )
         food_portions[index] = new_portion
-        print(f"Updated existing foodPortion (ID {existing_portion.get('id')})")
+        print(f"Updated existing foodPortion (ID {existing_id})")
     else:
         # Append new portion
         food_portions.append(new_portion)
         print(f"Added new foodPortion (ID {new_id})")
     
     # Sort by sequenceNumber
-    food_portions.sort(key=lambda p: p.get("sequenceNumber", 0))
+    # Require all portions to have sequenceNumber - no defaults allowed
+    for i, p in enumerate(food_portions):
+        if "sequenceNumber" not in p:
+            raise ValueError(
+                f"FoodPortion at index {i} missing required 'sequenceNumber' field. "
+                f"All foodPortions must have a 'sequenceNumber' field for sorting."
+            )
+    food_portions.sort(key=lambda p: p["sequenceNumber"])
     
-    # Save updated JSON
+    # Update the foodPortions in the data structure
+    ingredient_data["foodPortions"] = food_portions
+    
+    # Replace only the foodPortions section in the original file content
+    # This preserves all other formatting, spacing, and structure
+    
+    # Find the start of the foodPortions array in the file
+    start_match = re.search(r'"foodPortions"\s*:\s*\[', file_content)
+    if not start_match:
+        raise ValueError(f"Could not find 'foodPortions' array in file {ingredient_file}")
+    
+    start_pos = start_match.start()
+    # Find the matching closing bracket
+    bracket_count = 0
+    in_string = False
+    escape_next = False
+    pos = start_match.end() - 1  # Start from the opening bracket
+    
+    for i in range(pos, len(file_content)):
+        char = file_content[i]
+        
+        if escape_next:
+            escape_next = False
+            continue
+        
+        if char == '\\':
+            escape_next = True
+            continue
+        
+        if char == '"' and not escape_next:
+            in_string = not in_string
+            continue
+        
+        if in_string:
+            continue
+        
+        if char == '[':
+            bracket_count += 1
+        elif char == ']':
+            bracket_count -= 1
+            if bracket_count == 0:
+                end_pos = i + 1
+                break
+    else:
+        raise ValueError(f"Could not find matching closing bracket for 'foodPortions' array")
+    
+    # Extract prefix (everything up to but not including "foodPortions": [)
+    # and suffix (everything after the closing bracket])
+    prefix = file_content[:start_match.start()]
+    suffix = file_content[end_pos:]
+    
+    # Detect indentation pattern from existing array content
+    original_array_content = file_content[start_match.end():end_pos-1]  # Content between [ and ]
+    array_lines = original_array_content.split('\n')
+    
+    # Find the indent of the "foodPortions" line
+    line_start = file_content.rfind('\n', 0, start_pos) + 1
+    foodportions_line_start = file_content[line_start:start_match.start()]
+    foodportions_indent = len(foodportions_line_start) - len(foodportions_line_start.lstrip())
+    
+    # Detect indentation pattern: find first property line and first nested property line
+    # This is required - we cannot proceed without detecting the indentation pattern
+    item_property_indent = None
+    nested_property_indent = None
+    
+    for line in array_lines:
+        stripped = line.lstrip()
+        if not stripped or stripped in ['{', '}', '[', ']']:
+            continue
+        line_indent = len(line) - len(stripped)
+        if item_property_indent is None:
+            item_property_indent = line_indent
+        elif nested_property_indent is None and line_indent > item_property_indent:
+            nested_property_indent = line_indent
+            break
+    
+    # Require detection of item property indent - no defaults allowed
+    if item_property_indent is None:
+        raise ValueError(
+            f"Could not detect indentation pattern from 'foodPortions' array in file {ingredient_file}. "
+            f"The array appears to be empty or contains no property lines. "
+            f"Cannot preserve formatting without detecting the indentation pattern."
+        )
+    
+    # Calculate indent per level (how many spaces json.dumps should add per nesting level)
+    if nested_property_indent is not None:
+        indent_per_level = nested_property_indent - item_property_indent
+        if indent_per_level <= 0:
+            raise ValueError(
+                f"Invalid indentation pattern detected in file {ingredient_file}. "
+                f"Nested property indent ({nested_property_indent}) must be greater than "
+                f"item property indent ({item_property_indent})."
+            )
+    else:
+        # If no nested properties detected, calculate from the structure
+        # item_property_indent represents properties inside the object (level 1)
+        # The object itself starts at foodportions_indent + some amount
+        # We can calculate: item_property_indent = object_start + indent_per_level
+        # So: indent_per_level = item_property_indent - object_start
+        # Find object start indent by looking for '{' lines
+        object_start_indent = None
+        for line in array_lines:
+            stripped = line.lstrip()
+            if stripped == '{':
+                object_start_indent = len(line) - len(stripped)
+                break
+        
+        if object_start_indent is None:
+            raise ValueError(
+                f"Could not detect object start indentation in 'foodPortions' array in file {ingredient_file}. "
+                f"Cannot determine indent_per_level without detecting object structure. "
+                f"Detected item property indent: {item_property_indent}."
+            )
+        
+        indent_per_level = item_property_indent - object_start_indent
+        if indent_per_level <= 0:
+            raise ValueError(
+                f"Invalid indentation pattern detected in file {ingredient_file}. "
+                f"Item property indent ({item_property_indent}) must be greater than "
+                f"object start indent ({object_start_indent})."
+            )
+        
+        # Set nested_property_indent for later use (for level 2+ properties)
+        nested_property_indent = item_property_indent + indent_per_level
+    
+    # Calculate base indent for the array (where the '[' should start)
+    # The array should be indented to match the space after "foodPortions": 
+    array_base_indent = foodportions_indent + len('"foodPortions": ')
+    
+    # Serialize with detected indent pattern
+    food_portions_json = json.dumps(food_portions, indent=indent_per_level, ensure_ascii=False)
+    
+    # Adjust indentation: json.dumps starts at column 0, we need to match the file
+    lines = food_portions_json.split('\n')
+    adjusted_lines = []
+    for line in lines:
+        if not line.strip():
+            adjusted_lines.append('')
+            continue
+        
+        stripped = line.lstrip()
+        json_indent = len(line) - len(stripped)
+        
+        # Calculate target indent based on nesting level
+        if stripped == '[':
+            # Opening bracket: should be at array_base_indent
+            target_indent = array_base_indent
+        elif stripped == ']':
+            # Closing bracket: should align with opening bracket
+            target_indent = array_base_indent
+        elif stripped == '{':
+            # Object opening: typically foodportions_indent + 4 (for array item)
+            target_indent = foodportions_indent + 4
+        elif stripped == '}':
+            # Object closing: same as opening
+            target_indent = foodportions_indent + 4
+        else:
+            # Property line: calculate level from json_indent
+            if indent_per_level <= 0:
+                raise ValueError(
+                    f"Invalid indent_per_level ({indent_per_level}) detected. "
+                    f"This should not happen - indent_per_level must be positive."
+                )
+            level = json_indent // indent_per_level
+            
+            if level == 0:
+                raise ValueError(
+                    f"Unexpected indentation level 0 for property line '{stripped[:50]}...'. "
+                    f"This should not happen - property lines should be at level 1 or higher. "
+                    f"json_indent={json_indent}, indent_per_level={indent_per_level}"
+                )
+            elif level == 1:
+                # First level property (inside object)
+                # item_property_indent is guaranteed to be not None from earlier check
+                target_indent = item_property_indent
+            else:
+                # Nested property (inside nested object like measureUnit)
+                # nested_property_indent is guaranteed to be not None from earlier check
+                # For deeper nesting, add indent_per_level for each additional level
+                additional_levels = level - 2  # level 2 is nested_property_indent, level 3+ adds more
+                target_indent = nested_property_indent + (additional_levels * indent_per_level)
+        
+        adjusted_lines.append(' ' * target_indent + stripped)
+    
+    food_portions_json = '\n'.join(adjusted_lines)
+    
+    # Reconstruct the file content
+    new_content = prefix + '"foodPortions": ' + food_portions_json + suffix
+    
+    # Save updated file
     try:
         with open(ingredient_file, "w", encoding="utf-8") as f:
-            json.dump(ingredient_data, f, indent=2, ensure_ascii=False)
+            f.write(new_content)
     except OSError as e:
         raise OSError(f"Failed to write ingredient file {ingredient_file}: {e}")
     

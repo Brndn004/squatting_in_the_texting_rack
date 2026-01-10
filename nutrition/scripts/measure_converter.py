@@ -82,7 +82,12 @@ def _get_unit_aliases(unit: MeasureUnit) -> set[str]:
         MeasureUnit.Stalk: ["stalk", "stalks"],
         MeasureUnit.Bunch: ["bunch", "bunches"],
     }
-    return set(unit_map.get(unit, [unit.value.lower()]))
+    if unit not in unit_map:
+        raise ValueError(
+            f"Unit {unit.value} is not supported. "
+            f"Supported units: {', '.join(sorted(u.value for u in unit_map.keys()))}"
+        )
+    return set(unit_map[unit])
 
 
 def _normalize_portion_description(desc: str) -> str:
@@ -128,7 +133,7 @@ def _score_portion_match(
     
     Returns:
         Score: 100 = exact modifier match, 80 = description starts with unit,
-               50 = description contains unit, 0 = no match.
+               50 = description contains unit at word boundary, 0 = no match.
     """
     modifier = portion.get("modifier", "")
     desc = portion.get("portionDescription", "")
@@ -136,22 +141,40 @@ def _score_portion_match(
     # Exact modifier match (highest priority)
     if modifier:
         normalized_modifier = _normalize_modifier(modifier)
+        # First check for exact match
         if normalized_modifier in unit_aliases:
             return 100
-        # Check if any unit alias is contained in the modifier (e.g., "tsp, ground" contains "tsp")
+        
+        # Check for word-boundary matches in modifier (e.g., "tsp, ground" contains "tsp" as a word)
+        # Use word boundaries to avoid false positives like "scoop" matching "c"
         for alias in unit_aliases:
-            if alias in normalized_modifier:
-                return 100
+            # For single-character aliases, only match if modifier is exactly that character
+            if len(alias) == 1:
+                if normalized_modifier == alias:
+                    return 100
+            else:
+                # For multi-character aliases, use word boundary matching
+                # Match if alias appears as a whole word (not substring)
+                pattern = r'\b' + re.escape(alias) + r'\b'
+                if re.search(pattern, normalized_modifier):
+                    return 100
     
     # Description match (medium priority)
     if desc:
         normalized_desc = _normalize_portion_description(desc)
         for alias in unit_aliases:
-            if alias in normalized_desc:
-                if normalized_desc.startswith(alias):
+            # For single-character aliases, only match if description starts with that character followed by space/end
+            if len(alias) == 1:
+                if normalized_desc.startswith(alias + ' ') or normalized_desc == alias:
                     return 80
-                else:
-                    return 50
+            else:
+                # For multi-character aliases, check word boundaries
+                pattern = r'\b' + re.escape(alias) + r'\b'
+                if re.search(pattern, normalized_desc):
+                    if normalized_desc.startswith(alias):
+                        return 80
+                    else:
+                        return 50
     
     return 0
 
@@ -297,7 +320,13 @@ def find_food_portion(
     best_score = 0
     
     for portion in food_portions:
-        gram_weight = portion.get("gramWeight", 0)
+        if "gramWeight" not in portion:
+            raise MeasureMatchError(
+                f"FoodPortion missing required 'gramWeight' field. "
+                f"All foodPortions must have a 'gramWeight' field. "
+                f"Portion: {portion}"
+            )
+        gram_weight = portion["gramWeight"]
         if gram_weight <= 0:
             continue
         
@@ -347,7 +376,21 @@ def find_food_portion(
             f"\nExample: python3 add_volume_to_ingredient.py <fdc_id> 1.0 {unit.value} {gram_weight if gram_weight > 0 else 100.0}"
         ) from e
     
-    gram_weight = best_match.get("gramWeight", 0)
+    # best_match is guaranteed to exist and have gramWeight > 0 from earlier check
+    # but verify to avoid silent failures
+    if "gramWeight" not in best_match:
+        raise MeasureMatchError(
+            f"Matched foodPortion missing required 'gramWeight' field. "
+            f"This should not happen - foodPortion was matched but lacks gramWeight. "
+            f"Portion: {best_match}"
+        )
+    gram_weight = best_match["gramWeight"]
+    if gram_weight <= 0:
+        raise MeasureMatchError(
+            f"Matched foodPortion has invalid gramWeight ({gram_weight}). "
+            f"gramWeight must be greater than zero. "
+            f"Portion: {best_match}"
+        )
     calculated_weight = (quantity / base_amount) * gram_weight
     
     return (best_match, calculated_weight)
