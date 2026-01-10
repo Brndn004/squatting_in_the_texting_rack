@@ -43,9 +43,10 @@
 3. **Ingredients**
    - Extract all ingredients from the recipe source
    - Each ingredient needs:
-     - `fdc_id`: USDA FoodData Central ID
-     - `amount`: Human-readable amount in format `"<quantity> <Unit>"` (e.g., `"0.5 Cup"`, `"1 Tbsp"`, `"2 Tsp"`)
-     - The unit must match exactly one of the `MeasureUnit` enum values from `nutrition/scripts/measure_converter.py`
+     - `fdc_id`: USDA FoodData Central ID (number)
+     - `name`: Ingredient name (string)
+     - `quantity`: Numeric quantity (e.g., `0.5`, `1.0`, `2.0`, `175.0`)
+     - `measure_unit`: Unit string that matches exactly one of the `MeasureUnit` enum values from `nutrition/scripts/measure_converter.py`
      - Units must be capitalized exactly as shown (first letter capitalized, e.g., `"Cup"`, `"Tbsp"`, `"Tsp"`, `"Fl Oz"`, `"Oz"`, `"Gram"`, etc.)
    - Apply ingredient substitutions as specified above
    - Ensure all ingredients exist in `nutrition/ingredients/` directory before creating recipe
@@ -87,10 +88,41 @@
 5. Create recipe JSON file with:
    - Name
    - Tags (use existing tags or create new generic taxonomy tags if needed)
-   - Ingredients (with fdc_id and amount)
+   - Ingredients (with fdc_id, name, quantity, and measure_unit)
    - Instructions (with step_id and text)
    - Empty `nutrition_facts: {}`
+   - Empty `macros: {}`
 
 6. Calculate nutrition facts:
+   - **After** creating the recipe JSON file with all ingredients properly specified
    - Use the `calculate_recipe_nutrition` MCP tool with the recipe file path
-   - This will automatically populate the `nutrition_facts` and `macros` fields in the recipe file
+   - The recipe path should be relative to the `nutrition/recipes/` directory (e.g., `"protein_overnight_oats.json"`)
+   - The tool will:
+     - Load all ingredient data by FDC ID from the `nutrition/ingredients/` directory
+     - Convert ingredient amounts to grams using measure conversion
+     - Scale nutrients based on gram weight for each ingredient
+     - Sum all nutrients across all ingredients
+     - Calculate per-serving nutrition facts (divided by `serving_size`)
+     - Update the recipe file **in place** with calculated `nutrition_facts` and `macros` fields
+   - The `nutrition_facts` object will contain all USDA nutrient data (protein, carbs, fats, vitamins, minerals, etc.)
+   - The `macros` object will contain simplified protein, carbs, and fat breakdown with grams and percentages
+   - If the calculation fails, report the error to the user immediately - do not attempt workarounds
+
+7. Compare output with original source recipe:
+   - **After** nutrition facts have been calculated, compare the final recipe with the original source
+   - Extract the original recipe's nutrition information (calories, macros) if available from the source
+   - Report the following to the user:
+     - **Ingredient substitutions made**: List each substitution (original → substituted ingredient) with quantities
+       - Example: "Soy Milk Protein Plus (⅔ cup) → Whole Milk (⅔ cup)"
+     - **Calorie comparison**: 
+       - Original calories (if available) vs calculated calories
+       - Difference in calories (+/- X kcal)
+       - Identify which ingredient substitutions contributed most to the difference
+       - Explain the nutritional reasons (e.g., "Greek yogurt is denser and higher in fat/protein than plant-based yogurt")
+     - **Macro differences**: Compare protein, carbs, and fat if original values are available
+     - **Other notable differences**:
+       - Serving size differences (if any)
+       - Ingredient quantity differences (if any adjustments were made)
+       - Any ingredients that couldn't be matched and were approximated
+       - Any other significant nutritional or structural differences
+   - Format the comparison clearly and concisely for the user

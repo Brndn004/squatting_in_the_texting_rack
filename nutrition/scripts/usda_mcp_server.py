@@ -13,7 +13,7 @@ import requests
 from mcp.server import fastmcp
 
 import calculate_meal_nutrition as meal_nutrition_module
-import calculate_recipe_nutrition
+import calculate_recipe_nutrition as recipe_nutrition_module
 import ingredient_management_lib
 import recipe_tags
 import tag_management
@@ -349,7 +349,7 @@ async def calculate_recipe_nutrition(recipe_path: str) -> str:
     """
     try:
         # Resolve recipe path
-        recipes_dir = calculate_recipe_nutrition._get_recipes_dir()
+        recipes_dir = recipe_nutrition_module._get_recipes_dir()
         if Path(recipe_path).is_absolute():
             recipe_file = Path(recipe_path)
         else:
@@ -368,7 +368,7 @@ async def calculate_recipe_nutrition(recipe_path: str) -> str:
             recipe_before = json.load(f)
         
         # Calculate and update nutrition
-        updated = calculate_recipe_nutrition._update_recipe_nutrition(recipe_file)
+        updated = recipe_nutrition_module._update_recipe_nutrition(recipe_file)
         
         if not updated:
             result = {
