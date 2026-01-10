@@ -1,0 +1,280 @@
+{
+  "name": "Protein French Toast",
+  "sources": [
+    "https://hurrythefoodup.com/protein-french-toast/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 2,
+  "tags": [
+    "breakfast",
+    "simple",
+    "sweet",
+    "warm"
+  ],
+  "changes": [
+    "Whole wheat sourdough bread → Bread, whole wheat (simplified to basic whole wheat bread)",
+    "Milk of choice → Reduced fat (2%) milk (substituted plant-based milk option with reduced fat milk)",
+    "Butter/ghee/vegetable oil → Salted butter (chose salted butter as the cooking fat)",
+    "Fresh berries or diced apple → Blueberries (chose blueberries as topping)",
+    "1 large egg → 50g eggs (converted to grams for calculation - egg foodPortion uses 'undetermined' unit)"
+  ],
+  "ingredients": [
+    {
+      "fdc_id": 2707709,
+      "name": "Bread, whole wheat",
+      "quantity": 5.0,
+      "measure_unit": "Oz"
+    },
+    {
+      "fdc_id": 2707152,
+      "name": "Egg, whole, raw",
+      "quantity": 50.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 1 large egg"
+      ]
+    },
+    {
+      "fdc_id": 746784,
+      "name": "Sugars, granulated",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 173471,
+      "name": "Vanilla extract",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 171320,
+      "name": "Spices, cinnamon, ground",
+      "quantity": 0.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 167749,
+      "name": "Lemon peel, raw",
+      "quantity": 0.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2710731,
+      "name": "Nutritional powder mix (EAS Whey Protein Powder)",
+      "quantity": 2.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2705386,
+      "name": "Milk, reduced fat (2%)",
+      "quantity": 1.0,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 173410,
+      "name": "Butter, salted",
+      "quantity": 1.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2346411,
+      "name": "Blueberries, raw",
+      "quantity": 1.0,
+      "measure_unit": "Cup"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "Prepare the Batter: In a mixing bowl, whisk together the eggs, sugar, vanilla extract, cinnamon, and lemon zest until well combined."
+    },
+    {
+      "step_id": 2,
+      "text": "Add the protein powder and milk to the mixture, whisking until smooth."
+    },
+    {
+      "step_id": 3,
+      "text": "Soak the Bread: Dip each slice of stale sourdough bread into the batter, ensuring both sides are thoroughly coated."
+    },
+    {
+      "step_id": 4,
+      "text": "Allow the bread to soak for a few seconds to absorb the mixture."
+    },
+    {
+      "step_id": 5,
+      "text": "Cook the French Toast: Heat a non-stick skillet over medium heat and add a portion of the butter, ghee, or oil."
+    },
+    {
+      "step_id": 6,
+      "text": "Place the soaked bread slices onto the skillet."
+    },
+    {
+      "step_id": 7,
+      "text": "Cook each side for about 2-3 minutes, or until golden brown and cooked through."
+    },
+    {
+      "step_id": 8,
+      "text": "Serve: Top the cooked French toast with blueberries."
+    }
+  ],
+  "nutrition_facts": {
+    "Protein (g)": 23.178885,
+    "Total lipid (fat) (g)": 10.976168125000001,
+    "Carbohydrate, by difference (g)": 56.3410325,
+    "Alcohol, ethyl (g)": 0.7224,
+    "Water (g)": 221.03982624999998,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Total Sugars (g)": 9.957067375,
+    "Fiber, total dietary (g)": 4.650575000000001,
+    "Calcium, Ca (mg)": 323.9377124999999,
+    "Iron, Fe (mg)": 2.643028,
+    "Magnesium, Mg (mg)": 95.5030375,
+    "Phosphorus, P (mg)": 397.38635,
+    "Potassium, K (mg)": 532.4758750000001,
+    "Sodium, Na (mg)": 446.257625,
+    "Zinc, Zn (mg)": 2.8792329999999997,
+    "Copper, Cu (mg)": 0.300527675,
+    "Selenium, Se (µg)": 30.795577500000004,
+    "Retinol (µg)": 171.3305,
+    "Vitamin A, RAE (µg)": 172.15449999999998,
+    "Carotene, beta (µg)": 11.449475,
+    "Carotene, alpha (µg)": 0.0115,
+    "Vitamin E (alpha-tocopherol) (mg)": 0.81850825,
+    "Vitamin D (D2 + D3) (µg)": 1.967,
+    "Cryptoxanthin, beta (µg)": 4.3134999999999994,
+    "Lycopene (µg)": 0.0975,
+    "Lutein + zeaxanthin (µg)": 188.94316250000003,
+    "Vitamin C, total ascorbic acid (mg)": 7.03795,
+    "Thiamin (mg)": 0.4405978625,
+    "Riboflavin (mg)": 0.479108925,
+    "Niacin (mg)": 4.297421125,
+    "Vitamin B-6 (mg)": 0.3457968,
+    "Folate, total (µg)": 70.167475,
+    "Vitamin B-12 (µg)": 1.159035,
+    "Choline, total (mg)": 134.17306,
+    "Vitamin K (phylloquinone) (µg)": 6.3484525,
+    "Folic acid (µg)": 20.0,
+    "Folate, food (µg)": 50.167474999999996,
+    "Folate, DFE (µg)": 84.167475,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Cholesterol (mg)": 140.64249999999998,
+    "Fatty acids, total saturated (g)": 4.75520735,
+    "SFA 4:0 (g)": 0.170043,
+    "SFA 6:0 (g)": 0.1121885,
+    "SFA 8:0 (g)": 0.07048247499999999,
+    "SFA 10:0 (g)": 0.15764889999999998,
+    "SFA 12:0 (g)": 0.1732510875,
+    "SFA 14:0 (g)": 0.5107314,
+    "SFA 16:0 (g)": 2.469684,
+    "SFA 18:0 (g)": 0.9997118125,
+    "MUFA 18:1 (g)": 2.4989662624999998,
+    "PUFA 18:2 (g)": 1.65378475,
+    "PUFA 18:3 (g)": 0.13312698750000002,
+    "PUFA 20:4 (g)": 0.00649495,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "MUFA 16:1 (g)": 0.1414380625,
+    "PUFA 18:4 (g)": 0.0,
+    "MUFA 20:1 (g)": 0.0180385375,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.0,
+    "MUFA 22:1 (g)": 0.0,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.00122,
+    "Fatty acids, total monounsaturated (g)": 2.6082918,
+    "Fatty acids, total polyunsaturated (g)": 1.868424875,
+    "Energy (kcal)": 419.60355000000004,
+    "Proximates (g)": 0.0,
+    "Energy (kJ)": 236.082,
+    "Nitrogen (g)": 0.084375,
+    "Ash (g)": 0.282565,
+    "Carbohydrates (g)": 0.0,
+    "Sugars, Total (g)": 13.004999999999999,
+    "Sucrose (g)": 5.98813,
+    "Glucose (g)": 3.3195099999999997,
+    "Fructose (g)": 3.711465,
+    "Lactose (g)": 0.0,
+    "Maltose (g)": 0.0,
+    "Galactose (g)": 0.0018,
+    "Minerals (mg)": 0.0,
+    "Manganese, Mn (mg)": 0.435699,
+    "Vitamins and Other Components (g)": 0.0,
+    "Pantothenic acid (mg)": 0.008562,
+    "Vitamin A, IU (IU)": 90.88199999999999,
+    "Vitamin D (D2 + D3), International Units (IU)": 0.0,
+    "Lipids (g)": 0.0,
+    "Fatty acids, total trans (g)": 0.11636899999999999,
+    "Amino acids (g)": 0.0,
+    "Betaine (mg)": 0.036,
+    "Tocopherol, beta (mg)": 0.0,
+    "Tocopherol, gamma (mg)": 0.06786,
+    "Tocopherol, delta (mg)": 0.0016900000000000003,
+    "Tocotrienol, alpha (mg)": 0.0,
+    "Tocotrienol, beta (mg)": 0.0,
+    "Tocotrienol, gamma (mg)": 0.0,
+    "Tocotrienol, delta (mg)": 0.0,
+    "Vitamin K (Dihydrophylloquinone) (µg)": 0.0,
+    "SFA 13:0 (g)": 0.0,
+    "SFA 15:0 (g)": 0.0,
+    "SFA 17:0 (g)": 0.020764,
+    "SFA 20:0 (g)": 0.004899,
+    "SFA 22:0 (g)": 0.0,
+    "SFA 24:0 (g)": 0.0,
+    "MUFA 14:1 (g)": 0.0,
+    "MUFA 15:1 (g)": 0.0,
+    "MUFA 17:1 (g)": 0.0,
+    "MUFA 18:1 c (g)": 0.604318,
+    "MUFA 24:1 c (g)": 0.0,
+    "PUFA 18:3 n-3 c,c,c (ALA) (g)": 0.011254,
+    "PUFA 18:3 n-6 c,c,c (g)": 0.0,
+    "PUFA 20:2 n-6 c,c (g)": 0.0,
+    "PUFA 20:3 (g)": 0.0,
+    "Fatty acids, total trans-monoenoic (g)": 0.105861,
+    "TFA 18:1 t (g)": 0.105861,
+    "Phytosterols (mg)": 0.34400000000000003,
+    "Tryptophan (g)": 0.0007444999999999999,
+    "Threonine (g)": 0.002233,
+    "Isoleucine (g)": 0.0027595,
+    "Leucine (g)": 0.004591,
+    "Lysine (g)": 0.003958,
+    "Methionine (g)": 0.0012525000000000001,
+    "Cystine (g)": 0.000661,
+    "Phenylalanine (g)": 0.0024045,
+    "Tyrosine (g)": 0.0023395,
+    "Valine (g)": 0.0034795,
+    "Arginine (g)": 0.0021795,
+    "Histidine (g)": 0.001577,
+    "Alanine (g)": 0.0021085,
+    "Aspartic acid (g)": 0.005119,
+    "Glutamic acid (g)": 0.008723999999999999,
+    "Glycine (g)": 0.0019065000000000002,
+    "Proline (g)": 0.005634500000000001,
+    "Serine (g)": 0.0029005000000000003,
+    "Hydroxyproline (g)": 0.0,
+    "PUFA 20:5 n-3 (EPA) (µg)": 0.0,
+    "Fluoride, F (µg)": 0.09939999999999999,
+    "Vitamin D2 (ergocalciferol) (µg)": 0.0,
+    "Vitamin D3 (cholecalciferol) (µg)": 0.0,
+    "MUFA 16:1 c (g)": 0.03411549999999999,
+    "PUFA 18:2 n-6 c,c (g)": 0.07689299999999999,
+    "PUFA 18:2 CLAs (g)": 0.009478499999999999,
+    "PUFA 18:2 i (g)": 0.010507999999999998,
+    "Fatty acids, total trans-polyenoic (g)": 0.010507999999999998,
+    "Stigmasterol (mg)": 0.0,
+    "Campesterol (mg)": 0.0,
+    "Beta-sitosterol (mg)": 0.142,
+    "Biotin (µg)": 0.22499999999999998
+  },
+  "macros": {
+    "protein": {
+      "grams": 23.2,
+      "percent": 22.2
+    },
+    "carbs": {
+      "grams": 56.3,
+      "percent": 54.1
+    },
+    "fat": {
+      "grams": 11.0,
+      "percent": 23.7
+    }
+  }
+}
