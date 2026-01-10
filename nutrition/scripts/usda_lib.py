@@ -168,7 +168,10 @@ def _get_data_type_priority(data_type: str) -> int:
 
 
 def search_ingredient(
-    query: str, api_key: str, data_types: typing.Optional[typing.List[str]] = None
+    query: str, 
+    api_key: str, 
+    data_types: typing.Optional[typing.List[str]] = None,
+    page_size: int = _DEFAULT_PAGE_SIZE
 ) -> typing.Dict[str, typing.Any]:
     """Search for ingredients matching the query.
 
@@ -176,6 +179,7 @@ def search_ingredient(
         query: Search term for ingredient name.
         api_key: USDA API key.
         data_types: Optional list of data types to filter. If None, searches all types.
+        page_size: Maximum number of results to return per page (default: 20, max: 200).
 
     Returns:
         JSON response containing search results.
@@ -186,7 +190,7 @@ def search_ingredient(
     params = {
         "api_key": api_key,
         "query": query,
-        "pageSize": _DEFAULT_PAGE_SIZE,
+        "pageSize": page_size,
     }
     
     if data_types:
@@ -209,7 +213,11 @@ def search_ingredient(
         raise
 
 
-def search_ingredient_prioritized(query: str, api_key: str) -> typing.Dict[str, typing.Any]:
+def search_ingredient_prioritized(
+    query: str, 
+    api_key: str, 
+    page_size: int = _DEFAULT_PAGE_SIZE
+) -> typing.Dict[str, typing.Any]:
     """Search for ingredients with priority ordering.
 
     Tries multiple search strategies to find Foundation foods:
@@ -221,6 +229,7 @@ def search_ingredient_prioritized(query: str, api_key: str) -> typing.Dict[str, 
     Args:
         query: Search term for ingredient name.
         api_key: USDA API key.
+        page_size: Maximum number of results to return per page (default: 20, max: 200).
 
     Returns:
         JSON response containing search results, with foods sorted by priority.
@@ -230,7 +239,7 @@ def search_ingredient_prioritized(query: str, api_key: str) -> typing.Dict[str, 
     # Strategy 1: Search priority types with original query
     print(f"Searching priority data types: {', '.join(priority_types)}")
     try:
-        results = search_ingredient(query, api_key, data_types=priority_types)
+        results = search_ingredient(query, api_key, data_types=priority_types, page_size=page_size)
         foods = results.get("foods", [])
         total_hits = results.get("totalHits", 0)
         
@@ -250,7 +259,7 @@ def search_ingredient_prioritized(query: str, api_key: str) -> typing.Dict[str, 
         alt_query = " ".join(reversed(query_words))
         print(f"Trying alternative query: '{alt_query}'")
         try:
-            results = search_ingredient(alt_query, api_key, data_types=priority_types)
+            results = search_ingredient(alt_query, api_key, data_types=priority_types, page_size=page_size)
             foods = results.get("foods", [])
             if foods:
                 print(f"Found {len(foods)} result(s) with alternative query")
@@ -263,7 +272,7 @@ def search_ingredient_prioritized(query: str, api_key: str) -> typing.Dict[str, 
         main_word = query_words[-1] if len(query_words) > 1 else query_words[0]
         print(f"Trying simplified query: '{main_word}'")
         try:
-            results = search_ingredient(main_word, api_key, data_types=priority_types)
+            results = search_ingredient(main_word, api_key, data_types=priority_types, page_size=page_size)
             foods = results.get("foods", [])
             if foods:
                 # Filter for foods containing all query words
@@ -285,7 +294,7 @@ def search_ingredient_prioritized(query: str, api_key: str) -> typing.Dict[str, 
     # Strategy 3: Search all types and filter client-side
     print("Searching all data types...")
     try:
-        results = search_ingredient(query, api_key, data_types=None)
+        results = search_ingredient(query, api_key, data_types=None, page_size=page_size)
         foods = results.get("foods", [])
         
         if not foods:
