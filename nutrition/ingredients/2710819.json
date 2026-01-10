@@ -304,20 +304,33 @@
             "minYearAcquired": 2023
         }
     ],
-    "foodPortions": [
+    "foodPortions":                     [
         {
-            "id": 312581,
-            "dataPoints": 0,
-            "gramWeight": 45,
-            "sequenceNumber": 1,
-            "amount": 1,
-            "measureUnit": {
-                "id": 1121,
-                "name": "RACC",
-                "abbreviation": "RACC"
-            }
+                "id": 312581,
+                "dataPoints": 0,
+                "gramWeight": 45,
+                "sequenceNumber": 1,
+                "amount": 1,
+                "measureUnit": {
+                    "id": 1121,
+                    "name": "RACC",
+                    "abbreviation": "RACC"
         }
-    ],
+            },
+        {
+                "id": 312582,
+                "sequenceNumber": 2,
+                "amount": 1.0,
+                "modifier": "tbsp",
+                "portionDescription": "1 Tbsp",
+                "gramWeight": 11.0,
+                "measureUnit": {
+                    "id": 9999,
+                    "name": "undetermined",
+                    "abbreviation": "undetermined"
+        }
+        }
+                    ],
     "dataType": "Foundation",
     "foodClass": "FinalFood"
 }

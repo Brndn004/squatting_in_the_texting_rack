@@ -375,20 +375,33 @@
             "minYearAcquired": 2022
         }
     ],
-    "foodPortions": [
+    "foodPortions":                     [
         {
-            "id": 312593,
-            "dataPoints": 0,
-            "gramWeight": 40,
-            "sequenceNumber": 1,
-            "amount": 1,
-            "measureUnit": {
-                "id": 1121,
-                "name": "RACC",
-                "abbreviation": "RACC"
-            }
+                "id": 312593,
+                "dataPoints": 0,
+                "gramWeight": 40,
+                "sequenceNumber": 1,
+                "amount": 1,
+                "measureUnit": {
+                    "id": 1121,
+                    "name": "RACC",
+                    "abbreviation": "RACC"
         }
-    ],
+            },
+        {
+                "id": 312594,
+                "sequenceNumber": 2,
+                "amount": 1.0,
+                "modifier": "cup",
+                "portionDescription": "1 Cup",
+                "gramWeight": 85.0,
+                "measureUnit": {
+                    "id": 9999,
+                    "name": "undetermined",
+                    "abbreviation": "undetermined"
+        }
+        }
+                    ],
     "dataType": "Foundation",
     "foodClass": "FinalFood"
 }

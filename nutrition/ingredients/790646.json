@@ -3711,35 +3711,48 @@
             "loq": 0.004
         }
     ],
-    "foodPortions": [
+    "foodPortions":                     [
         {
-            "id": 234698,
-            "dataPoints": 44,
-            "gramWeight": 143.0,
-            "sequenceNumber": 1,
-            "amount": 1.0,
-            "modifier": "Edible",
-            "minDateAcquired": "11/26/2019",
-            "measureUnit": {
-                "id": 1120,
-                "name": "Onion",
-                "abbreviation": "Onion"
+                "id": 234698,
+                "dataPoints": 44,
+                "gramWeight": 143.0,
+                "sequenceNumber": 1,
+                "amount": 1.0,
+                "modifier": "Edible",
+                "minDateAcquired": "11/26/2019",
+                "measureUnit": {
+                    "id": 1120,
+                    "name": "Onion",
+                    "abbreviation": "Onion"
+                },
+                "minYearAcquired": 2019
             },
-            "minYearAcquired": 2019
-        },
         {
-            "id": 312814,
-            "dataPoints": 0,
-            "gramWeight": 85.0,
-            "sequenceNumber": 1,
-            "amount": 1.0,
-            "measureUnit": {
-                "id": 1121,
-                "name": "RACC",
-                "abbreviation": "RACC"
-            }
+                "id": 312814,
+                "dataPoints": 0,
+                "gramWeight": 85.0,
+                "sequenceNumber": 1,
+                "amount": 1.0,
+                "measureUnit": {
+                    "id": 1121,
+                    "name": "RACC",
+                    "abbreviation": "RACC"
         }
-    ],
+            },
+        {
+                "id": 312815,
+                "sequenceNumber": 2,
+                "amount": 1.0,
+                "modifier": "cup",
+                "portionDescription": "1 Cup",
+                "gramWeight": 150.0,
+                "measureUnit": {
+                    "id": 9999,
+                    "name": "undetermined",
+                    "abbreviation": "undetermined"
+        }
+        }
+                    ],
     "dataType": "Foundation",
     "foodClass": "FinalFood",
     "scientificName": "Allium cepa",
