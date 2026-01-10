@@ -96,11 +96,14 @@
 5. **Handle missing volume measurements:**
    - If any ingredient in the recipe uses a volume unit (Cup, Tbsp, Tsp, etc.) but the ingredient file doesn't have a matching foodPortion, you must manually add it
    - Use the `add_volume_to_ingredient.py` script to add volume-to-weight conversions
-   - **Do NOT change the recipe to use grams instead** - preserve the original recipe's volume measurements
+   - **CRITICAL: Do NOT change the recipe to use grams instead** - preserve the original recipe's base units (Tbsp, Tsp, Cup, etc.)
+   - **The measure converter (`measure_converter.py`) handles unit conversions automatically** - if a recipe calls for "1 Tbsp" but the ingredient only has "tsp" foodPortions, the converter will automatically convert Tbsp to tsp (1 Tbsp = 3 tsp) and find the matching portion
+   - **Only add volume measurements manually if the converter cannot find a match even after trying related volume units**
    - Example: If recipe calls for "1⅔ cups oat flour" but the ingredient only has RACC (30g), run:
      ```
      python3 nutrition/scripts/add_volume_to_ingredient.py <fdc_id> 1.0 Cup <grams_per_cup>
      ```
+   - Example: If recipe calls for "1 Tbsp sugar" but ingredient only has "tsp" and "cup" foodPortions, **keep Tbsp in the recipe** - the converter will handle the conversion to tsp automatically
    - You may need to look up standard conversions or use the recipe's specified weight (e.g., if recipe says "1⅔ cups (200g)", then 1 cup ≈ 120g)
    - After adding volume measurements, verify the ingredient file was updated correctly
 
@@ -135,9 +138,10 @@
    - The `macros` object will contain simplified protein, carbs, and fat breakdown with grams and percentages
    - **If the calculation fails due to missing volume measurements:**
      - The error will indicate which ingredient(s) are missing the required foodPortion
-     - Use `add_volume_to_ingredient.py` to add the missing volume measurement(s)
+     - **First, verify the measure converter cannot handle the conversion automatically** (e.g., Tbsp → tsp conversion)
+     - If the converter truly cannot find a match, use `add_volume_to_ingredient.py` to add the missing volume measurement(s)
      - Re-run the calculation after adding the volume measurements
-     - **Do NOT change the recipe to use grams** - add the volume measurement to the ingredient file instead
+     - **Do NOT change the recipe to use grams instead of the original base unit** - preserve the recipe's original units (Tbsp, Tsp, Cup, etc.) and add the volume measurement to the ingredient file instead
    - If the calculation fails for other reasons, report the error to the user immediately - do not attempt workarounds
 
 8. Compare output with original source recipe:
