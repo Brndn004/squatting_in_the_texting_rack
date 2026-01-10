@@ -38,7 +38,7 @@
    - Prefer tags from the existing tag system (see `nutrition/tags.json` or `nutrition/scripts/recipe_tags.py`)
    - New tags can be created, but they should be generic taxonomy tags (e.g., "breakfast", "meal_prep", "simple")
    - Do NOT create recipe-specific tags (e.g., avoid "overnight_oats" - use generic tags like "breakfast" or "meal_prep" instead)
-   - If creating a new tag, add it to `nutrition/scripts/recipe_tags.py` and run `python3 nutrition/scripts/tag_management.py` to update the tags database
+   - If creating a new tag, add it to `nutrition/scripts/recipe_tags.py` and use the `update_tags_database` MCP tool to update the tags database
 
 3. **Ingredients**
    - Extract all ingredients from the recipe source
@@ -68,10 +68,10 @@
 
 2. Check `ingredient_lookup.json` for existing ingredients
 
-3. Look up missing ingredients using `usda_lookup.py`:
-   ```bash
-   python3 nutrition/scripts/usda_lookup.py --search <ingredient name>
-   ```
+3. Look up missing ingredients using MCP tools:
+   - Use the `search_ingredient` MCP tool to search for ingredients by name
+   - Use the `get_ingredient_details` MCP tool to retrieve full nutrition data for selected ingredients
+   - Use the `save_ingredient` MCP tool to save ingredients to the local database
    - Select the most basic/appropriate ingredient from results
    - If no good match exists, note it for user assistance
 
@@ -85,7 +85,5 @@
    - Empty `nutrition_facts: {}`
 
 6. Calculate nutrition facts:
-   ```bash
-   python3 nutrition/scripts/calculate_recipe_nutrition.py
-   ```
-   This will automatically populate the `nutrition_facts` field
+   - Use the `calculate_recipe_nutrition` MCP tool with the recipe file path
+   - This will automatically populate the `nutrition_facts` and `macros` fields in the recipe file

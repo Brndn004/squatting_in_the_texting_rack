@@ -12,7 +12,11 @@ import requests
 
 from mcp.server import fastmcp
 
+import calculate_meal_nutrition as meal_nutrition_module
+import calculate_recipe_nutrition
 import ingredient_management_lib
+import recipe_tags
+import tag_management
 import usda_lib
 
 # Initialize FastMCP server
@@ -272,6 +276,232 @@ async def delete_ingredient(description: str, fdc_id: int) -> str:
             "status": "failure",
             "stdout": "",
             "stderr": f"File operation failed: {e}",
+        }
+        return _dict_to_json_string(result)
+    except Exception as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Unexpected error: {e}",
+        }
+        return _dict_to_json_string(result)
+
+
+@mcp.tool(
+    description=(
+        "Update the tags database from the RecipeTag enum. This tool reads all tags "
+        "defined in the RecipeTag enum (the source of truth) and updates the tags.json "
+        "file to match. Use this tool after adding new tags to recipe_tags.py to ensure "
+        "the tags database is synchronized. The response includes the number of tags "
+        "updated and a success status."
+    )
+)
+async def update_tags_database() -> str:
+    """Update tags database from RecipeTag enum.
+
+    Returns:
+        JSON string with success status and number of tags updated.
+    """
+    try:
+        # Call the internal function from tag_management module
+        tag_management._update_tags_database()
+        
+        # Count tags in enum
+        tag_count = len(list(recipe_tags.RecipeTag))
+        
+        result = {
+            "status": "success",
+            "stdout": "",
+            "stderr": "",
+            "message": f"Successfully updated tags database with {tag_count} tags",
+            "tag_count": tag_count,
+        }
+        return _dict_to_json_string(result)
+    except Exception as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Failed to update tags database: {e}",
+        }
+        return _dict_to_json_string(result)
+
+
+@mcp.tool(
+    description=(
+        "Calculate nutrition facts for a recipe file. This tool reads a recipe JSON file, "
+        "loads all ingredient data by FDC ID, converts ingredient amounts to grams using "
+        "measure conversion, scales nutrients based on gram weight, and sums all nutrients "
+        "across ingredients. The result is per-serving nutrition facts (divided by serving_size). "
+        "The recipe file is updated in place with the calculated nutrition_facts and macros fields. "
+        "The recipe_path should be relative to the nutrition/recipes directory (e.g., 'chicken_mac_and_cheese.json') "
+        "or an absolute path. Check the 'status' key in the returned JSON to determine if the "
+        "calculation was successful."
+    )
+)
+async def calculate_recipe_nutrition(recipe_path: str) -> str:
+    """Calculate nutrition facts for a recipe.
+
+    Args:
+        recipe_path: Path to recipe JSON file (relative to nutrition/recipes or absolute).
+
+    Returns:
+        JSON string with success status and nutrition calculation results.
+    """
+    try:
+        # Resolve recipe path
+        recipes_dir = calculate_recipe_nutrition._get_recipes_dir()
+        if Path(recipe_path).is_absolute():
+            recipe_file = Path(recipe_path)
+        else:
+            recipe_file = recipes_dir / recipe_path
+        
+        if not recipe_file.exists():
+            result = {
+                "status": "failure",
+                "stdout": "",
+                "stderr": f"Recipe file not found: {recipe_file}",
+            }
+            return _dict_to_json_string(result)
+        
+        # Load recipe to get current state
+        with open(recipe_file, "r", encoding="utf-8") as f:
+            recipe_before = json.load(f)
+        
+        # Calculate and update nutrition
+        updated = calculate_recipe_nutrition._update_recipe_nutrition(recipe_file)
+        
+        if not updated:
+            result = {
+                "status": "failure",
+                "stdout": "",
+                "stderr": f"Failed to update recipe: {recipe_file.name}",
+            }
+            return _dict_to_json_string(result)
+        
+        # Load updated recipe to get results
+        with open(recipe_file, "r", encoding="utf-8") as f:
+            recipe_after = json.load(f)
+        
+        nutrition_facts = recipe_after.get("nutrition_facts", {})
+        macros = recipe_after.get("macros", {})
+        
+        result = {
+            "status": "success",
+            "stdout": "",
+            "stderr": "",
+            "message": f"Successfully calculated nutrition for {recipe_file.name}",
+            "recipe_path": str(recipe_file),
+            "nutrient_count": len(nutrition_facts),
+            "energy_kcal": nutrition_facts.get("Energy (kcal)", 0.0),
+            "macros": macros,
+        }
+        return _dict_to_json_string(result)
+    except FileNotFoundError as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"File not found: {e}",
+        }
+        return _dict_to_json_string(result)
+    except ValueError as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Validation error: {e}",
+        }
+        return _dict_to_json_string(result)
+    except Exception as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Unexpected error: {e}",
+        }
+        return _dict_to_json_string(result)
+
+
+@mcp.tool(
+    description=(
+        "Calculate nutrition facts for a meal file. This tool reads a meal JSON file, "
+        "loads all recipe data referenced in the meal, scales recipe nutrition facts by "
+        "the number of servings specified for each recipe, and sums all nutrients across "
+        "all recipes in the meal. The meal file is updated in place with the calculated "
+        "nutrition_facts and macros fields. The meal_path should be relative to the "
+        "nutrition/meals directory (e.g., 'chicken_mac_and_cheese_meal.json') or an "
+        "absolute path. Note: This will first ensure all recipes are up-to-date before "
+        "calculating meal nutrition. Check the 'status' key in the returned JSON to "
+        "determine if the calculation was successful."
+    )
+)
+async def calculate_meal_nutrition(meal_path: str) -> str:
+    """Calculate nutrition facts for a meal.
+
+    Args:
+        meal_path: Path to meal JSON file (relative to nutrition/meals or absolute).
+
+    Returns:
+        JSON string with success status and nutrition calculation results.
+    """
+    try:
+        # Resolve meal path
+        meals_dir = meal_nutrition_module._get_meals_dir()
+        if Path(meal_path).is_absolute():
+            meal_file = Path(meal_path)
+        else:
+            meal_file = meals_dir / meal_path
+        
+        if not meal_file.exists():
+            result = {
+                "status": "failure",
+                "stdout": "",
+                "stderr": f"Meal file not found: {meal_file}",
+            }
+            return _dict_to_json_string(result)
+        
+        # Load meal to get current state
+        with open(meal_file, "r", encoding="utf-8") as f:
+            meal_before = json.load(f)
+        
+        # Calculate and update nutrition
+        updated = meal_nutrition_module._update_meal_nutrition(meal_file)
+        
+        if not updated:
+            result = {
+                "status": "failure",
+                "stdout": "",
+                "stderr": f"Failed to update meal: {meal_file.name}",
+            }
+            return _dict_to_json_string(result)
+        
+        # Load updated meal to get results
+        with open(meal_file, "r", encoding="utf-8") as f:
+            meal_after = json.load(f)
+        
+        nutrition_facts = meal_after.get("nutrition_facts", {})
+        macros = meal_after.get("macros", {})
+        
+        result = {
+            "status": "success",
+            "stdout": "",
+            "stderr": "",
+            "message": f"Successfully calculated nutrition for {meal_file.name}",
+            "meal_path": str(meal_file),
+            "nutrient_count": len(nutrition_facts),
+            "energy_kcal": nutrition_facts.get("Energy (kcal)", 0.0),
+            "macros": macros,
+        }
+        return _dict_to_json_string(result)
+    except FileNotFoundError as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"File not found: {e}",
+        }
+        return _dict_to_json_string(result)
+    except ValueError as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"Validation error: {e}",
         }
         return _dict_to_json_string(result)
     except Exception as e:
