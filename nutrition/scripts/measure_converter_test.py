@@ -225,7 +225,6 @@ class TestFindFoodPortion(unittest.TestCase):
 
         # Postcondition
         self.assertIn("Could not find matching foodPortion", str(context.exception))
-        self.assertIn("Available foodPortions", str(context.exception))
 
     def test_should_raise_error_when_quantity_is_zero(self):
         """Test error when quantity is zero."""
