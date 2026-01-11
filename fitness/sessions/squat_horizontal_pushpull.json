@@ -1,0 +1,37 @@
+{
+  "name": "Squat + Horizontal Push/Pull",
+  "session_name": "squat_horizontal_pushpull",
+  "exercises": [
+    {
+      "exercise_name": "barbell_squat",
+      "sets": 3,
+      "reps": 8,
+      "percent_1rm": 0.8
+    },
+    {
+      "exercise_name": "barbell_bench_press",
+      "sets": 3,
+      "reps": 8,
+      "percent_1rm": 0.8
+    },
+    {
+      "exercise_name": "barbell_bent_over_row",
+      "sets": 3,
+      "reps": 10,
+      "percent_1rm": 0.8
+    },
+    {
+      "exercise_name": "dumbell_lateral_raise",
+      "sets": 2,
+      "reps": 15,
+      "percent_1rm": 0.7
+    },
+    {
+      "exercise_name": "dumbell_biceps_curl",
+      "sets": 2,
+      "reps": 15,
+      "percent_1rm": 0.7
+    }
+  ],
+  "date_created": "2026-01-11-1768171764"
+}

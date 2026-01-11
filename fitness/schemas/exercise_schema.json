@@ -1,10 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "required": ["exercise_name", "1rm", "date_created"],
+  "required": ["name", "exercise_name", "1rm", "date_created"],
   "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the exercise (e.g., 'Barbell Squat')"
+    },
     "exercise_name": {
-      "type": "string"
+      "type": "string",
+      "description": "Slugified name used for filename (e.g., 'barbell_squat')"
     },
     "1rm": {
       "type": "object",

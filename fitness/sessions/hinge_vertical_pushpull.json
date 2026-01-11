@@ -1,0 +1,37 @@
+{
+  "name": "Hinge + Vertical Push/Pull",
+  "session_name": "hinge_vertical_pushpull",
+  "exercises": [
+    {
+      "exercise_name": "barbell_deadlift",
+      "sets": 2,
+      "reps": 6,
+      "percent_1rm": 0.8
+    },
+    {
+      "exercise_name": "barbell_overhead_press",
+      "sets": 3,
+      "reps": 8,
+      "percent_1rm": 0.8
+    },
+    {
+      "exercise_name": "assisted_pull_up",
+      "sets": 3,
+      "reps": 10,
+      "percent_1rm": 0.7
+    },
+    {
+      "exercise_name": "dumbell_triceps_extension",
+      "sets": 2,
+      "reps": 15,
+      "percent_1rm": 0.7
+    },
+    {
+      "exercise_name": "dumbell_lateral_raise",
+      "sets": 2,
+      "reps": 15,
+      "percent_1rm": 0.7
+    }
+  ],
+  "date_created": "2026-01-11-1768172033"
+}
