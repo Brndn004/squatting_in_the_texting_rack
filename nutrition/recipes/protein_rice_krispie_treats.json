@@ -1,0 +1,219 @@
+{
+  "name": "Protein Rice Krispie Treats",
+  "sources": [
+    "https://thebalancednutritionist.com/protein-rice-krispie-treats/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 9,
+  "tags": [
+    "simple",
+    "sweet"
+  ],
+  "changes": [],
+  "ingredients": [
+    {
+      "fdc_id": 173410,
+      "name": "Butter, salted",
+      "quantity": 4.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 167995,
+      "name": "Candies, marshmallows",
+      "quantity": 10.0,
+      "measure_unit": "Oz"
+    },
+    {
+      "fdc_id": 173471,
+      "name": "Vanilla extract",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2708455,
+      "name": "Cereal, rice crispy, plain",
+      "quantity": 4.0,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2710731,
+      "name": "Nutritional powder mix (EAS Whey Protein Powder)",
+      "quantity": 1.0,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2710339,
+      "name": "White chocolate candy",
+      "quantity": 0.3333333333333333,
+      "measure_unit": "Cup"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "Prepare a 9×9\" pan with parchment paper or a light coating of butter or oil."
+    },
+    {
+      "step_id": 2,
+      "text": "Melt butter in a large saucepan over low-medium heat."
+    },
+    {
+      "step_id": 3,
+      "text": "Add marshmallows to the pan and stir regularly with a silicone or wooden spoon. When marshmallows are about halfway melted, add vanilla extract. Continue stirring regularly until marshmallows are completely melted and smooth and butter, marshmallows and vanilla are completely combined. Remove from heat."
+    },
+    {
+      "step_id": 4,
+      "text": "Stir in crispy rice cereal and protein powder until completely combined. If you can see any dry protein powder, keep mixing!"
+    },
+    {
+      "step_id": 5,
+      "text": "Press mixture very gently into the prepared pan. Be careful not to press down too hard or your squares will be too dense."
+    },
+    {
+      "step_id": 6,
+      "text": "In a small microwave-safe bowl, microwave white chocolate in 15-30 second increments until melted and smooth. Drizzle over the top of the rice krispie treats and then top with sprinkles."
+    },
+    {
+      "step_id": 7,
+      "text": "Allow to cool for 20-30 minutes before slicing into 9 even squares."
+    }
+  ],
+  "nutrition_facts": {
+    "Proximates (g)": 0.0,
+    "Water (g)": 8.817270370370368,
+    "Energy (kJ)": 614.151161111111,
+    "Protein (g)": 13.59987740740741,
+    "Total lipid (fat) (g)": 8.130887777777778,
+    "Ash (g)": 0.2288761111111111,
+    "Carbohydrates (g)": 0.0,
+    "Carbohydrate, by difference (g)": 41.24668314814815,
+    "Fiber, total dietary (g)": 0.08779574074074074,
+    "Total Sugars (g)": 23.69664096296296,
+    "Minerals (mg)": 0.0,
+    "Calcium, Ca (mg)": 60.703575925925925,
+    "Iron, Fe (mg)": 3.218715388888889,
+    "Magnesium, Mg (mg)": 36.03443333333333,
+    "Phosphorus, P (mg)": 138.80336296296295,
+    "Potassium, K (mg)": 128.43956481481484,
+    "Sodium, Na (mg)": 195.71088888888892,
+    "Zinc, Zn (mg)": 1.4530894074074072,
+    "Copper, Cu (mg)": 0.23444601666666667,
+    "Manganese, Mn (mg)": 0.003593288888888889,
+    "Selenium, Se (µg)": 5.796379444444445,
+    "Fluoride, F (µg)": 0.1767111111111111,
+    "Vitamins and Other Components (g)": 0.0,
+    "Vitamin C, total ascorbic acid (mg)": 0.17185185185185187,
+    "Thiamin (mg)": 0.23790410555555555,
+    "Riboflavin (mg)": 0.2779707722222222,
+    "Niacin (mg)": 3.273351714814815,
+    "Pantothenic acid (mg)": 0.008680527777777777,
+    "Vitamin B-6 (mg)": 0.3256852796296296,
+    "Folate, total (µg)": 102.25247592592592,
+    "Folic acid (µg)": 99.55555555555556,
+    "Folate, food (µg)": 2.6969203703703704,
+    "Folate, DFE (µg)": 171.9191425925926,
+    "Choline, total (mg)": 18.250580925925924,
+    "Betaine (mg)": 0.01893333333333333,
+    "Vitamin B-12 (µg)": 0.6430251851851851,
+    "Vitamin B-12, added (µg)": 0.19555555555555557,
+    "Vitamin A, RAE (µg)": 46.367999999999995,
+    "Retinol (µg)": 45.547555555555554,
+    "Carotene, beta (µg)": 9.971555555555554,
+    "Carotene, alpha (µg)": 0.0,
+    "Cryptoxanthin, beta (µg)": 0.0,
+    "Vitamin A, IU (IU)": 157.71466666666663,
+    "Lycopene (µg)": 0.0,
+    "Lutein + zeaxanthin (µg)": 0.0,
+    "Vitamin E (alpha-tocopherol) (mg)": 0.28197333333333335,
+    "Vitamin E, added (mg)": 0.0,
+    "Tocopherol, beta (mg)": 0.0,
+    "Tocopherol, gamma (mg)": 0.0,
+    "Tocopherol, delta (mg)": 0.0,
+    "Tocotrienol, alpha (mg)": 0.0,
+    "Tocotrienol, beta (mg)": 0.0,
+    "Tocotrienol, gamma (mg)": 0.0,
+    "Tocotrienol, delta (mg)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 0.0,
+    "Vitamin D (D2 + D3) (µg)": 0.5444444444444445,
+    "Vitamin D2 (ergocalciferol) (µg)": 0.0,
+    "Vitamin D3 (cholecalciferol) (µg)": 0.0,
+    "Vitamin K (phylloquinone) (µg)": 1.069925925925926,
+    "Lipids (g)": 0.0,
+    "Fatty acids, total saturated (g)": 4.902429762962963,
+    "SFA 4:0 (g)": 0.23198162962962965,
+    "SFA 6:0 (g)": 0.13922696296296294,
+    "SFA 8:0 (g)": 0.08405037037037036,
+    "SFA 10:0 (g)": 0.17691170370370368,
+    "SFA 12:0 (g)": 0.2030314074074074,
+    "SFA 14:0 (g)": 0.5393055129629629,
+    "SFA 16:0 (g)": 2.210611555555555,
+    "SFA 17:0 (g)": 0.035342222222222226,
+    "SFA 18:0 (g)": 1.2687849907407407,
+    "SFA 20:0 (g)": 0.008709333333333333,
+    "Fatty acids, total monounsaturated (g)": 1.9850085925925924,
+    "MUFA 16:1 (g)": 0.06922827407407407,
+    "MUFA 16:1 c (g)": 0.06064977777777777,
+    "MUFA 18:1 (g)": 1.9064563185185182,
+    "MUFA 18:1 c (g)": 1.0715004444444445,
+    "MUFA 20:1 (g)": 0.006311111111111111,
+    "MUFA 22:1 (g)": 0.0,
+    "Fatty acids, total polyunsaturated (g)": 0.4701223685185185,
+    "PUFA 18:2 (g)": 0.41834845370370366,
+    "PUFA 18:2 n-6 c,c (g)": 0.13669866666666664,
+    "PUFA 18:2 CLAs (g)": 0.016850666666666667,
+    "PUFA 18:2 i (g)": 0.018680888888888886,
+    "PUFA 18:3 (g)": 0.05174780925925926,
+    "PUFA 18:3 n-3 c,c,c (ALA) (g)": 0.01988,
+    "PUFA 18:4 (g)": 0.0,
+    "PUFA 20:4 (g)": 0.00031499444444444444,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.0,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.0,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "Fatty acids, total trans (g)": 0.20687822222222219,
+    "Fatty acids, total trans-monoenoic (g)": 0.18819733333333333,
+    "TFA 18:1 t (g)": 0.18819733333333333,
+    "Fatty acids, total trans-polyenoic (g)": 0.018680888888888886,
+    "Cholesterol (mg)": 51.257777777777775,
+    "Phytosterols (mg)": 0.0,
+    "Stigmasterol (mg)": 0.0,
+    "Campesterol (mg)": 0.0,
+    "Beta-sitosterol (mg)": 0.2524444444444444,
+    "Amino acids (g)": 0.0,
+    "Tryptophan (g)": 0.0007573333333333333,
+    "Threonine (g)": 0.013423027777777779,
+    "Isoleucine (g)": 0.012038511111111112,
+    "Leucine (g)": 0.026027855555555555,
+    "Lysine (g)": 0.02848301666666667,
+    "Methionine (g)": 0.00605025,
+    "Cystine (g)": 0.0011348777777777778,
+    "Phenylalanine (g)": 0.01581732222222222,
+    "Tyrosine (g)": 0.0057375,
+    "Valine (g)": 0.019347055555555555,
+    "Arginine (g)": 0.04826062777777778,
+    "Histidine (g)": 0.006806461111111111,
+    "Alanine (g)": 0.05852922222222223,
+    "Aspartic acid (g)": 0.04215343888888889,
+    "Glutamic acid (g)": 0.07675262222222222,
+    "Glycine (g)": 0.1321736888888889,
+    "Proline (g)": 0.09179858333333334,
+    "Serine (g)": 0.02211777222222222,
+    "Alcohol, ethyl (g)": 0.16053333333333333,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Energy (kcal)": 286.925862962963,
+    "PUFA 20:5 n-3 (EPA) (µg)": 0.0
+  },
+  "macros": {
+    "protein": {
+      "grams": 13.6,
+      "percent": 18.6
+    },
+    "carbs": {
+      "grams": 41.2,
+      "percent": 56.4
+    },
+    "fat": {
+      "grams": 8.1,
+      "percent": 25.0
+    }
+  }
+}
