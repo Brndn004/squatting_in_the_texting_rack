@@ -1,0 +1,336 @@
+{
+  "name": "Chipotle Steak and Pepper Bowls",
+  "sources": [
+    "https://mealprepmanual.com/chipotle-steak-and-pepper-bowls/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 5,
+  "tags": [
+    "warm",
+    "main",
+    "meat",
+    "meal_prep"
+  ],
+  "changes": [],
+  "ingredients": [
+    {
+      "fdc_id": 2646175,
+      "name": "Beef, flank, steak, boneless, choice, raw",
+      "quantity": 1.5,
+      "measure_unit": "Lb"
+    },
+    {
+      "fdc_id": 2710186,
+      "name": "Olive oil",
+      "quantity": 0.5,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2707442,
+      "name": "Soy sauce",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 171319,
+      "name": "Spices, chili powder",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 171327,
+      "name": "Spices, onion powder",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 171325,
+      "name": "Spices, garlic powder",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 170931,
+      "name": "Spices, pepper, black",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 175040,
+      "name": "Leavening agents, baking soda",
+      "quantity": 0.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 173468,
+      "name": "Salt, table",
+      "quantity": 0.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2710186,
+      "name": "Olive oil",
+      "quantity": 0.5,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2710788,
+      "name": "Rice, white, cooked, as ingredient",
+      "quantity": 4.0,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 1855560,
+      "name": "CHIPOTLE PEPPERS IN ADOBO SAUCE",
+      "quantity": 3.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2707442,
+      "name": "Soy sauce",
+      "quantity": 2.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2258588,
+      "name": "Peppers, bell, green, raw",
+      "quantity": 150.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 1 medium pepper"
+      ]
+    },
+    {
+      "fdc_id": 2258590,
+      "name": "Peppers, bell, red, raw",
+      "quantity": 150.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 1 medium pepper"
+      ]
+    },
+    {
+      "fdc_id": 790646,
+      "name": "Onions, yellow, raw",
+      "quantity": 100.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 1 small onion"
+      ]
+    },
+    {
+      "fdc_id": 1104647,
+      "name": "Garlic, raw",
+      "quantity": 10.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 2 cloves"
+      ]
+    },
+    {
+      "fdc_id": 2709911,
+      "name": "Corn, frozen, cooked, no added fat",
+      "quantity": 1.0,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2710186,
+      "name": "Olive oil",
+      "quantity": 2.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 168156,
+      "name": "Lime juice, raw",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "In a bowl, combine chipotle peppers in adobo sauce, minced garlic, lime juice, soy sauce, chili powder, and olive oil to make the marinade."
+    },
+    {
+      "step_id": 2,
+      "text": "Place the flank steak in a resealable bag or shallow dish and pour the marinade over it. Marinate for at least 30 minutes, or up to 4 hours in the refrigerator."
+    },
+    {
+      "step_id": 3,
+      "text": "Cook the rice according to package instructions and set aside."
+    },
+    {
+      "step_id": 4,
+      "text": "Heat a large skillet or grill pan over medium-high heat. Remove the steak from the marinade and cook for 4-6 minutes per side, or until desired doneness. Let rest for 5 minutes before slicing."
+    },
+    {
+      "step_id": 5,
+      "text": "While the steak is resting, heat olive oil in a separate pan over medium heat. Add sliced bell peppers and cook until tender, about 5-7 minutes."
+    },
+    {
+      "step_id": 6,
+      "text": "Add the frozen corn to the peppers and cook until heated through, about 3-4 minutes."
+    },
+    {
+      "step_id": 7,
+      "text": "Slice the rested steak against the grain into thin strips."
+    },
+    {
+      "step_id": 8,
+      "text": "Divide the rice among 4 bowls, top with sliced steak, peppers and corn mixture, and garnish with fresh cilantro."
+    }
+  ],
+  "nutrition_facts": {
+    "Proximates (g)": 0.0,
+    "Water (g)": 305.10969478,
+    "Nitrogen (g)": 4.4815694960000005,
+    "Protein (g)": 34.11969035,
+    "Total lipid (fat) (g)": 18.76767379066667,
+    "Ash (g)": 2.4053446888,
+    "Carbohydrates (g)": 0.0,
+    "Carbohydrate, by difference (g)": 58.060319500000006,
+    "Minerals (mg)": 0.0,
+    "Calcium, Ca (mg)": 29.19000340266667,
+    "Iron, Fe (mg)": 5.370155017333334,
+    "Magnesium, Mg (mg)": 68.85443536,
+    "Phosphorus, P (mg)": 350.81252479999995,
+    "Potassium, K (mg)": 816.6133934666666,
+    "Sodium, Na (mg)": 1077.9278421333333,
+    "Zinc, Zn (mg)": 8.805478887999998,
+    "Copper, Cu (mg)": 0.25496564495999996,
+    "Manganese, Mn (mg)": 0.18220808988800002,
+    "Lipids (g)": 0.0,
+    "Fatty acids, total saturated (g)": 5.714661909333333,
+    "Fatty acids, total monounsaturated (g)": 8.280544464,
+    "Fatty acids, total polyunsaturated (g)": 1.1448017801333337,
+    "Fatty acids, total trans (g)": 0.5287975535999999,
+    "Cholesterol (mg)": 78.5167752,
+    "Energy (kcal)": 531.0679742448001,
+    "Alcohol, ethyl (g)": 0.0,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Total Sugars (g)": 1.8471625,
+    "Fiber, total dietary (g)": 2.98093,
+    "Selenium, Se (µg)": 4.360945000000001,
+    "Retinol (µg)": 0.0,
+    "Vitamin A, RAE (µg)": 11.492900000000002,
+    "Carotene, beta (µg)": 99.83350000000002,
+    "Carotene, alpha (µg)": 16.9512,
+    "Vitamin E (alpha-tocopherol) (mg)": 1.280158333333333,
+    "Vitamin D (D2 + D3) (µg)": 0.0,
+    "Cryptoxanthin, beta (µg)": 59.221000000000004,
+    "Lycopene (µg)": 0.20540000000000003,
+    "Lutein + zeaxanthin (µg)": 228.82239999999996,
+    "Vitamin C, total ascorbic acid (mg)": 76.38904,
+    "Thiamin (mg)": 0.07672965000000001,
+    "Riboflavin (mg)": 0.15147295,
+    "Niacin (mg)": 1.9812832999999999,
+    "Vitamin B-6 (mg)": 0.2686649,
+    "Folate, total (µg)": 137.92350000000002,
+    "Vitamin B-12 (µg)": 0.0,
+    "Choline, total (mg)": 13.260055000000003,
+    "Vitamin K (phylloquinone) (µg)": 2.6764433333333333,
+    "Folic acid (µg)": 100.096,
+    "Folate, food (µg)": 16.9685,
+    "Folate, DFE (µg)": 187.72050000000002,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin B-12, added (µg)": 0.0,
+    "SFA 4:0 (g)": 4.6666666666666665e-05,
+    "SFA 6:0 (g)": 0.00012539999999999999,
+    "SFA 8:0 (g)": 0.0005158666666666668,
+    "SFA 10:0 (g)": 0.0002824666666666667,
+    "SFA 12:0 (g)": 0.0009118666666666667,
+    "SFA 14:0 (g)": 0.003330266666666667,
+    "SFA 16:0 (g)": 0.7048731333333332,
+    "SFA 18:0 (g)": 0.13521066666666667,
+    "MUFA 18:1 (g)": 3.328123816666667,
+    "PUFA 18:2 (g)": 0.65982615,
+    "PUFA 18:3 (g)": 0.05568513333333334,
+    "PUFA 20:4 (g)": 0.0008082666666666665,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "MUFA 16:1 (g)": 0.05226283333333333,
+    "PUFA 18:4 (g)": 0.0,
+    "MUFA 20:1 (g)": 0.013328933333333334,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.0,
+    "MUFA 22:1 (g)": 4.6666666666666665e-05,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.0,
+    "Energy (kJ)": 73.735,
+    "Sucrose (g)": 0.37000200000000005,
+    "Glucose (g)": 0.496748,
+    "Fructose (g)": 0.4346145,
+    "Lactose (g)": 0.0,
+    "Maltose (g)": 0.0,
+    "Galactose (g)": 0.002418,
+    "Vitamins and Other Components (g)": 0.0,
+    "Pantothenic acid (mg)": 0.02307155,
+    "Betaine (mg)": 0.10131000000000001,
+    "Vitamin A, IU (IU)": 164.13870000000003,
+    "Tocopherol, beta (mg)": 0.001296,
+    "Tocopherol, gamma (mg)": 0.04883,
+    "Tocopherol, delta (mg)": 0.0,
+    "Tocotrienol, alpha (mg)": 0.022354500000000003,
+    "Tocotrienol, beta (mg)": 0.0,
+    "Tocotrienol, gamma (mg)": 0.015390000000000001,
+    "Tocotrienol, delta (mg)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 0.0,
+    "Vitamin K (Dihydrophylloquinone) (µg)": 0.0,
+    "SFA 13:0 (g)": 0.00014580000000000002,
+    "SFA 15:0 (g)": 0.0,
+    "SFA 17:0 (g)": 7.560000000000001e-05,
+    "SFA 20:0 (g)": 0.0004698000000000001,
+    "SFA 22:0 (g)": 0.0007202,
+    "SFA 24:0 (g)": 0.0,
+    "MUFA 14:1 (g)": 7.36e-05,
+    "MUFA 15:1 (g)": 0.0,
+    "MUFA 17:1 (g)": 0.0,
+    "MUFA 18:1 c (g)": 0.021429400000000005,
+    "MUFA 24:1 c (g)": 5.579999999999999e-05,
+    "PUFA 18:3 n-3 c,c,c (ALA) (g)": 0.0036482000000000007,
+    "PUFA 18:3 n-6 c,c,c (g)": 7.560000000000001e-05,
+    "PUFA 20:2 n-6 c,c (g)": 0.0001364,
+    "PUFA 20:3 (g)": 0.0006992,
+    "Fatty acids, total trans-monoenoic (g)": 0.0,
+    "TFA 18:1 t (g)": 0.0,
+    "Phytosterols (mg)": 1.3386000000000002,
+    "Amino acids (g)": 0.0,
+    "Tryptophan (g)": 0.0017435000000000003,
+    "Threonine (g)": 0.0056317,
+    "Isoleucine (g)": 0.0070888999999999995,
+    "Leucine (g)": 0.014119999999999999,
+    "Lysine (g)": 0.010663999999999998,
+    "Methionine (g)": 0.0023243000000000005,
+    "Cystine (g)": 0.0036199,
+    "Phenylalanine (g)": 0.00898135,
+    "Tyrosine (g)": 0.0066913,
+    "Valine (g)": 0.010716350000000001,
+    "Arginine (g)": 0.03473955000000001,
+    "Histidine (g)": 0.0041625,
+    "Alanine (g)": 0.0098606,
+    "Aspartic acid (g)": 0.0339603,
+    "Glutamic acid (g)": 0.04982415,
+    "Glycine (g)": 0.010152350000000001,
+    "Proline (g)": 0.0258641,
+    "Serine (g)": 0.00798515,
+    "Hydroxyproline (g)": 0.0,
+    "Fluoride, F (µg)": 0.16932,
+    "Sugars, added (g)": 0.297,
+    "Biotin (µg)": 0.12801,
+    "Total dietary fiber (AOAC 2011.25) (g)": 0.542,
+    "Sugars, Total (g)": 1.1640000000000001,
+    "Iodine, I (µg)": 0.0,
+    "Starch (g)": 0.0
+  },
+  "macros": {
+    "protein": {
+      "grams": 34.1,
+      "percent": 25.4
+    },
+    "carbs": {
+      "grams": 58.1,
+      "percent": 43.2
+    },
+    "fat": {
+      "grams": 18.8,
+      "percent": 31.4
+    }
+  }
+}

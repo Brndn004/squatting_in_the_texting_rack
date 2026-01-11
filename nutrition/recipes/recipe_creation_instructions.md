@@ -84,9 +84,10 @@
        2. Use the `search_ingredient` MCP tool to search for the ingredient by name
        3. Select the most basic/appropriate ingredient from results
        4. Use the `get_ingredient_details` MCP tool to retrieve full nutrition data for the selected ingredient
-       5. Use the `save_ingredient` MCP tool to save the ingredient to the local database
-       6. **Wait for the save to complete successfully before proceeding**
-       7. Only then proceed to the next ingredient
+           - **Note: `get_ingredient_details` automatically saves the ingredient to `nutrition/ingredients/{fdc_id}.json` and updates `ingredient_lookup.json`**
+           - No separate save step is needed
+       5. **Wait for the get_ingredient_details call to complete successfully before proceeding**
+       6. Only then proceed to the next ingredient
      - **Do NOT batch multiple searches, get_details, or save operations**
      - **Do NOT start processing the next ingredient until the current one is fully saved**
      - If no good match exists for an ingredient, note it for user assistance before moving on

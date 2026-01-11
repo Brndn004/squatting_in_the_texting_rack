@@ -101,16 +101,17 @@ async def search_ingredient(query: str) -> str:
     description=(
         "Get complete nutritional and ingredient details for a specific food item "
         "by its FoodData Central (FDC) ID. This tool retrieves the full USDA data "
-        "including all nutrients, food components, and metadata. Use this tool after "
-        "searching for an ingredient to get detailed nutrition information. The FDC ID "
-        "can be obtained from the search_ingredient tool results. The response includes "
+        "including all nutrients, food components, and metadata, and automatically "
+        "saves it to nutrition/ingredients/{fdc_id}.json and updates ingredient_lookup.json. "
+        "Use this tool after searching for an ingredient to get detailed nutrition information. "
+        "The FDC ID can be obtained from the search_ingredient tool results. The response includes "
         "the complete food object with all available nutrition facts, food components, "
         "and descriptive information. Check the 'status' key in the returned JSON to "
         "determine if the request was successful."
     )
 )
 async def get_ingredient_details(fdc_id: int) -> str:
-    """Get full details for a specific ingredient by FDC ID.
+    """Get full details for a specific ingredient by FDC ID and save it automatically.
 
     Args:
         fdc_id: FoodData Central ID (integer, e.g., 2705385 for whole milk).
@@ -122,69 +123,7 @@ async def get_ingredient_details(fdc_id: int) -> str:
         api_key = usda_lib.get_api_key()
         food_data = usda_lib.get_food_details(fdc_id, api_key)
         
-        result = {
-            "status": "success",
-            "stdout": "",
-            "stderr": "",
-            "food": food_data,
-        }
-        return _dict_to_json_string(result)
-    except usda_lib.UsdaApiKeyError as e:
-        result = {
-            "status": "failure",
-            "stdout": "",
-            "stderr": f"API key error: {e}",
-        }
-        return _dict_to_json_string(result)
-    except requests.RequestException as e:
-        result = {
-            "status": "failure",
-            "stdout": "",
-            "stderr": f"API request failed: {e}",
-        }
-        return _dict_to_json_string(result)
-    except Exception as e:
-        result = {
-            "status": "failure",
-            "stdout": "",
-            "stderr": f"Unexpected error: {e}",
-        }
-        return _dict_to_json_string(result)
-
-
-@mcp.tool(
-    description=(
-        "Save ingredient data to a local JSON file and update the reverse lookup database. "
-        "This tool saves the food data object (obtained from get_ingredient_details) to "
-        "nutrition/ingredients/{fdc_id}.json and adds an entry to ingredient_lookup.json. "
-        "Use this tool after calling get_ingredient_details to persist ingredient data locally. "
-        "Pass the 'food' object from the get_ingredient_details response as food_data. "
-        "The fdc_id and description are automatically extracted from food_data. The response includes "
-        "the filepath where the data was saved and the description used. Check the 'status' key "
-        "in the returned JSON to determine if the save operation was successful."
-    )
-)
-async def save_ingredient(food_data: dict[str, Any]) -> str:
-    """Save ingredient data to local file and update lookup database.
-
-    Args:
-        food_data: Complete food data dictionary from get_ingredient_details response (extract the 'food' field).
-                   Must contain 'fdcId' and 'description' fields.
-
-    Returns:
-        JSON string with success message, file path, and description used.
-    """
-    try:
-        # Extract required fields from food_data
-        fdc_id = food_data.get("fdcId")
-        if not fdc_id:
-            result = {
-                "status": "failure",
-                "stdout": "",
-                "stderr": "food_data missing required field 'fdcId'",
-            }
-            return _dict_to_json_string(result)
-        
+        # Extract required fields for saving
         description = food_data.get("description")
         if not description:
             result = {
@@ -209,15 +148,24 @@ async def save_ingredient(food_data: dict[str, Any]) -> str:
             "status": "success",
             "stdout": "",
             "stderr": "",
+            "food": food_data,
             "filepath": str(filepath),
             "description": description,
+            "message": f"Ingredient saved to {filepath}",
         }
         return _dict_to_json_string(result)
-    except KeyError as e:
+    except usda_lib.UsdaApiKeyError as e:
         result = {
             "status": "failure",
             "stdout": "",
-            "stderr": f"Missing required field in food_data: {e}",
+            "stderr": f"API key error: {e}",
+        }
+        return _dict_to_json_string(result)
+    except requests.RequestException as e:
+        result = {
+            "status": "failure",
+            "stdout": "",
+            "stderr": f"API request failed: {e}",
         }
         return _dict_to_json_string(result)
     except OSError as e:
@@ -696,6 +644,32 @@ async def validate_recipes_tool() -> str:
             "stderr": f"Unexpected error during validation: {e}",
         }
         return _dict_to_json_string(result)
+
+
+@mcp.tool(
+    description=(
+        "Get instructions for adding volume/weight measurements to an ingredient. "
+        "This tool returns instructions directing the agent to ask the user to use "
+        "the add_volume_to_ingredient.py script when an ingredient is missing "
+        "required foodPortion data. Use this tool when recipe nutrition calculation "
+        "fails due to missing volume measurements for an ingredient."
+    )
+)
+async def add_food_portion() -> str:
+    """Get instructions for adding food portion measurements.
+    
+    Returns:
+        String with instructions to ask the user to use add_volume_to_ingredient.py script.
+    """
+    message = (
+        "To add volume/weight measurements to an ingredient, please ask the user to run "
+        "the add_volume_to_ingredient.py script. The script is located at "
+        "nutrition/scripts/add_volume_to_ingredient.py and requires the following arguments: "
+        "FDC ID, amount (e.g., 1.0), unit (e.g., 'Cup', 'Tbsp', 'Tsp', 'Clove', 'Whole'), "
+        "and grams (weight in grams for that volume amount). "
+        "Example: python3 nutrition/scripts/add_volume_to_ingredient.py <fdc_id> 1.0 Cup 240.0"
+    )
+    return message
 
 
 if __name__ == "__main__":
