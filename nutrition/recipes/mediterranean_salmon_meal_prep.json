@@ -1,0 +1,336 @@
+{
+  "name": "Mediterranean Salmon Meal Prep",
+  "sources": [
+    "https://fitfoodiefinds.com/mediterranean-salmon-meal-prep-recipe/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 4,
+  "tags": [
+    "main",
+    "meal_prep"
+  ],
+  "changes": [],
+  "ingredients": [
+    {
+      "fdc_id": 169387,
+      "name": "Arugula, raw",
+      "quantity": 1.0,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 173475,
+      "name": "Spearmint, fresh",
+      "quantity": 0.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2346393,
+      "name": "Nuts, almonds, whole, raw",
+      "quantity": 0.333,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2710186,
+      "name": "Olive oil",
+      "quantity": 0.25,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 167747,
+      "name": "Lemon juice, raw",
+      "quantity": 0.5,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2710707,
+      "name": "Water, tap",
+      "quantity": 0.5,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 173468,
+      "name": "Salt, table",
+      "quantity": 0.125,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2346406,
+      "name": "Cucumber, with peel, raw",
+      "quantity": 3.0,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2709719,
+      "name": "Tomatoes, raw",
+      "quantity": 1.0,
+      "measure_unit": "Cup",
+      "notes": [
+        "Cherry tomatoes, halved"
+      ]
+    },
+    {
+      "fdc_id": 790577,
+      "name": "Onions, red, raw",
+      "quantity": 60.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 1/2 of a small onion"
+      ]
+    },
+    {
+      "fdc_id": 173469,
+      "name": "Vinegar, cider",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2259794,
+      "name": "Yogurt, Greek, plain, whole milk",
+      "quantity": 2.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 173468,
+      "name": "Salt, table",
+      "quantity": 0.125,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 170931,
+      "name": "Spices, pepper, black",
+      "quantity": 0.125,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 173420,
+      "name": "Cheese, feta",
+      "quantity": 4.0,
+      "measure_unit": "Oz"
+    },
+    {
+      "fdc_id": 169699,
+      "name": "Couscous, dry",
+      "quantity": 0.25,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2706284,
+      "name": "Fish, salmon, raw",
+      "quantity": 24.0,
+      "measure_unit": "Oz"
+    },
+    {
+      "fdc_id": 2709168,
+      "name": "Lemon, raw",
+      "quantity": 1.0,
+      "measure_unit": "Whole"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "FOR THE ARUGULA MINT PESTO: Place all ingredients for the pesto (arugula, mint, almonds, olive oil, lemon juice, water, salt) into a small food processor. Blend on high until smooth. If needed, add more water to thin out the pesto, however it should be thick and delish. Remove the pesto from the blender and set aside for later."
+    },
+    {
+      "step_id": 2,
+      "text": "FOR THE GREEK SALAD: Place sliced cucumbers into a medium-sized bowl and sprinkle cucumbers with salt and mix. Let sit for 10 minutes to extract moisture. After 10 minutes, discard moisture."
+    },
+    {
+      "step_id": 3,
+      "text": "Next, add cherry tomatoes and red onion to the same bowl as the cucumbers."
+    },
+    {
+      "step_id": 4,
+      "text": "Then, add the apple cider vinegar, lemon juice, Greek yogurt, salt, and pepper. Mix well and set aside."
+    },
+    {
+      "step_id": 5,
+      "text": "FOR THE COUSCOUS: Add water to a small saucepan and bring to a boil. Then, add couscous to the saucepan, stir, cover, and remove from heat. Let couscous sit for at least 5 minutes to fully absorb the liquid. Fluff couscous with a fork and set aside."
+    },
+    {
+      "step_id": 6,
+      "text": "FOR THE SALMON: First, take the salmon out of the refrigerator and pat each fillet with a paper towel to remove moisture. Cover a baking sheet with parchment paper and place the salmon fillets on the parchment paper."
+    },
+    {
+      "step_id": 7,
+      "text": "Sprinkle each fillet with salt and pepper and then place a lemon slice on top of each fillet."
+    },
+    {
+      "step_id": 8,
+      "text": "Broil on high for 8-14 minutes or until salmon is light pink in color and flakey. We suggest checking your salmon every 3 minutes because everyone's broiler is so different."
+    },
+    {
+      "step_id": 9,
+      "text": "FOR MEAL PREP: Evenly distribute couscous and salad to four separate meal prep containers. Place a salmon fillet on top of the couscous and slather each fillet with pesto. Eat immediately or place in the refrigerator for later!"
+    }
+  ],
+  "nutrition_facts": {
+    "Proximates (g)": 0.0,
+    "Water (g)": 315.69768979749995,
+    "Energy (kJ)": 543.877465,
+    "Protein (g)": 45.11215325055,
+    "Total lipid (fat) (g)": 46.12259644999999,
+    "Ash (g)": 3.0651340400000002,
+    "Carbohydrates (g)": 0.0,
+    "Carbohydrate, by difference (g)": 21.03904264945,
+    "Fiber, total dietary (g)": 4.028060175,
+    "Total Sugars (g)": 1.7556474999999998,
+    "Minerals (mg)": 0.0,
+    "Calcium, Ca (mg)": 252.28828475000003,
+    "Iron, Fe (mg)": 3.0960145100000007,
+    "Magnesium, Mg (mg)": 114.06512475000001,
+    "Phosphorus, P (mg)": 650.19847775,
+    "Potassium, K (mg)": 1134.9059967499998,
+    "Sodium, Na (mg)": 588.01999,
+    "Zinc, Zn (mg)": 2.3498459,
+    "Copper, Cu (mg)": 0.356663774625,
+    "Manganese, Mn (mg)": 0.6047093374999999,
+    "Selenium, Se (µg)": 48.301979124999995,
+    "Vitamins and Other Components (g)": 0.0,
+    "Vitamin C, total ascorbic acid (mg)": 25.09923175,
+    "Thiamin (mg)": 0.42120301,
+    "Riboflavin (mg)": 0.5460513025,
+    "Niacin (mg)": 15.993858651249997,
+    "Pantothenic acid (mg)": 0.46239175874999994,
+    "Vitamin B-6 (mg)": 1.2899875617499998,
+    "Folate, total (µg)": 70.10470874999999,
+    "Folic acid (µg)": 0.0,
+    "Folate, food (µg)": 70.10470874999999,
+    "Folate, DFE (µg)": 70.10470874999999,
+    "Choline, total (mg)": 149.586938625,
+    "Betaine (mg)": 0.011396875,
+    "Vitamin B-12 (µg)": 6.3644627499999995,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Vitamin A, RAE (µg)": 167.56122125,
+    "Retinol (µg)": 126.86622125,
+    "Carotene, beta (µg)": 251.42986000000002,
+    "Carotene, alpha (µg)": 27.621125,
+    "Cryptoxanthin, beta (µg)": 6.044218750000001,
+    "Vitamin A, IU (IU)": 700.94842125,
+    "Lycopene (µg)": 1264.514375,
+    "Lutein + zeaxanthin (µg)": 226.49974999999998,
+    "Vitamin E (alpha-tocopherol) (mg)": 7.982188175,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 4.53592,
+    "Vitamin D (D2 + D3) (µg)": 18.824068,
+    "Vitamin K (phylloquinone) (µg)": 35.359060375,
+    "Lipids (g)": 0.0,
+    "Fatty acids, total saturated (g)": 10.8728718375,
+    "SFA 4:0 (g)": 0.20255542999999998,
+    "SFA 6:0 (g)": 0.14969398500000003,
+    "SFA 8:0 (g)": 0.14281129750000002,
+    "SFA 10:0 (g)": 0.517075015,
+    "SFA 12:0 (g)": 0.31497453625000005,
+    "SFA 14:0 (g)": 1.5528425475,
+    "SFA 16:0 (g)": 5.787508828749999,
+    "SFA 18:0 (g)": 1.4644967662500001,
+    "Fatty acids, total monounsaturated (g)": 20.09562684375,
+    "MUFA 16:1 (g)": 1.34532652875,
+    "MUFA 18:1 (g)": 14.26178995625,
+    "MUFA 20:1 (g)": 0.56876167,
+    "MUFA 22:1 (g)": 0.02055164,
+    "Fatty acids, total polyunsaturated (g)": 8.27236662,
+    "PUFA 18:2 (g)": 2.5949645825,
+    "PUFA 18:3 (g)": 0.4516643775,
+    "PUFA 18:4 (g)": 0.18540573,
+    "PUFA 20:4 (g)": 0.12609080999999997,
+    "PUFA 20:5 n-3 (EPA) (g)": 1.1770712399999999,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.52049682,
+    "PUFA 22:6 n-3 (DHA) (g)": 1.5495836699999999,
+    "Fatty acids, total trans (g)": 0.0,
+    "Cholesterol (mg)": 116.69809000000001,
+    "Amino acids (g)": 0.0,
+    "Alcohol, ethyl (g)": 0.0,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Energy (kcal)": 685.534045625,
+    "Phytosterols (mg)": 1.2061250000000001,
+    "Tryptophan (g)": 0.10482694249999999,
+    "Threonine (g)": 0.30497069499999996,
+    "Isoleucine (g)": 0.38874793750000003,
+    "Leucine (g)": 0.6957900174999999,
+    "Lysine (g)": 0.46189176000000004,
+    "Methionine (g)": 0.14948935,
+    "Cystine (g)": 0.0666582725,
+    "Phenylalanine (g)": 0.42048809249999997,
+    "Tyrosine (g)": 0.31222961625,
+    "Valine (g)": 0.4888788412499999,
+    "Arginine (g)": 0.494829815,
+    "Histidine (g)": 0.21342820125,
+    "Alanine (g)": 0.35819535500000005,
+    "Aspartic acid (g)": 0.60837541875,
+    "Glutamic acid (g)": 1.73125776875,
+    "Glycine (g)": 0.26011647375,
+    "Proline (g)": 0.7152976187499999,
+    "Serine (g)": 0.5291317737500001,
+    "Nitrogen (g)": 0.6897256974999999,
+    "Molybdenum, Mo (µg)": 8.7132483,
+    "Biotin (µg)": 7.645929225,
+    "Vitamin K (Dihydrophylloquinone) (µg)": 0.0,
+    "Vitamin K (Menaquinone-4) (µg)": 0.078125,
+    "Hydroxyproline (g)": 0.0,
+    "Cysteine (g)": 0.05952375,
+    "Sucrose (g)": 0.26021125,
+    "Glucose (g)": 0.36626937499999995,
+    "Fructose (g)": 0.3008090625,
+    "Lactose (g)": 0.20375000000000001,
+    "Maltose (g)": 0.0,
+    "Galactose (g)": 0.0500609375,
+    "Starch (g)": 0.0,
+    "SFA 15:0 (g)": 1.90625e-05,
+    "SFA 17:0 (g)": 0.0,
+    "SFA 20:0 (g)": 0.0,
+    "SFA 22:0 (g)": 0.0,
+    "SFA 24:0 (g)": 0.0,
+    "MUFA 14:1 (g)": 4.9625e-05,
+    "MUFA 15:1 (g)": 0.0,
+    "MUFA 16:1 c (g)": 0.0,
+    "MUFA 17:1 (g)": 0.0,
+    "MUFA 18:1 c (g)": 0.06584596875,
+    "MUFA 22:1 c (g)": 0.0,
+    "MUFA 24:1 c (g)": 0.0,
+    "PUFA 18:2 n-6 c,c (g)": 0.0084709375,
+    "PUFA 18:2 CLAs (g)": 0.0,
+    "PUFA 18:3 n-3 c,c,c (ALA) (g)": 0.0002808125,
+    "PUFA 18:3 n-6 c,c,c (g)": 0.0,
+    "PUFA 20:2 n-6 c,c (g)": 0.0,
+    "PUFA 20:3 (g)": 0.00010925,
+    "PUFA 20:3 n-3 (g)": 0.0,
+    "PUFA 20:3 n-6 (g)": 0.0,
+    "PUFA 22:4 (g)": 0.0,
+    "Fatty acids, total trans-monoenoic (g)": 0.0,
+    "TFA 16:1 t (g)": 0.0,
+    "TFA 18:1 t (g)": 0.0,
+    "TFA 22:1 t (g)": 0.0,
+    "TFA 18:2 t not further defined (g)": 0.0,
+    "Fatty acids, total trans-polyenoic (g)": 0.0,
+    "Fluoride, F (µg)": 0.032081250000000006,
+    "Total dietary fiber (AOAC 2011.25) (g)": 0.5955,
+    "Sugars, Total (g)": 1.117703125,
+    "Iodine, I (µg)": 3.303125,
+    "Vitamin A (mg)": 0.0,
+    "Vitamin D2 (ergocalciferol) (µg)": 0.0,
+    "Vitamin D3 (cholecalciferol) (µg)": 0.113398,
+    "Tocopherol, beta (mg)": 0.0,
+    "Tocopherol, gamma (mg)": 0.004715,
+    "Tocopherol, delta (mg)": 0.0,
+    "Tocotrienol, alpha (mg)": 0.0006109374999999999,
+    "Tocotrienol, beta (mg)": 0.0,
+    "Tocotrienol, gamma (mg)": 0.0,
+    "Tocotrienol, delta (mg)": 0.0,
+    "SFA 13:0 (g)": 0.0
+  },
+  "macros": {
+    "protein": {
+      "grams": 45.1,
+      "percent": 26.5
+    },
+    "carbs": {
+      "grams": 21.0,
+      "percent": 12.4
+    },
+    "fat": {
+      "grams": 46.1,
+      "percent": 61.1
+    }
+  }
+}

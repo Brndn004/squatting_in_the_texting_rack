@@ -3,6 +3,7 @@
 
 Validates that all ingredient JSON files:
 - Have energy (kcal) data required for recipe nutrition calculations
+- Have foodPortions data required for measurement conversion in recipes
 """
 
 import json
@@ -58,14 +59,27 @@ def _has_energy_kcal(ingredient_data: dict) -> bool:
     return False
 
 
-def _validate_ingredient_energy(ingredient_path: Path) -> bool:
-    """Validate that an ingredient file has energy (kcal) data.
+def _has_food_portions(ingredient_data: dict) -> bool:
+    """Check if ingredient has foodPortions data.
+    
+    Args:
+        ingredient_data: Ingredient JSON data dictionary.
+        
+    Returns:
+        True if ingredient has at least one foodPortion, False otherwise.
+    """
+    food_portions = ingredient_data.get("foodPortions", [])
+    return isinstance(food_portions, list) and len(food_portions) > 0
+
+
+def _validate_ingredient(ingredient_path: Path) -> tuple[bool, bool]:
+    """Validate that an ingredient file has required data.
 
     Args:
         ingredient_path: Path to ingredient JSON file.
 
     Returns:
-        True if ingredient has energy (kcal) data, False otherwise.
+        Tuple of (has_energy, has_food_portions).
     """
     try:
         with open(ingredient_path, "r", encoding="utf-8") as f:
@@ -73,16 +87,19 @@ def _validate_ingredient_energy(ingredient_path: Path) -> bool:
 
         if not isinstance(ingredient_data, dict):
             logger.warning(f"Ingredient file is not a valid JSON object: {ingredient_path}")
-            return False
+            return (False, False)
 
-        return _has_energy_kcal(ingredient_data)
+        has_energy = _has_energy_kcal(ingredient_data)
+        has_food_portions = _has_food_portions(ingredient_data)
+        
+        return (has_energy, has_food_portions)
 
     except json.JSONDecodeError as e:
         logger.error(f"Failed to parse ingredient file {ingredient_path}: {e}")
-        return False
+        return (False, False)
     except Exception as e:
         logger.error(f"Unexpected error reading {ingredient_path}: {e}")
-        return False
+        return (False, False)
 
 
 def _validate_all_ingredients() -> bool:
@@ -109,19 +126,27 @@ def _validate_all_ingredients() -> bool:
     logger.info(f"Validating {len(ingredient_files)} ingredient files...")
 
     missing_energy = []
+    missing_food_portions = []
+    
     for ingredient_file in ingredient_files:
-        if not _validate_ingredient_energy(ingredient_file):
-            # Extract FDC ID from filename
-            fdc_id = ingredient_file.stem
-            try:
-                # Try to get ingredient name from the file
-                with open(ingredient_file, "r", encoding="utf-8") as f:
-                    ingredient_data = json.load(f)
-                    ingredient_name = ingredient_data.get("description", "Unknown")
-            except Exception:
-                ingredient_name = "Unknown"
-            
+        # Extract FDC ID from filename
+        fdc_id = ingredient_file.stem
+        try:
+            # Try to get ingredient name from the file
+            with open(ingredient_file, "r", encoding="utf-8") as f:
+                ingredient_data = json.load(f)
+                ingredient_name = ingredient_data.get("description", "Unknown")
+        except Exception:
+            ingredient_name = "Unknown"
+        
+        has_energy, has_food_portions = _validate_ingredient(ingredient_file)
+        
+        if not has_energy:
             missing_energy.append((fdc_id, ingredient_name))
+            all_valid = False
+        
+        if not has_food_portions:
+            missing_food_portions.append((fdc_id, ingredient_name))
             all_valid = False
 
     if missing_energy:
@@ -130,8 +155,20 @@ def _validate_all_ingredients() -> bool:
             f"✗ {len(missing_energy)} ingredient(s) missing energy (kcal) data:\n"
             + "\n".join(f"  - {item}" for item in missing_list)
         )
-    else:
+    
+    if missing_food_portions:
+        missing_list = [f"[{fdc_id}] {name}" for fdc_id, name in missing_food_portions]
+        logger.error(
+            f"✗ {len(missing_food_portions)} ingredient(s) missing foodPortions data:\n"
+            + "\n".join(f"  - {item}" for item in missing_list)
+        )
+        logger.error(
+            "  These ingredients cannot be used in recipes because measurement conversion requires foodPortions."
+        )
+
+    if not missing_energy and not missing_food_portions:
         logger.debug(f"✓ All {len(ingredient_files)} ingredients have energy (kcal) data")
+        logger.debug(f"✓ All {len(ingredient_files)} ingredients have foodPortions data")
 
     return all_valid
 
@@ -142,9 +179,10 @@ def main() -> None:
         if _validate_all_ingredients():
             logger.info("All ingredients are valid.")
             logger.info("  ✓ All ingredients have energy (kcal) data required for nutrition calculations.")
+            logger.info("  ✓ All ingredients have foodPortions data required for measurement conversion.")
             sys.exit(0)
         else:
-            logger.error("Some ingredients are missing energy (kcal) data.")
+            logger.error("Some ingredients are missing required data (energy or foodPortions).")
             sys.exit(1)
     except Exception as e:
         logger.error(f"Unexpected error: {e}")
