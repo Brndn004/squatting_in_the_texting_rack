@@ -6,14 +6,7 @@ Validates that routine JSON files conform to the routine schema.
 
 from pathlib import Path
 
-
-def get_routines_dir() -> Path:
-    """Get the routines directory path.
-    
-    Returns:
-        Path to the routines directory.
-    """
-    return Path(__file__).parent.parent / "routines"
+import fitness_paths
 
 
 def get_all_routine_files() -> list[Path]:
@@ -25,7 +18,7 @@ def get_all_routine_files() -> list[Path]:
     Raises:
         FileNotFoundError: If routines directory does not exist.
     """
-    routines_dir = get_routines_dir()
+    routines_dir = fitness_paths.get_routines_dir()
     if not routines_dir.exists():
         raise FileNotFoundError(f"Routines directory not found: {routines_dir}")
     return sorted(routines_dir.glob("*.json"))

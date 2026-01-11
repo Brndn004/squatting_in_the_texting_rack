@@ -9,25 +9,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+import fitness_paths
 import validate_routine
-
-
-def get_routines_dir() -> Path:
-    """Get the routines directory path.
-    
-    Returns:
-        Path to the routines directory.
-    """
-    return Path(__file__).parent.parent / "routines"
-
-
-def get_sessions_dir() -> Path:
-    """Get the sessions directory path.
-    
-    Returns:
-        Path to the sessions directory.
-    """
-    return Path(__file__).parent.parent / "sessions"
 
 
 def slugify(text: str) -> str:
@@ -78,7 +61,7 @@ def get_available_sessions() -> list[tuple[str, str]]:
         FileNotFoundError: If sessions directory does not exist.
         ValueError: If no session files found or if session files are invalid.
     """
-    sessions_dir = get_sessions_dir()
+    sessions_dir = fitness_paths.get_sessions_dir()
     if not sessions_dir.exists():
         raise FileNotFoundError(f"Sessions directory not found: {sessions_dir}")
     
@@ -270,7 +253,7 @@ def get_routine_filepath(routine_name: str, datetime_str: str) -> Path:
     Returns:
         Path to routine file.
     """
-    routines_dir = get_routines_dir()
+    routines_dir = fitness_paths.get_routines_dir()
     routine_slug = slugify(routine_name)
     filename = f"{routine_slug}.json"
     return routines_dir / filename

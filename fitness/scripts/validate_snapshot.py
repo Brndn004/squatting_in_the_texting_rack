@@ -6,14 +6,7 @@ Validates that snapshot JSON files conform to the snapshot schema.
 
 from pathlib import Path
 
-
-def get_snapshots_dir() -> Path:
-    """Get the snapshots directory path.
-    
-    Returns:
-        Path to the snapshots directory.
-    """
-    return Path(__file__).parent.parent / "snapshots"
+import fitness_paths
 
 
 def get_all_snapshot_files() -> list[Path]:
@@ -25,7 +18,7 @@ def get_all_snapshot_files() -> list[Path]:
     Raises:
         FileNotFoundError: If snapshots directory does not exist.
     """
-    snapshots_dir = get_snapshots_dir()
+    snapshots_dir = fitness_paths.get_snapshots_dir()
     if not snapshots_dir.exists():
         raise FileNotFoundError(f"Snapshots directory not found: {snapshots_dir}")
     return sorted(snapshots_dir.glob("*.json"))

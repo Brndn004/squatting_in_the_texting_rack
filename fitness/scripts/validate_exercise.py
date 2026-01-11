@@ -6,14 +6,7 @@ Validates that exercise JSON files conform to the exercise schema.
 
 from pathlib import Path
 
-
-def get_exercises_dir() -> Path:
-    """Get the exercises directory path.
-    
-    Returns:
-        Path to the exercises directory.
-    """
-    return Path(__file__).parent.parent / "exercises"
+import fitness_paths
 
 
 def get_all_exercise_files() -> list[Path]:
@@ -25,7 +18,7 @@ def get_all_exercise_files() -> list[Path]:
     Raises:
         FileNotFoundError: If exercises directory does not exist.
     """
-    exercises_dir = get_exercises_dir()
+    exercises_dir = fitness_paths.get_exercises_dir()
     if not exercises_dir.exists():
         raise FileNotFoundError(f"Exercises directory not found: {exercises_dir}")
     return sorted(exercises_dir.glob("*.json"))

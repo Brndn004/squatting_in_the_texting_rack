@@ -6,14 +6,7 @@ Validates that session JSON files conform to the session schema.
 
 from pathlib import Path
 
-
-def get_sessions_dir() -> Path:
-    """Get the sessions directory path.
-    
-    Returns:
-        Path to the sessions directory.
-    """
-    return Path(__file__).parent.parent / "sessions"
+import fitness_paths
 
 
 def get_all_session_files() -> list[Path]:
@@ -25,7 +18,7 @@ def get_all_session_files() -> list[Path]:
     Raises:
         FileNotFoundError: If sessions directory does not exist.
     """
-    sessions_dir = get_sessions_dir()
+    sessions_dir = fitness_paths.get_sessions_dir()
     if not sessions_dir.exists():
         raise FileNotFoundError(f"Sessions directory not found: {sessions_dir}")
     return sorted(sessions_dir.glob("*.json"))

@@ -9,16 +9,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+import fitness_paths
 import validate_exercise
-
-
-def get_exercises_dir() -> Path:
-    """Get the exercises directory path.
-    
-    Returns:
-        Path to the exercises directory.
-    """
-    return Path(__file__).parent.parent / "exercises"
 
 
 def get_current_datetime() -> str:
@@ -155,7 +147,7 @@ def get_exercise_filepath(exercise_name: str, datetime_str: str) -> Path:
     Returns:
         Path to exercise file.
     """
-    exercises_dir = get_exercises_dir()
+    exercises_dir = fitness_paths.get_exercises_dir()
     filename = f"{exercise_name}.json"
     return exercises_dir / filename
 

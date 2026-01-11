@@ -8,16 +8,8 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+import fitness_paths
 import validate_snapshot
-
-
-def get_snapshots_dir() -> Path:
-    """Get the snapshots directory path.
-    
-    Returns:
-        Path to the snapshots directory.
-    """
-    return Path(__file__).parent.parent / "snapshots"
 
 
 def get_current_datetime() -> str:
@@ -185,7 +177,7 @@ def get_snapshot_filepath(datetime_str: str) -> Path:
     Returns:
         Path to snapshot file.
     """
-    snapshots_dir = get_snapshots_dir()
+    snapshots_dir = fitness_paths.get_snapshots_dir()
     filename = f"{datetime_str}_snapshot.json"
     return snapshots_dir / filename
 

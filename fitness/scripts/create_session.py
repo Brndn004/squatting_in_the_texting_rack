@@ -9,25 +9,8 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+import fitness_paths
 import validate_session
-
-
-def get_exercises_dir() -> Path:
-    """Get the exercises directory path.
-    
-    Returns:
-        Path to the exercises directory.
-    """
-    return Path(__file__).parent.parent / "exercises"
-
-
-def get_sessions_dir() -> Path:
-    """Get the sessions directory path.
-    
-    Returns:
-        Path to the sessions directory.
-    """
-    return Path(__file__).parent.parent / "sessions"
 
 
 def get_current_datetime() -> str:
@@ -78,7 +61,7 @@ def get_available_exercises() -> list[tuple[str, str]]:
         FileNotFoundError: If exercises directory does not exist.
         ValueError: If no exercise files found or if exercise files are invalid.
     """
-    exercises_dir = get_exercises_dir()
+    exercises_dir = fitness_paths.get_exercises_dir()
     if not exercises_dir.exists():
         raise FileNotFoundError(f"Exercises directory not found: {exercises_dir}")
     
@@ -345,7 +328,7 @@ def get_session_filepath(session_name: str, datetime_str: str) -> Path:
     Returns:
         Path to session file.
     """
-    sessions_dir = get_sessions_dir()
+    sessions_dir = fitness_paths.get_sessions_dir()
     filename = f"{session_name}.json"
     return sessions_dir / filename
 
