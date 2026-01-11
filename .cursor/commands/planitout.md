@@ -1,0 +1,1 @@
+Write up a markdown plan for this. Organize it in phases that can be accomplished in order, one at a time.
