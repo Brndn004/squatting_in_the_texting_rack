@@ -292,7 +292,8 @@ def _calculate_recipe_nutrition(recipe: typing.Dict[str, typing.Any]) -> typing.
         # Get foodPortions
         food_portions = ingredient_data.get("foodPortions", [])
         if not food_portions:
-            raise ValueError(f"Ingredient {fdc_id} has no foodPortions data")
+            ingredient_name = ingredient.get("name", f"FDC {fdc_id}")
+            raise ValueError(f"Ingredient {ingredient_name} (FDC {fdc_id}) has no foodPortions data")
 
         # Convert to grams using measure_converter
         try:
