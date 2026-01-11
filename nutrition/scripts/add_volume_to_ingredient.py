@@ -240,34 +240,34 @@ def add_volume_to_ingredient(
         )
     
     # Generate new ID and sequenceNumber
-    # Require all portions to have id and sequenceNumber - no defaults allowed
+    # Handle empty foodPortions array (common for BRANDED foods)
     if not food_portions:
-        raise ValueError(
-            f"Ingredient file {ingredient_file} has empty 'foodPortions' array. "
-            f"Cannot determine next ID and sequenceNumber."
-        )
-    
-    ids = []
-    sequences = []
-    for i, p in enumerate(food_portions):
-        if "id" not in p:
-            raise ValueError(
-                f"Ingredient file {ingredient_file} has foodPortion at index {i} missing required 'id' field. "
-                f"All foodPortions must have an 'id' field."
-            )
-        if "sequenceNumber" not in p:
-            raise ValueError(
-                f"Ingredient file {ingredient_file} has foodPortion at index {i} missing required 'sequenceNumber' field. "
-                f"All foodPortions must have a 'sequenceNumber' field."
-            )
-        ids.append(p["id"])
-        sequences.append(p["sequenceNumber"])
-    
-    max_id = max(ids)
-    max_sequence = max(sequences)
-    
-    new_id = max_id + 1
-    new_sequence = max_sequence + 1
+        # Start with ID 1 and sequenceNumber 1 for the first entry
+        new_id = 1
+        new_sequence = 1
+    else:
+        # Validate existing portions have required fields
+        ids = []
+        sequences = []
+        for i, p in enumerate(food_portions):
+            if "id" not in p:
+                raise ValueError(
+                    f"Ingredient file {ingredient_file} has foodPortion at index {i} missing required 'id' field. "
+                    f"All foodPortions must have an 'id' field."
+                )
+            if "sequenceNumber" not in p:
+                raise ValueError(
+                    f"Ingredient file {ingredient_file} has foodPortion at index {i} missing required 'sequenceNumber' field. "
+                    f"All foodPortions must have a 'sequenceNumber' field."
+                )
+            ids.append(p["id"])
+            sequences.append(p["sequenceNumber"])
+        
+        max_id = max(ids)
+        max_sequence = max(sequences)
+        
+        new_id = max_id + 1
+        new_sequence = max_sequence + 1
     
     # Create new foodPortion entry
     new_portion = {
@@ -372,7 +372,7 @@ def add_volume_to_ingredient(
     foodportions_indent = len(foodportions_line_start) - len(foodportions_line_start.lstrip())
     
     # Detect indentation pattern: find first property line and first nested property line
-    # This is required - we cannot proceed without detecting the indentation pattern
+    # Handle empty arrays (common for BRANDED foods)
     item_property_indent = None
     nested_property_indent = None
     
@@ -387,54 +387,50 @@ def add_volume_to_ingredient(
             nested_property_indent = line_indent
             break
     
-    # Require detection of item property indent - no defaults allowed
+    # Handle empty arrays by inferring indentation from file structure
     if item_property_indent is None:
-        raise ValueError(
-            f"Could not detect indentation pattern from 'foodPortions' array in file {ingredient_file}. "
-            f"The array appears to be empty or contains no property lines. "
-            f"Cannot preserve formatting without detecting the indentation pattern."
-        )
-    
-    # Calculate indent per level (how many spaces json.dumps should add per nesting level)
-    if nested_property_indent is not None:
-        indent_per_level = nested_property_indent - item_property_indent
-        if indent_per_level <= 0:
-            raise ValueError(
-                f"Invalid indentation pattern detected in file {ingredient_file}. "
-                f"Nested property indent ({nested_property_indent}) must be greater than "
-                f"item property indent ({item_property_indent})."
-            )
-    else:
-        # If no nested properties detected, calculate from the structure
-        # item_property_indent represents properties inside the object (level 1)
-        # The object itself starts at foodportions_indent + some amount
-        # We can calculate: item_property_indent = object_start + indent_per_level
-        # So: indent_per_level = item_property_indent - object_start
-        # Find object start indent by looking for '{' lines
-        object_start_indent = None
-        for line in array_lines:
-            stripped = line.lstrip()
-            if stripped == '{':
-                object_start_indent = len(line) - len(stripped)
-                break
-        
-        if object_start_indent is None:
-            raise ValueError(
-                f"Could not detect object start indentation in 'foodPortions' array in file {ingredient_file}. "
-                f"Cannot determine indent_per_level without detecting object structure. "
-                f"Detected item property indent: {item_property_indent}."
-            )
-        
-        indent_per_level = item_property_indent - object_start_indent
-        if indent_per_level <= 0:
-            raise ValueError(
-                f"Invalid indentation pattern detected in file {ingredient_file}. "
-                f"Item property indent ({item_property_indent}) must be greater than "
-                f"object start indent ({object_start_indent})."
-            )
-        
-        # Set nested_property_indent for later use (for level 2+ properties)
+        # Array is empty - use standard 4-space indentation (most common JSON formatting)
+        # Properties inside objects are typically indented 4 more spaces from the array
+        indent_per_level = 4
+        item_property_indent = foodportions_indent + indent_per_level
         nested_property_indent = item_property_indent + indent_per_level
+    else:
+        # Calculate indent per level from existing array content
+        if nested_property_indent is not None:
+            indent_per_level = nested_property_indent - item_property_indent
+            if indent_per_level <= 0:
+                raise ValueError(
+                    f"Invalid indentation pattern detected in file {ingredient_file}. "
+                    f"Nested property indent ({nested_property_indent}) must be greater than "
+                    f"item property indent ({item_property_indent})."
+                )
+        else:
+            # If no nested properties detected, calculate from the structure
+            # Find object start indent by looking for '{' lines
+            object_start_indent = None
+            for line in array_lines:
+                stripped = line.lstrip()
+                if stripped == '{':
+                    object_start_indent = len(line) - len(stripped)
+                    break
+            
+            if object_start_indent is None:
+                raise ValueError(
+                    f"Could not detect object start indentation in 'foodPortions' array in file {ingredient_file}. "
+                    f"Cannot determine indent_per_level without detecting object structure. "
+                    f"Detected item property indent: {item_property_indent}."
+                )
+            
+            indent_per_level = item_property_indent - object_start_indent
+            if indent_per_level <= 0:
+                raise ValueError(
+                    f"Invalid indentation pattern detected in file {ingredient_file}. "
+                    f"Item property indent ({item_property_indent}) must be greater than "
+                    f"object start indent ({object_start_indent})."
+                )
+            
+            # Set nested_property_indent for later use (for level 2+ properties)
+            nested_property_indent = item_property_indent + indent_per_level
     
     # Calculate base indent for the array (where the '[' should start)
     # The array should be indented to match the space after "foodPortions": 

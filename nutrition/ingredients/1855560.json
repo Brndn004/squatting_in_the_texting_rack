@@ -8,7 +8,21 @@
             "name": "Added Package Weight"
         }
     ],
-    "foodPortions": [],
+    "foodPortions": [
+        {
+            "id": 1,
+            "sequenceNumber": 1,
+            "amount": 1.0,
+            "modifier": "tbsp",
+            "portionDescription": "1 Tbsp",
+            "gramWeight": 15.0,
+            "measureUnit": {
+                "id": 9999,
+                "name": "undetermined",
+                "abbreviation": "undetermined"
+            }
+        }
+    ],
     "fdcId": 1855560,
     "description": "CHIPOTLE PEPPERS IN ADOBO SAUCE",
     "publicationDate": "7/29/2021",
