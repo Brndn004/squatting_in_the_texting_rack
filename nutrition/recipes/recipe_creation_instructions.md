@@ -145,24 +145,13 @@
      - **Do NOT change the recipe to use grams instead of the original base unit** - preserve the recipe's original units (Tbsp, Tsp, Cup, etc.) and add the volume measurement to the ingredient file instead
    - If the calculation fails for other reasons, report the error to the user immediately - do not attempt workarounds
 
-8. Compare output with original source recipe:
-   - **After** nutrition facts have been calculated, compare the final recipe with the original source
-   - Extract the original recipe's nutrition information (calories, macros) if available from the source
-   - Report the following to the user:
-     - **New ingredients added**: List all ingredients that were newly added to the database during this recipe creation
-       - Include FDC ID, name, and description for each new ingredient
-       - Example: "Added new ingredient: [2710731] Nutritional powder mix (EAS Whey Protein Powder)"
-     - **Ingredient substitutions made**: List each substitution (original → substituted ingredient) with quantities
-       - Example: "Soy Milk Protein Plus (⅔ cup) → Whole Milk (⅔ cup)"
-     - **Calorie comparison**: 
-       - Original calories (if available) vs calculated calories
-       - Difference in calories (+/- X kcal)
-       - Identify which ingredient substitutions contributed most to the difference
-       - Explain the nutritional reasons (e.g., "Greek yogurt is denser and higher in fat/protein than plant-based yogurt")
-     - **Macro differences**: Compare protein, carbs, and fat if original values are available
-     - **Other notable differences**:
-       - Serving size differences (if any)
-       - Ingredient quantity differences (if any adjustments were made)
-       - Any ingredients that couldn't be matched and were approximated
-       - Any other significant nutritional or structural differences
-   - Format the comparison clearly and concisely for the user
+8. **Track new ingredients and substitutions:**
+   - **New ingredients added**: Keep track of all ingredients that were newly added to the database during this recipe creation
+     - Include FDC ID, name, and description for each new ingredient
+     - Example: "Added new ingredient: [2710731] Nutritional powder mix (EAS Whey Protein Powder)"
+     - These should be documented in the recipe's `changes` field if they represent substitutions from the original source
+   
+   - **Ingredient substitutions made**: Document each substitution (original → substituted ingredient) with quantities
+     - Example: "Soy Milk Protein Plus (⅔ cup) → Whole Milk (⅔ cup)"
+     - All substitutions should be recorded in the recipe's `changes` field
+     - This information will be used later when comparing the recipe with the original source
