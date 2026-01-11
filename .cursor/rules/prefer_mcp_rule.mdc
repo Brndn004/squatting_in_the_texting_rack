@@ -1,0 +1,9 @@
+---
+description: Prefer MCP tools when available
+globs: '*'
+alwaysApply: true
+---
+
+# Prefer MCP
+
+If an MCP tool is available, prefer using it to investigating in other ways.
