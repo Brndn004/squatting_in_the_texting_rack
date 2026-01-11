@@ -6,9 +6,9 @@ Creates a new fitness routine file with workout sessions for a week.
 
 import json
 import re
-from datetime import datetime
 from pathlib import Path
 
+import date_utils
 import fitness_paths
 import validate_routine
 
@@ -37,18 +37,6 @@ def slugify(text: str) -> str:
         raise ValueError("Slugified name cannot be empty")
     
     return text
-
-
-def get_current_datetime() -> str:
-    """Get current datetime in format YYYY-MM-DD-<unix epoch seconds>.
-    
-    Returns:
-        Current datetime as a string.
-    """
-    now = datetime.now()
-    date_str = now.strftime("%Y-%m-%d")
-    unix_seconds = int(now.timestamp())
-    return f"{date_str}-{unix_seconds}"
 
 
 def get_available_sessions() -> list[tuple[str, str]]:
@@ -279,7 +267,7 @@ def create_routine() -> None:
         FileNotFoundError: If sessions directory does not exist.
         OSError: If file cannot be written.
     """
-    datetime_str = get_current_datetime()
+    datetime_str = date_utils.get_current_datetime()
     
     # Validate datetime format
     parts = datetime_str.split("-")

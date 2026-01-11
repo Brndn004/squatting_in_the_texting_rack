@@ -6,23 +6,11 @@ Creates a new fitness exercise file with exercise name and 1RM.
 
 import json
 import re
-from datetime import datetime
 from pathlib import Path
 
+import date_utils
 import fitness_paths
 import validate_exercise
-
-
-def get_current_datetime() -> str:
-    """Get current datetime in format YYYY-MM-DD-<unix epoch seconds>.
-    
-    Returns:
-        Current datetime as a string.
-    """
-    now = datetime.now()
-    date_str = now.strftime("%Y-%m-%d")
-    unix_seconds = int(now.timestamp())
-    return f"{date_str}-{unix_seconds}"
 
 
 def slugify(text: str) -> str:
@@ -171,7 +159,7 @@ def create_single_exercise() -> None:
         ValueError: If invalid input provided or validation fails.
         OSError: If file cannot be written.
     """
-    datetime_str = get_current_datetime()
+    datetime_str = date_utils.get_current_datetime()
     
     # Validate datetime format
     parts = datetime_str.split("-")
