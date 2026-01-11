@@ -1,0 +1,222 @@
+{
+  "name": "Teriyaki Chicken and Asparagus Stir-Fry",
+  "sources": [
+    "https://www.skinnytaste.com/chicken-and-asparagus-teriyaki-stir-fry/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 4,
+  "tags": [
+    "warm",
+    "main",
+    "meat",
+    "simple"
+  ],
+  "changes": [],
+  "ingredients": [
+    {
+      "fdc_id": 2707442,
+      "name": "Soy sauce",
+      "quantity": 3.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2570531,
+      "name": "MIRIN SWEET COOKING RICE WINE",
+      "quantity": 2.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2710281,
+      "name": "Honey",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 169231,
+      "name": "Ginger root, raw",
+      "quantity": 0.5,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 169698,
+      "name": "Cornstarch",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2646170,
+      "name": "Chicken, breast, boneless, skinless, raw",
+      "quantity": 1.5,
+      "measure_unit": "Lb"
+    },
+    {
+      "fdc_id": 173468,
+      "name": "Salt, table",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2710188,
+      "name": "Canola oil",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    },
+    {
+      "fdc_id": 2710823,
+      "name": "Asparagus, green, raw",
+      "quantity": 12.0,
+      "measure_unit": "Oz"
+    },
+    {
+      "fdc_id": 1104647,
+      "name": "Garlic, raw",
+      "quantity": 4.0,
+      "measure_unit": "Clove"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "Whisk the soy sauce, mirin, honey and ginger and cornstarch in a small bowl; set aside."
+    },
+    {
+      "step_id": 2,
+      "text": "Lightly season the chicken with salt."
+    },
+    {
+      "step_id": 3,
+      "text": "Heat a large non-stick wok over medium-high heat, when hot add 1 teaspoon of the oil, then add the asparagus and cook until tender-crisp, about 6 to 7 minutes."
+    },
+    {
+      "step_id": 4,
+      "text": "Add the garlic and cook until golden, about 1 minute. Set aside on a dish."
+    },
+    {
+      "step_id": 5,
+      "text": "Increase the heat to high, then add 1 teaspoon of oil and half of the chicken and cook until browned and cooked through, about 4 minutes on each side."
+    },
+    {
+      "step_id": 6,
+      "text": "Remove and set aside and repeat with the remaining oil and chicken."
+    },
+    {
+      "step_id": 7,
+      "text": "Place everything back into the wok, pour the sauce over and cook stirring 30 to 60 seconds until the sauce thickens slightly."
+    }
+  ],
+  "nutrition_facts": {
+    "Protein (g)": 40.875104770833325,
+    "Total lipid (fat) (g)": 7.066994218833334,
+    "Carbohydrate, by difference (g)": 13.451835748666667,
+    "Alcohol, ethyl (g)": 0.0,
+    "Water (g)": 219.1320747166666,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Total Sugars (g)": 6.1659999999999995,
+    "Fiber, total dietary (g)": 1.8634632549999999,
+    "Calcium, Ca (mg)": 29.168102129999998,
+    "Iron, Fe (mg)": 1.184378817,
+    "Magnesium, Mg (mg)": 65.6025973,
+    "Phosphorus, P (mg)": 431.7545945,
+    "Potassium, K (mg)": 856.0572844999999,
+    "Sodium, Na (mg)": 1354.3984705999999,
+    "Zinc, Zn (mg)": 1.7391986824999999,
+    "Copper, Cu (mg)": 0.12713190636,
+    "Selenium, Se (µg)": 0.5967500000000001,
+    "Retinol (µg)": 0.0,
+    "Vitamin A, RAE (µg)": 0.0,
+    "Carotene, beta (µg)": 0.0,
+    "Carotene, alpha (µg)": 0.0,
+    "Vitamin E (alpha-tocopherol) (mg)": 0.60745,
+    "Vitamin D (D2 + D3) (µg)": 0.0,
+    "Cryptoxanthin, beta (µg)": 0.0,
+    "Lycopene (µg)": 0.0,
+    "Lutein + zeaxanthin (µg)": 0.0,
+    "Vitamin C, total ascorbic acid (mg)": 8.346989205,
+    "Thiamin (mg)": 0.06261834375,
+    "Riboflavin (mg)": 0.021955000000000002,
+    "Niacin (mg)": 1.19249783,
+    "Vitamin B-6 (mg)": 0.11524422299999999,
+    "Folate, total (µg)": 157.0760125,
+    "Vitamin B-12 (µg)": 0.0,
+    "Choline, total (mg)": 2.5290000000000004,
+    "Vitamin K (phylloquinone) (µg)": 2.4962500000000003,
+    "Folic acid (µg)": 0.0,
+    "Folate, food (µg)": 1.8625,
+    "Folate, DFE (µg)": 1.8625,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Cholesterol (mg)": 123.7115481,
+    "Fatty acids, total saturated (g)": 0.834930836,
+    "SFA 4:0 (g)": 0.0,
+    "SFA 6:0 (g)": 0.0,
+    "SFA 8:0 (g)": 5.25e-05,
+    "SFA 10:0 (g)": 0.0,
+    "SFA 12:0 (g)": 0.0002925,
+    "SFA 14:0 (g)": 0.0017800000000000001,
+    "SFA 16:0 (g)": 0.14296,
+    "SFA 18:0 (g)": 0.05906750000000001,
+    "MUFA 18:1 (g)": 2.1209925,
+    "PUFA 18:2 (g)": 0.6519800000000001,
+    "PUFA 18:3 (g)": 0.264485,
+    "PUFA 20:4 (g)": 0.0,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "MUFA 16:1 (g)": 0.0073325,
+    "PUFA 18:4 (g)": 0.0,
+    "MUFA 20:1 (g)": 0.0662025,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.0,
+    "MUFA 22:1 (g)": 0.0,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.0,
+    "Fatty acids, total monounsaturated (g)": 2.830032736,
+    "Fatty acids, total polyunsaturated (g)": 1.422212411,
+    "Energy (kcal)": 278.86055720749994,
+    "Sugars, added (g)": 2.0025,
+    "Fatty acids, total trans (g)": 0.0148834875,
+    "Proximates (g)": 0.0,
+    "Energy (kJ)": 32.347500000000004,
+    "Ash (g)": 4.0827475049999995,
+    "Carbohydrates (g)": 0.0,
+    "Minerals (mg)": 0.0,
+    "Manganese, Mn (mg)": 0.1269630675,
+    "Vitamins and Other Components (g)": 0.0,
+    "Pantothenic acid (mg)": 0.0015225,
+    "Vitamin A, IU (IU)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 0.0,
+    "Lipids (g)": 0.0,
+    "Phytosterols (mg)": 0.11249999999999999,
+    "Amino acids (g)": 0.0,
+    "Tryptophan (g)": 8.999999999999999e-05,
+    "Threonine (g)": 0.00026999999999999995,
+    "Isoleucine (g)": 0.0003825,
+    "Leucine (g)": 0.0005549999999999999,
+    "Lysine (g)": 0.0004275,
+    "Methionine (g)": 9.75e-05,
+    "Cystine (g)": 6e-05,
+    "Phenylalanine (g)": 0.00033749999999999996,
+    "Tyrosine (g)": 0.00015,
+    "Valine (g)": 0.0005474999999999999,
+    "Arginine (g)": 0.0003225,
+    "Histidine (g)": 0.000225,
+    "Alanine (g)": 0.00023249999999999999,
+    "Aspartic acid (g)": 0.00156,
+    "Glutamic acid (g)": 0.001215,
+    "Glycine (g)": 0.0003225,
+    "Proline (g)": 0.0003075,
+    "Serine (g)": 0.00033749999999999996,
+    "Nitrogen (g)": 6.378907429999999,
+    "Fluoride, F (µg)": 0.03
+  },
+  "macros": {
+    "protein": {
+      "grams": 40.9,
+      "percent": 58.2
+    },
+    "carbs": {
+      "grams": 13.5,
+      "percent": 19.2
+    },
+    "fat": {
+      "grams": 7.1,
+      "percent": 22.6
+    }
+  }
+}

@@ -16,6 +16,7 @@ import typing
 from pathlib import Path
 
 import measure_converter
+import validate_ingredients
 
 # Constants
 _RECIPES_DIR = Path(__file__).parent.parent / "recipes"
@@ -475,6 +476,14 @@ def _update_all_recipes() -> None:
         FileNotFoundError: If any ingredient file is missing.
         SystemExit: If any recipe fails to update.
     """
+    # Validate all ingredients before processing recipes
+    logger.info("Validating all ingredients...")
+    if not validate_ingredients._validate_all_ingredients():
+        raise ValueError(
+            "Cannot calculate recipe nutrition: Some ingredients are missing energy (kcal) data. "
+            "Please fix all ingredient files before calculating recipe nutrition."
+        )
+    
     recipes_dir = _get_recipes_dir()
     if not recipes_dir.exists():
         logger.warning(f"Recipes directory not found: {recipes_dir}")

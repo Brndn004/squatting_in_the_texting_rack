@@ -1087,20 +1087,33 @@
             ]
         }
     ],
-    "foodPortions": [
+    "foodPortions":                     [
         {
-            "id": 312811,
-            "dataPoints": 0,
-            "gramWeight": 85.0,
-            "sequenceNumber": 1,
-            "amount": 1.0,
-            "measureUnit": {
-                "id": 1121,
-                "name": "RACC",
-                "abbreviation": "RACC"
-            }
+                "id": 312811,
+                "dataPoints": 0,
+                "gramWeight": 85.0,
+                "sequenceNumber": 1,
+                "amount": 1.0,
+                "measureUnit": {
+                    "id": 1121,
+                    "name": "RACC",
+                    "abbreviation": "RACC"
         }
-    ],
+            },
+        {
+                "id": 312812,
+                "sequenceNumber": 2,
+                "amount": 1.0,
+                "modifier": "clove",
+                "portionDescription": "1 Clove",
+                "gramWeight": 5.0,
+                "measureUnit": {
+                    "id": 9999,
+                    "name": "undetermined",
+                    "abbreviation": "undetermined"
+        }
+        }
+                    ],
     "dataType": "Foundation",
     "foodClass": "FinalFood",
     "scientificName": "Allium sativum",
