@@ -8,6 +8,7 @@ import re
 from pathlib import Path
 
 import date_utils
+import exercise_discovery
 import file_utils
 import fitness_paths
 import validate_session
@@ -37,61 +38,6 @@ def slugify(text: str) -> str:
         raise ValueError("Slugified name cannot be empty")
     
     return text
-
-
-def get_available_exercises() -> list[tuple[str, str]]:
-    """Get list of available exercises from exercise files.
-    
-    Returns:
-        List of tuples (human-readable name, exercise_name slug) sorted by human-readable name.
-        
-    Raises:
-        FileNotFoundError: If exercises directory does not exist.
-        ValueError: If no exercise files found or if exercise files are invalid.
-    """
-    exercises_dir = fitness_paths.get_exercises_dir()
-    if not exercises_dir.exists():
-        raise FileNotFoundError(f"Exercises directory not found: {exercises_dir}")
-    
-    exercise_files = sorted(exercises_dir.glob("*.json"))
-    if not exercise_files:
-        raise ValueError("No exercise files found in exercises directory")
-    
-    exercises = []
-    for exercise_file in exercise_files:
-        try:
-            exercise_data = file_utils.load_json_file(exercise_file)
-            
-            if "name" not in exercise_data:
-                raise ValueError(f"Exercise file missing 'name' field: {exercise_file}")
-            
-            if "exercise_name" not in exercise_data:
-                raise ValueError(f"Exercise file missing 'exercise_name' field: {exercise_file}")
-            
-            name = exercise_data["name"]
-            exercise_name = exercise_data["exercise_name"]
-            
-            if not isinstance(name, str):
-                raise ValueError(f"Exercise name must be a string in {exercise_file}")
-            
-            if not isinstance(exercise_name, str):
-                raise ValueError(f"Exercise name slug must be a string in {exercise_file}")
-            
-            if not name:
-                raise ValueError(f"Exercise name cannot be empty in {exercise_file}")
-            
-            if not exercise_name:
-                raise ValueError(f"Exercise name slug cannot be empty in {exercise_file}")
-            
-            exercises.append((name, exercise_name))
-        except (FileNotFoundError, ValueError) as e:
-            raise ValueError(f"Failed to load exercise file {exercise_file}: {e}")
-    
-    if not exercises:
-        raise ValueError("No valid exercises found")
-    
-    # Sort by human-readable name
-    return sorted(exercises, key=lambda x: x[0])
 
 
 def prompt_session_name() -> str:
@@ -330,7 +276,7 @@ def create_single_session() -> None:
     if len(parts) < 4:
         raise ValueError(f"Invalid datetime format: {datetime_str}. Expected YYYY-MM-DD-<unix epoch seconds>")
     
-    available_exercises = get_available_exercises()
+    available_exercises = exercise_discovery.get_available_exercises()
     print(f"Found {len(available_exercises)} available exercises")
     print()
     
