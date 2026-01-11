@@ -1,0 +1,318 @@
+{
+  "name": "Asian Ground Turkey Bowls",
+  "sources": [
+    "https://mealprepmanual.com/asian-flavored-ground-turkey-bowls/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 5,
+  "tags": [
+    "warm",
+    "main",
+    "meat",
+    "meal_prep"
+  ],
+  "changes": [],
+  "ingredients": [
+    {
+      "fdc_id": 2710788,
+      "name": "Rice, white, cooked, as ingredient",
+      "quantity": 2.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 790646,
+      "name": "Onions, yellow, raw",
+      "quantity": 200.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 1 medium sweet onion"
+      ]
+    },
+    {
+      "fdc_id": 2258588,
+      "name": "Peppers, bell, green, raw",
+      "quantity": 200.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 1 large green pepper"
+      ]
+    },
+    {
+      "fdc_id": 1104647,
+      "name": "Garlic, raw",
+      "quantity": 15.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 3 cloves of garlic"
+      ]
+    },
+    {
+      "fdc_id": 170393,
+      "name": "Carrots, raw",
+      "quantity": 200.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 2 large carrots"
+      ]
+    },
+    {
+      "fdc_id": 2710186,
+      "name": "Olive oil",
+      "quantity": 2,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 172850,
+      "name": "Turkey, ground, 93% lean, 7% fat, raw",
+      "quantity": 2.0,
+      "measure_unit": "Lb"
+    },
+    {
+      "fdc_id": 169251,
+      "name": "Mushrooms, white, raw",
+      "quantity": 8.0,
+      "measure_unit": "Oz"
+    },
+    {
+      "fdc_id": 2710281,
+      "name": "Honey",
+      "quantity": 2,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 171186,
+      "name": "Sauce, hot chile, sriracha",
+      "quantity": 2.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 170926,
+      "name": "Spices, ginger, ground",
+      "quantity": 0.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 171016,
+      "name": "Oil, sesame, salad or cooking",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2710186,
+      "name": "Olive oil",
+      "quantity": 2,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2707442,
+      "name": "Soy sauce",
+      "quantity": 3.0,
+      "measure_unit": "Tbsp"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "Wash and cut your green pepper into a large dice. Cut your sweet onion into a large dice as well."
+    },
+    {
+      "step_id": 2,
+      "text": "Cut your mushrooms into quarters if they are small or more if they are larger mushrooms."
+    },
+    {
+      "step_id": 3,
+      "text": "In a large skillet, heat 1 Tbsp of olive oil over medium high heat. Add the onion first and cook for 1-2 minutes then add in the green peppers and garlic. Cook until soft and remove from the pan. Season with salt and pepper to taste."
+    },
+    {
+      "step_id": 4,
+      "text": "Heat 1 Tbsp of olive oil over medium high heat. Add in the ground turkey."
+    },
+    {
+      "step_id": 5,
+      "text": "When the turkey is half way browned, add in the chopped mushrooms and cook together until the turkey has fully browned."
+    },
+    {
+      "step_id": 6,
+      "text": "When the turkey has finished, add in 1 Tbsp of honey, 3 Tbsp soy sauce, 2 tsp sriracha, 1 tsp sesame oil, and ½ tsp ground ginger. Stir to incorporate and season with salt and pepper to taste."
+    },
+    {
+      "step_id": 7,
+      "text": "Cook enough rice to have 2 ½ cups of cooked rice. 1 cup of uncooked rice will yield around 3 cups of cooked rice."
+    },
+    {
+      "step_id": 8,
+      "text": "This recipe makes 5 servings. You do not need to cook the shredded carrots because they will cook when reheated in the microwave. Add ½ cup of rice and carrots to each container and divide the remaining ingredients equally."
+    }
+  ],
+  "nutrition_facts": {
+    "Protein (g)": 39.76589592,
+    "Total lipid (fat) (g)": 20.516235733333335,
+    "Carbohydrate, by difference (g)": 41.48963925333332,
+    "Alcohol, ethyl (g)": 0.0,
+    "Water (g)": 356.25406023999994,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Total Sugars (g)": 5.457607493333333,
+    "Fiber, total dietary (g)": 2.9560653333333335,
+    "Calcium, Ca (mg)": 69.37943733333331,
+    "Iron, Fe (mg)": 4.055633226666668,
+    "Magnesium, Mg (mg)": 72.2641893333333,
+    "Phosphorus, P (mg)": 475.0630026666666,
+    "Potassium, K (mg)": 876.40864,
+    "Sodium, Na (mg)": 740.7132853333333,
+    "Zinc, Zn (mg)": 5.614637546666666,
+    "Copper, Cu (mg)": 0.475511632,
+    "Selenium, Se (µg)": 41.41357093333333,
+    "Retinol (µg)": 39.916095999999996,
+    "Vitamin A, RAE (µg)": 377.27369600000003,
+    "Carotene, beta (µg)": 3346.8184,
+    "Carotene, alpha (µg)": 1396.884,
+    "Vitamin E (alpha-tocopherol) (mg)": 1.4225830666666663,
+    "Vitamin D (D2 + D3) (µg)": 0.8164656000000001,
+    "Cryptoxanthin, beta (µg)": 8.684000000000001,
+    "Lycopene (µg)": 0.4,
+    "Lutein + zeaxanthin (µg)": 125.696,
+    "Vitamin C, total ascorbic acid (mg)": 47.41053653333334,
+    "Thiamin (mg)": 0.223060408,
+    "Riboflavin (mg)": 0.6235533973333333,
+    "Niacin (mg)": 12.852088466666666,
+    "Vitamin B-6 (mg)": 0.8823271679999998,
+    "Folate, total (µg)": 103.28837333333334,
+    "Vitamin B-12 (µg)": 2.19538528,
+    "Choline, total (mg)": 111.36327226666667,
+    "Vitamin K (phylloquinone) (µg)": 6.657906666666666,
+    "Folic acid (µg)": 62.55999999999999,
+    "Folate, food (µg)": 31.844373333333333,
+    "Folate, DFE (µg)": 137.99237333333332,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Cholesterol (mg)": 134.263232,
+    "Fatty acids, total saturated (g)": 4.7506110266666655,
+    "SFA 4:0 (g)": 0.0054804373333333335,
+    "SFA 6:0 (g)": 4.86e-05,
+    "SFA 8:0 (g)": 0.0036660693333333333,
+    "SFA 10:0 (g)": 0.010102805333333334,
+    "SFA 12:0 (g)": 0.018303413333333334,
+    "SFA 14:0 (g)": 0.12486155733333333,
+    "SFA 16:0 (g)": 3.305493082666666,
+    "SFA 18:0 (g)": 1.178042141333333,
+    "MUFA 18:1 (g)": 7.4853508773333335,
+    "PUFA 18:2 (g)": 4.933904528,
+    "PUFA 18:3 (g)": 0.2710488026666667,
+    "PUFA 20:4 (g)": 0.19643707733333332,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.014514943999999998,
+    "MUFA 16:1 (g)": 0.5352251946666666,
+    "PUFA 18:4 (g)": 0.0018143679999999998,
+    "MUFA 20:1 (g)": 0.06501933866666668,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.009071840000000001,
+    "MUFA 22:1 (g)": 0.0019183013333333335,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.018143680000000002,
+    "Fatty acids, total monounsaturated (g)": 8.151338423999999,
+    "Fatty acids, total polyunsaturated (g)": 5.531073202666667,
+    "Energy (kcal)": 504.5675306666668,
+    "Proximates (g)": 0.0,
+    "Energy (kJ)": 1378.62336,
+    "Ash (g)": 2.93934776,
+    "Carbohydrates (g)": 0.0,
+    "Total dietary fiber (AOAC 2011.25) (g)": 1.084,
+    "Sugars, Total (g)": 2.3280000000000003,
+    "Sucrose (g)": 2.0833799999999996,
+    "Glucose (g)": 2.0069321600000003,
+    "Fructose (g)": 1.2764746400000002,
+    "Lactose (g)": 0.0,
+    "Maltose (g)": 0.0,
+    "Minerals (mg)": 0.0,
+    "Manganese, Mn (mg)": 0.254333768,
+    "Iodine, I (µg)": 0.0,
+    "Vitamins and Other Components (g)": 0.0,
+    "Biotin (µg)": 0.0,
+    "Nitrogen (g)": 0.07756,
+    "Galactose (g)": 0.000342,
+    "Starch (g)": 0.572,
+    "Fluoride, F (µg)": 1.28,
+    "Pantothenic acid (mg)": 2.613333824,
+    "Betaine (mg)": 17.3118976,
+    "Vitamin A, IU (IU)": 6881.826864,
+    "Tocopherol, beta (mg)": 0.01165592,
+    "Tocopherol, gamma (mg)": 0.25284176,
+    "Tocopherol, delta (mg)": 0.04082328,
+    "Tocotrienol, alpha (mg)": 0.06296695999999999,
+    "Tocotrienol, beta (mg)": 0.0,
+    "Tocotrienol, gamma (mg)": 0.07257472000000001,
+    "Tocotrienol, delta (mg)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 28.576295999999996,
+    "Vitamin K (Dihydrophylloquinone) (µg)": 0.457912,
+    "Lipids (g)": 0.0,
+    "SFA 15:0 (g)": 0.018143680000000002,
+    "SFA 17:0 (g)": 0.036287360000000005,
+    "SFA 20:0 (g)": 0.012700576,
+    "SFA 22:0 (g)": 0.0036287359999999996,
+    "SFA 24:0 (g)": 0.0018143679999999998,
+    "MUFA 14:1 (g)": 0.021830016,
+    "MUFA 15:1 (g)": 0.0,
+    "MUFA 17:1 (g)": 0.025429952,
+    "PUFA 20:2 n-6 c,c (g)": 0.02721552,
+    "PUFA 20:3 (g)": 0.019958048,
+    "Fatty acids, total trans (g)": 0.203209216,
+    "Amino acids (g)": 0.0,
+    "Tryptophan (g)": 0.407409704,
+    "Threonine (g)": 1.6839966560000001,
+    "Isoleucine (g)": 1.586327176,
+    "Leucine (g)": 2.899353,
+    "Lysine (g)": 3.128434544,
+    "Methionine (g)": 1.02193832,
+    "Cystine (g)": 0.398066168,
+    "Phenylalanine (g)": 1.386189392,
+    "Tyrosine (g)": 1.240521432,
+    "Valine (g)": 1.7084445679999998,
+    "Arginine (g)": 2.538780688,
+    "Histidine (g)": 1.047372816,
+    "Alanine (g)": 2.2515074959999994,
+    "Aspartic acid (g)": 3.4473243839999994,
+    "Glutamic acid (g)": 5.741064952,
+    "Glycine (g)": 1.919337896,
+    "Proline (g)": 1.558970896,
+    "Serine (g)": 1.5071102079999998,
+    "MUFA 16:1 c (g)": 0.48080752000000004,
+    "MUFA 18:1 c (g)": 4.418628679999999,
+    "MUFA 22:1 c (g)": 0.0018143679999999998,
+    "MUFA 24:1 c (g)": 0.010886208,
+    "PUFA 18:2 n-6 c,c (g)": 3.9643940800000004,
+    "PUFA 18:2 CLAs (g)": 0.023586784,
+    "PUFA 18:3 n-3 c,c,c (ALA) (g)": 0.219939928,
+    "PUFA 18:3 n-6 c,c,c (g)": 0.010886208,
+    "PUFA 18:3i (g)": 0.0,
+    "PUFA 20:3 n-3 (g)": 0.0036287359999999996,
+    "PUFA 20:3 n-6 (g)": 0.018143680000000002,
+    "PUFA 22:4 (g)": 0.036287360000000005,
+    "Fatty acids, total trans-monoenoic (g)": 0.143335072,
+    "TFA 16:1 t (g)": 0.010886208,
+    "TFA 18:1 t (g)": 0.13426323199999998,
+    "TFA 22:1 t (g)": 0.0,
+    "TFA 18:2 t not further defined (g)": 0.058059775999999994,
+    "Fatty acids, total trans-polyenoic (g)": 0.058059775999999994,
+    "Hydroxyproline (g)": 0.3628736,
+    "Vitamin D2 (ergocalciferol) (µg)": 0.0907184,
+    "Vitamin D3 (cholecalciferol) (µg)": 0.0,
+    "Vitamin K (Menaquinone-4) (µg)": 0.0,
+    "PUFA 21:5 (g)": 0.0,
+    "Phytosterols (mg)": 7.934399999999999,
+    "Stigmasterol (mg)": 0.0,
+    "Campesterol (mg)": 0.907184,
+    "Beta-sitosterol (mg)": 0.0,
+    "SFA 13:0 (g)": 0.0
+  },
+  "macros": {
+    "protein": {
+      "grams": 39.8,
+      "percent": 31.2
+    },
+    "carbs": {
+      "grams": 41.5,
+      "percent": 32.6
+    },
+    "fat": {
+      "grams": 20.5,
+      "percent": 36.2
+    }
+  }
+}
