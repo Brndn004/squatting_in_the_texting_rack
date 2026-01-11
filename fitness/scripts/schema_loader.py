@@ -15,7 +15,7 @@ def load_schema(schema_name: str) -> dict:
     """Load a schema file by name.
     
     Args:
-        schema_name: Name of the schema file (e.g., "snapshot_schema.json").
+        schema_name: Name of the schema file (e.g., "body_snapshot_schema.json").
         
     Returns:
         Dictionary containing the schema.
@@ -53,7 +53,7 @@ def load_snapshot_schema() -> dict:
         json.JSONDecodeError: If snapshot schema file contains invalid JSON.
         OSError: If snapshot schema file cannot be read.
     """
-    return load_schema("snapshot_schema.json")
+    return load_schema("body_snapshot_schema.json")
 
 
 def load_exercise_schema() -> dict:

@@ -23,7 +23,7 @@ def get_snapshots_dir() -> Path:
     Returns:
         Path to the snapshots directory.
     """
-    return get_fitness_dir() / "snapshots"
+    return get_fitness_dir() / "body_snapshots"
 
 
 def get_exercises_dir() -> Path:

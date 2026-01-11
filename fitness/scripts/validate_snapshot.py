@@ -34,7 +34,7 @@ def validate_snapshot(snapshot_path: Path) -> None:
         ValueError: If snapshot is invalid.
     """
     # TODO: Implement validation logic
-    # - Validate JSON structure against snapshot_schema.json
+    # - Validate JSON structure against body_snapshot_schema.json
     # - Validate that bodyfat_percentage is between 0 and 1 (inclusive)
     print(f"Validation for snapshot file {snapshot_path} will be implemented later.")
 
