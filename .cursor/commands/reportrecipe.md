@@ -1,0 +1,1 @@
+Follow the instructions in recipe_creation_reporting.md to compare the two recipes: one we found online or in a file, and one that we just created.
