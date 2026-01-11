@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["date", "body_metrics"],
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Datetime in format YYYY-MM-DD-<unix epoch seconds>"
+    },
+    "body_metrics": {
+      "type": "object",
+      "required": ["bodyweight", "bodyfat_percentage", "height"],
+      "properties": {
+        "bodyweight": {
+          "type": "object",
+          "required": ["lb"],
+          "properties": {
+            "lb": {
+              "type": "number"
+            }
+          }
+        },
+        "bodyfat_percentage": {
+          "type": "number"
+        },
+        "height": {
+          "type": "object",
+          "required": ["in"],
+          "properties": {
+            "in": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Schema for routine files representing a single week of workouts",
+  "type": "object",
+  "required": ["name", "date_created", "sessions"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the routine"
+    },
+    "date_created": {
+      "type": "string",
+      "description": "Datetime in format YYYY-MM-DD-<unix epoch seconds>"
+    },
+    "sessions": {
+      "type": "array",
+      "description": "List of session names for the week (each session name references a session file in sessions/ directory)",
+      "items": {
+        "type": "string",
+        "description": "Name of the session (must reference a session file in sessions/ directory)"
+      }
+    }
+  }
+}
+

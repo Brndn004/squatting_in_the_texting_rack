@@ -1,0 +1,314 @@
+#!/usr/bin/env python3
+"""Create session files.
+
+Creates a new fitness session file with exercises.
+"""
+
+import re
+from pathlib import Path
+
+import date_utils
+import exercise_discovery
+import file_utils
+import fitness_paths
+import validate_session
+
+
+def slugify(text: str) -> str:
+    """Convert text to a slugified version suitable for filenames.
+    
+    Args:
+        text: Text to slugify.
+        
+    Returns:
+        Slugified text (lowercase, spaces replaced with underscores, special chars removed).
+    """
+    # Convert to lowercase
+    text = text.lower()
+    # Replace spaces and hyphens with underscores
+    text = re.sub(r'[\s-]+', '_', text)
+    # Remove all non-alphanumeric characters except underscores
+    text = re.sub(r'[^a-z0-9_]', '', text)
+    # Remove multiple consecutive underscores
+    text = re.sub(r'_+', '_', text)
+    # Remove leading/trailing underscores
+    text = text.strip('_')
+    
+    if not text:
+        raise ValueError("Slugified name cannot be empty")
+    
+    return text
+
+
+def prompt_session_name() -> str:
+    """Prompt user for human-readable session name.
+    
+    Returns:
+        Human-readable session name as a string.
+    """
+    print("Session name:")
+    while True:
+        name_input = input("  Name (e.g., 'Push Day', 'Pull Day', 'Leg Day'): ").strip()
+        
+        if not name_input:
+            print("  Error: Session name cannot be empty.")
+            continue
+        
+        try:
+            slugify(name_input)
+        except ValueError as e:
+            print(f"  Error: {e}")
+            continue
+        
+        return name_input
+
+
+def display_available_exercises(available_exercises: list[tuple[str, str]]) -> None:
+    """Display available exercises in a numbered list.
+    
+    Args:
+        available_exercises: List of tuples (human-readable name, exercise_name slug).
+    """
+    print("  Available exercises:")
+    for i, (name, exercise_name) in enumerate(available_exercises, 1):
+        print(f"    {i}. {name}")
+
+
+def prompt_sets() -> int:
+    """Prompt user for number of sets.
+    
+    Returns:
+        Number of sets as an integer.
+    """
+    while True:
+        value_input = input("    Sets: ").strip()
+        
+        if not value_input:
+            print("    Error: Value cannot be empty.")
+            continue
+        
+        try:
+            value = int(value_input)
+        except ValueError:
+            print(f"    Error: Invalid number: {value_input}")
+            continue
+        
+        if value <= 0:
+            print("    Error: Sets must be positive.")
+            continue
+        
+        return value
+
+
+def prompt_reps() -> int:
+    """Prompt user for number of reps.
+    
+    Returns:
+        Number of reps as an integer.
+    """
+    while True:
+        value_input = input("    Reps: ").strip()
+        
+        if not value_input:
+            print("    Error: Value cannot be empty.")
+            continue
+        
+        try:
+            value = int(value_input)
+        except ValueError:
+            print(f"    Error: Invalid number: {value_input}")
+            continue
+        
+        if value <= 0:
+            print("    Error: Reps must be positive.")
+            continue
+        
+        return value
+
+
+def prompt_percent_1rm() -> float:
+    """Prompt user for percent 1RM (as percentage 0-100, converted to decimal 0-1).
+    
+    Returns:
+        Percent 1RM as a decimal (0-1).
+    """
+    while True:
+        value_input = input("    Percent 1RM (0-100): ").strip()
+        
+        if not value_input:
+            print("    Error: Value cannot be empty.")
+            continue
+        
+        try:
+            value = float(value_input)
+        except ValueError:
+            print(f"    Error: Invalid number: {value_input}")
+            continue
+        
+        if value < 0 or value > 100:
+            print("    Error: Percent 1RM must be between 0 and 100.")
+            continue
+        
+        # Convert to decimal (0-1)
+        return value / 100
+
+
+def prompt_session_exercises(available_exercises: list[tuple[str, str]]) -> list[dict]:
+    """Prompt user for exercises in a session.
+    
+    Args:
+        available_exercises: List of tuples (human-readable name, exercise_name slug).
+        
+    Returns:
+        List of exercise dictionaries for the session.
+    """
+    exercises = []
+    
+    while True:
+        display_available_exercises(available_exercises)
+        print()
+        print(f"  Exercise {len(exercises) + 1} (or type 'Done' to finish):")
+        exercise_input = input("  Select exercise (number or name, or 'Done'): ").strip()
+        
+        if exercise_input.lower() == "done":
+            break
+        
+        if not exercise_input:
+            print("  Error: Selection cannot be empty.")
+            continue
+        
+        # Try to parse as number
+        exercise_name = None
+        try:
+            selection_num = int(exercise_input)
+            if 1 <= selection_num <= len(available_exercises):
+                exercise_name = available_exercises[selection_num - 1][1]  # Return exercise_name slug
+            else:
+                print(f"  Error: Invalid selection number. Must be between 1 and {len(available_exercises)}.")
+                continue
+        except ValueError:
+            # Try to match by human-readable name or exercise_name slug
+            for name, ex_name in available_exercises:
+                if exercise_input == name or exercise_input == ex_name:
+                    exercise_name = ex_name
+                    break
+            
+            if exercise_name is None:
+                print(f"  Error: Exercise '{exercise_input}' not found. Please select from available exercises.")
+                continue
+        
+        sets = prompt_sets()
+        reps = prompt_reps()
+        percent_1rm = prompt_percent_1rm()
+        
+        exercises.append({
+            "exercise_name": exercise_name,
+            "sets": sets,
+            "reps": reps,
+            "percent_1rm": percent_1rm,
+        })
+        print()
+    
+    return exercises
+
+
+def create_session_data(name: str, session_name: str, datetime_str: str, exercises: list[dict]) -> dict:
+    """Create session data dictionary.
+    
+    Args:
+        name: Human-readable name of the session.
+        session_name: Slugified name of the session (used for filename).
+        datetime_str: Datetime in format YYYY-MM-DD-<unix epoch seconds>.
+        exercises: List of exercise dictionaries.
+        
+    Returns:
+        Session data dictionary.
+    """
+    return {
+        "name": name,
+        "session_name": session_name,
+        "exercises": exercises,
+        "date_created": datetime_str,
+    }
+
+
+
+
+def get_session_filepath(session_name: str, datetime_str: str) -> Path:
+    """Get session filepath for given session name.
+    
+    Args:
+        session_name: Slugified name of the session.
+        datetime_str: Datetime in format YYYY-MM-DD-<unix epoch seconds> (unused, kept for API consistency).
+        
+    Returns:
+        Path to session file.
+    """
+    sessions_dir = fitness_paths.get_sessions_dir()
+    filename = f"{session_name}.json"
+    return sessions_dir / filename
+
+
+def validate_session_file(filepath: Path) -> None:
+    """Run validation on session file.
+    
+    Args:
+        filepath: Path to session file to validate.
+        
+    Raises:
+        ValueError: If validation fails.
+    """
+    validate_session.validate_session(filepath)
+
+
+def create_single_session() -> None:
+    """Create a single session file by prompting user for input.
+    
+    Raises:
+        ValueError: If invalid input provided or validation fails.
+        FileNotFoundError: If exercises directory does not exist.
+        OSError: If file cannot be written.
+    """
+    datetime_str = date_utils.get_current_datetime()
+    
+    # Validate datetime format
+    parts = datetime_str.split("-")
+    if len(parts) < 4:
+        raise ValueError(f"Invalid datetime format: {datetime_str}. Expected YYYY-MM-DD-<unix epoch seconds>")
+    
+    available_exercises = exercise_discovery.get_available_exercises()
+    print(f"Found {len(available_exercises)} available exercises")
+    print()
+    
+    while True:
+        name = prompt_session_name()
+        session_name = slugify(name)
+        filepath = get_session_filepath(session_name, datetime_str)
+        
+        if filepath.exists():
+            print(f"  Error: Session file already exists: {filepath.name}")
+            print()
+            continue
+        
+        break
+    
+    print()
+    exercises = prompt_session_exercises(available_exercises)
+    
+    session_data = create_session_data(name, session_name, datetime_str, exercises)
+    file_utils.save_json_file(session_data, filepath)
+    
+    print(f"\nSession saved to: {filepath}")
+    
+    print("\nValidating session...")
+    validate_session_file(filepath)
+    print("Validation passed.")
+
+
+def main() -> None:
+    """Main entry point for session creation."""
+    create_single_session()
+
+
+if __name__ == "__main__":
+    main()

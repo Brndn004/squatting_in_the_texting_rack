@@ -34,3 +34,4 @@
 
 * [How To Train For Pure Muscle Growth, Jeff Nippard](https://www.youtube.com/watch?v=71op1DQ2gyo)
 * [How Much Should I Train?: An Introduction to the Volume Landmarks (Renaissance Periodization)](https://www.amazon.com/How-Much-Should-Train-Periodization/dp/B08T6PBDP4)
+

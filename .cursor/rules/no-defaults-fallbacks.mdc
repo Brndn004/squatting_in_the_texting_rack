@@ -1,0 +1,53 @@
+---
+description: Enforce explicit error handling - no defaults or fallbacks
+globs: '*'
+alwaysApply: true
+---
+
+# No Defaults or Fallbacks
+
+When writing code, never use implicit defaults or fallbacks. Instead, use hard exceptions with clear, descriptive error messages.
+
+## Guidelines
+
+- **Never use default values** that silently mask errors (e.g., `dict.get(key, default)`, `value or default`)
+- **Never use fallback values** that hide missing data
+- **Always raise exceptions** with clear error messages when required data is missing or invalid
+- **Be explicit** about error conditions and failure modes
+- **Exception for interactive prompts**: In interactive CLI prompts, it is acceptable to reject invalid input and re-prompt the user instead of raising an error. This provides better UX for interactive tools.
+
+## Examples
+
+### ❌ Bad
+```python
+# Silent fallback
+value = data.get('key', 0)  # Hides missing key
+
+# Default that masks errors
+result = input() or "default"  # Hides empty input
+```
+
+### ✅ Good
+```python
+# Explicit error handling
+if 'key' not in data:
+    raise KeyError(f"Required key 'key' not found in data: {data}")
+
+# Explicit validation
+user_input = input()
+if not user_input:
+    raise ValueError("Input cannot be empty. User must provide a value.")
+
+# Interactive prompt with re-prompting (acceptable exception)
+while True:
+    user_input = input("Enter a number: ")
+    try:
+        value = int(user_input)
+        if value < 0:
+            print("Error: Number must be non-negative.")
+            continue
+        break
+    except ValueError:
+        print(f"Error: Invalid number: {user_input}")
+        continue
+```
