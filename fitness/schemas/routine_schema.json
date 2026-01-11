@@ -2,9 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "description": "Schema for routine files representing a single week of workouts",
   "type": "object",
-  "required": ["date", "sessions"],
+  "required": ["date_created", "sessions"],
   "properties": {
-    "date": {
+    "date_created": {
       "type": "string",
       "description": "Datetime in format YYYY-MM-DD-<unix epoch seconds>"
     },

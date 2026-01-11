@@ -210,13 +210,19 @@ def create_snapshot() -> None:
         OSError: If file cannot be written.
     """
     datetime_str = get_current_datetime()
+    
+    # Validate datetime format
+    parts = datetime_str.split("-")
+    if len(parts) < 4:
+        raise ValueError(f"Invalid datetime format: {datetime_str}. Expected YYYY-MM-DD-<unix epoch seconds>")
+    
     filepath = get_snapshot_filepath(datetime_str)
     
     if filepath.exists():
         raise ValueError(f"Snapshot file already exists: {filepath}")
     
     # Extract date part for display
-    date_part = datetime_str.split("-")[:3]
+    date_part = parts[:3]
     date_str = "-".join(date_part)
     print(f"Creating snapshot for {date_str}")
     print()
