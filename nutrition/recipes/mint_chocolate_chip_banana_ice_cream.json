@@ -1,0 +1,179 @@
+{
+  "name": "Mint Chocolate Chip Banana \"Ice Cream\"",
+  "sources": [
+    "https://mealprepmanual.com/mint-chocolate-chip-banana-ice-cream/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 3,
+  "tags": [
+    "dessert",
+    "snack",
+    "simple",
+    "sweet"
+  ],
+  "changes": [
+    "Peppermint extract (1-2 drops) - added to ingredients list but not available in USDA database, using vanilla extract FDC ID as placeholder (not included in nutrition calculations, minimal nutritional impact)",
+    "Green food coloring (1-2 drops) - optional ingredient, mentioned in instructions but not included in ingredients list (minimal nutritional impact)",
+    "Banana quantity: Using 250g total as specified in recipe (2 medium bananas)"
+  ],
+  "ingredients": [
+    {
+      "fdc_id": 2709224,
+      "name": "Banana, raw",
+      "quantity": 250.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "About 2 medium bananas"
+      ]
+    },
+    {
+      "fdc_id": 2710731,
+      "name": "Nutritional powder mix (EAS Whey Protein Powder)",
+      "quantity": 60.0,
+      "measure_unit": "Gram"
+    },
+    {
+      "fdc_id": 2705385,
+      "name": "Milk, whole",
+      "quantity": 0.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 173471,
+      "name": "Vanilla extract",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 173471,
+      "name": "Peppermint extract",
+      "quantity": 0.1,
+      "measure_unit": "Tsp",
+      "notes": [
+        "1-2 drops (using vanilla extract FDC ID as placeholder - not available in USDA database, not included in nutrition calculations)"
+      ]
+    },
+    {
+      "fdc_id": 2710333,
+      "name": "Chocolate chips",
+      "quantity": 1.0,
+      "measure_unit": "Tbsp"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "Add the frozen bananas to a high powered blender in small pieces."
+    },
+    {
+      "step_id": 2,
+      "text": "Slowly pour in the milk and start to churn."
+    },
+    {
+      "step_id": 3,
+      "text": "Add in the whey protein, peppermint extract, and green food coloring (if using)."
+    },
+    {
+      "step_id": 4,
+      "text": "Fold in chocolate chips."
+    },
+    {
+      "step_id": 5,
+      "text": "Makes 3 servings."
+    }
+  ],
+  "nutrition_facts": {
+    "Protein (g)": 15.48418166666667,
+    "Total lipid (fat) (g)": 3.9677566666666664,
+    "Carbohydrate, by difference (g)": 27.571945833333334,
+    "Alcohol, ethyl (g)": 0.48160000000000003,
+    "Water (g)": 100.91826583333334,
+    "Caffeine (mg)": 2.90625,
+    "Theobromine (mg)": 22.78125,
+    "Total Sugars (g)": 18.880520833333335,
+    "Fiber, total dietary (g)": 1.6932291666666668,
+    "Calcium, Ca (mg)": 107.04066666666665,
+    "Iron, Fe (mg)": 0.33239875,
+    "Magnesium, Mg (mg)": 69.97195833333333,
+    "Phosphorus, P (mg)": 194.27816666666664,
+    "Potassium, K (mg)": 464.64804166666664,
+    "Sodium, Na (mg)": 93.09495833333334,
+    "Zinc, Zn (mg)": 1.8096108333333334,
+    "Copper, Cu (mg)": 0.3183938333333333,
+    "Selenium, Se (µg)": 5.929541666666666,
+    "Retinol (µg)": 15.606666666666667,
+    "Vitamin A, RAE (µg)": 16.846666666666668,
+    "Carotene, beta (µg)": 9.513333333333334,
+    "Carotene, alpha (µg)": 5.833333333333333,
+    "Vitamin E (alpha-tocopherol) (mg)": 0.19185416666666666,
+    "Vitamin D (D2 + D3) (µg)": 0.44733333333333336,
+    "Cryptoxanthin, beta (µg)": 0.0,
+    "Lycopene (µg)": 0.0,
+    "Lutein + zeaxanthin (µg)": 19.177083333333332,
+    "Vitamin C, total ascorbic acid (mg)": 10.16,
+    "Thiamin (mg)": 0.21330545833333328,
+    "Riboflavin (mg)": 0.23306875000000005,
+    "Niacin (mg)": 2.612832291666667,
+    "Vitamin B-6 (mg)": 0.4034779583333333,
+    "Folate, total (µg)": 53.109375,
+    "Vitamin B-12 (µg)": 0.6736,
+    "Choline, total (mg)": 32.75658333333333,
+    "Vitamin K (phylloquinone) (µg)": 0.5678333333333333,
+    "Folic acid (µg)": 40.0,
+    "Folate, food (µg)": 13.109375,
+    "Folate, DFE (µg)": 81.109375,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Cholesterol (mg)": 45.879999999999995,
+    "Fatty acids, total saturated (g)": 2.1962483333333336,
+    "SFA 4:0 (g)": 0.03824666666666667,
+    "SFA 6:0 (g)": 0.025759999999999995,
+    "SFA 8:0 (g)": 0.016226666666666667,
+    "SFA 10:0 (g)": 0.03979333333333333,
+    "SFA 12:0 (g)": 0.04391333333333333,
+    "SFA 14:0 (g)": 0.15022416666666666,
+    "SFA 16:0 (g)": 1.1421145833333333,
+    "SFA 18:0 (g)": 0.6983906666666666,
+    "MUFA 18:1 (g)": 0.8173345,
+    "PUFA 18:2 (g)": 0.29143574999999994,
+    "PUFA 18:3 (g)": 0.05198816666666666,
+    "PUFA 20:4 (g)": 0.0016266666666666667,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "MUFA 16:1 (g)": 0.033952916666666666,
+    "PUFA 18:4 (g)": 0.0,
+    "MUFA 20:1 (g)": 0.0016266666666666667,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.00040666666666666667,
+    "MUFA 22:1 (g)": 0.0,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.0008133333333333333,
+    "Fatty acids, total monounsaturated (g)": 0.8301370833333334,
+    "Fatty acids, total polyunsaturated (g)": 0.3352905833333333,
+    "Energy (kcal)": 209.172,
+    "PUFA 20:5 n-3 (EPA) (µg)": 0.0,
+    "Proximates (g)": 0.0,
+    "Energy (kJ)": 16.87,
+    "Ash (g)": 0.0036400000000000004,
+    "Carbohydrates (g)": 0.0,
+    "Minerals (mg)": 0.0,
+    "Manganese, Mn (mg)": 0.00322,
+    "Vitamins and Other Components (g)": 0.0,
+    "Pantothenic acid (mg)": 0.0004900000000000001,
+    "Vitamin A, IU (IU)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 0.0,
+    "Lipids (g)": 0.0,
+    "Fatty acids, total trans (g)": 0.0,
+    "Amino acids (g)": 0.0
+  },
+  "macros": {
+    "protein": {
+      "grams": 15.5,
+      "percent": 29.8
+    },
+    "carbs": {
+      "grams": 27.6,
+      "percent": 53.0
+    },
+    "fat": {
+      "grams": 4.0,
+      "percent": 17.2
+    }
+  }
+}
