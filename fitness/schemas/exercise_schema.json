@@ -8,21 +8,16 @@
     },
     "1rm": {
       "type": "object",
-      "oneOf": [
-        {"required": ["lb"]},
-        {"required": ["kg"]}
-      ],
+      "required": ["lb"],
       "properties": {
         "lb": {
-          "type": "number"
-        },
-        "kg": {
           "type": "number"
         }
       }
     },
     "date": {
-      "type": "string"
+      "type": "string",
+      "description": "Datetime in format YYYY-MM-DD-<unix epoch seconds>"
     }
   }
 }

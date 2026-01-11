@@ -5,7 +5,8 @@
   "required": ["date", "sessions"],
   "properties": {
     "date": {
-      "type": "string"
+      "type": "string",
+      "description": "Datetime in format YYYY-MM-DD-<unix epoch seconds>"
     },
     "sessions": {
       "type": "array",

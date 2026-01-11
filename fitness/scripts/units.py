@@ -15,11 +15,9 @@ class FitnessUnits(str, enum.Enum):
     
     # Weight units
     LB = "lb"
-    KG = "kg"
     
     # Height units
     IN = "in"
-    CM = "cm"
     
     # Quantity (count)
     QUANTITY = "quantity"

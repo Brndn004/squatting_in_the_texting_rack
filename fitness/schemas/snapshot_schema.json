@@ -4,7 +4,8 @@
   "required": ["date", "body_metrics"],
   "properties": {
     "date": {
-      "type": "string"
+      "type": "string",
+      "description": "Datetime in format YYYY-MM-DD-<unix epoch seconds>"
     },
     "body_metrics": {
       "type": "object",
@@ -12,15 +13,9 @@
       "properties": {
         "bodyweight": {
           "type": "object",
-          "oneOf": [
-            {"required": ["lb"]},
-            {"required": ["kg"]}
-          ],
+          "required": ["lb"],
           "properties": {
             "lb": {
-              "type": "number"
-            },
-            "kg": {
               "type": "number"
             }
           }
@@ -30,15 +25,9 @@
         },
         "height": {
           "type": "object",
-          "oneOf": [
-            {"required": ["in"]},
-            {"required": ["cm"]}
-          ],
+          "required": ["in"],
           "properties": {
             "in": {
-              "type": "number"
-            },
-            "cm": {
               "type": "number"
             }
           }
