@@ -1,0 +1,292 @@
+{
+  "name": "Protein Pumpkin Muffins",
+  "sources": [
+    "https://mealprepmanual.com/protein-pumpkin-muffins/?utm_source=chatgpt.com"
+  ],
+  "serving_size": 12,
+  "tags": [
+    "baked",
+    "breakfast",
+    "simple",
+    "sweet"
+  ],
+  "changes": [
+    "Vanilla casein protein powder (1 scoop, 30g) → EAS Whey Protein Powder (30g) - casein protein powder not available in USDA database, using whey protein powder as substitute"
+  ],
+  "ingredients": [
+    {
+      "fdc_id": 2261421,
+      "name": "Flour, oat, whole grain",
+      "quantity": 0.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 169698,
+      "name": "Cornstarch",
+      "quantity": 0.25,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 172805,
+      "name": "Leavening agents, baking powder, low-sodium",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 175040,
+      "name": "Leavening agents, baking soda",
+      "quantity": 0.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 173468,
+      "name": "Salt, table",
+      "quantity": 0.5,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 171320,
+      "name": "Spices, cinnamon, ground",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2710731,
+      "name": "Nutritional powder mix (EAS Whey Protein Powder)",
+      "quantity": 30.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "Vanilla whey protein powder - 1 scoop"
+      ]
+    },
+    {
+      "fdc_id": 2710731,
+      "name": "Nutritional powder mix (EAS Whey Protein Powder)",
+      "quantity": 30.0,
+      "measure_unit": "Gram",
+      "notes": [
+        "Vanilla casein protein powder substitute - 1 scoop"
+      ]
+    },
+    {
+      "fdc_id": 172183,
+      "name": "Egg, white, raw, fresh",
+      "quantity": 0.5,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 2259794,
+      "name": "Yogurt, Greek, plain, whole milk",
+      "quantity": 0.6666666666666666,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 173471,
+      "name": "Vanilla extract",
+      "quantity": 1.0,
+      "measure_unit": "Tsp"
+    },
+    {
+      "fdc_id": 2709691,
+      "name": "Pumpkin, canned, cooked",
+      "quantity": 0.75,
+      "measure_unit": "Cup"
+    },
+    {
+      "fdc_id": 169661,
+      "name": "Syrups, maple",
+      "quantity": 0.25,
+      "measure_unit": "Cup"
+    }
+  ],
+  "instructions": [
+    {
+      "step_id": 1,
+      "text": "In a large bowl, mix all of the dry ingredients together until no clumps remain."
+    },
+    {
+      "step_id": 2,
+      "text": "Add the wet ingredients to the bowl with the dry ingredients and mix to form a smooth batter."
+    },
+    {
+      "step_id": 3,
+      "text": "Spray a 12 well muffin tin with oil and be sure all sides of the wells are coated."
+    },
+    {
+      "step_id": 4,
+      "text": "Divide the batter evenly between the 12 wells. Tap it on the counter a few times to level off the batter and move out any air pockets."
+    },
+    {
+      "step_id": 5,
+      "text": "Bake at 350°F (177°C) for 22 minutes."
+    },
+    {
+      "step_id": 6,
+      "text": "Remove from the oven once cooked and allow to cool to room temperature before frosting."
+    }
+  ],
+  "nutrition_facts": {
+    "Proximates (g)": 0.0,
+    "Water (g)": 36.87072486111111,
+    "Nitrogen (g)": 0.2789027777777778,
+    "Protein (g)": 6.390816805555556,
+    "Total lipid (fat) (g)": 1.5885119444444442,
+    "Ash (g)": 0.6288905555555555,
+    "Carbohydrates (g)": 0.0,
+    "Carbohydrate, by difference (g)": 12.998644305555558,
+    "Fiber, total dietary (g)": 1.0144666666666666,
+    "Total dietary fiber (AOAC 2011.25) (g)": 0.53625,
+    "High Molecular Weight Dietary Fiber (HMWDF) (g)": 0.48458333333333337,
+    "Low Molecular Weight Dietary Fiber (LMWDF) (g)": 0.051666666666666666,
+    "Beta-glucan (g)": 0.17500000000000002,
+    "Starch (g)": 2.2245833333333334,
+    "Minerals (mg)": 0.0,
+    "Calcium, Ca (mg)": 60.98102777777779,
+    "Iron, Fe (mg)": 0.4797925,
+    "Magnesium, Mg (mg)": 20.678319444444444,
+    "Phosphorus, P (mg)": 99.24577777777777,
+    "Potassium, K (mg)": 152.24127777777775,
+    "Sodium, Na (mg)": 176.6309722222222,
+    "Zinc, Zn (mg)": 0.6675444444444444,
+    "Copper, Cu (mg)": 0.08686191666666666,
+    "Manganese, Mn (mg)": 0.17715327777777776,
+    "Selenium, Se (µg)": 2.9007166666666664,
+    "Molybdenum, Mo (µg)": 5.2250000000000005,
+    "Vitamins and Other Components (g)": 0.0,
+    "Thiamin (mg)": 0.06307852777777777,
+    "Riboflavin (mg)": 0.09205223611111109,
+    "Niacin (mg)": 0.6714415555555556,
+    "Vitamin B-6 (mg)": 0.0735579861111111,
+    "Biotin (µg)": 0.8395833333333332,
+    "Folate, total (µg)": 13.142791666666668,
+    "Energy (kcal)": 91.48415277777777,
+    "Energy (kJ)": 8.151666666666669,
+    "Total Sugars (g)": 4.764695416666666,
+    "Magnesium, Mg (g)": 0.12083333333333335,
+    "Vitamin C, total ascorbic acid (mg)": 0.6147958333333333,
+    "Pantothenic acid (mg)": 0.0008981666666666668,
+    "Folic acid (µg)": 10.0,
+    "Folate, food (µg)": 1.6973749999999999,
+    "Folate, DFE (µg)": 18.697375,
+    "Choline, total (mg)": 5.589145833333333,
+    "Betaine (mg)": 0.008450000000000001,
+    "Vitamin B-12 (µg)": 0.11349999999999999,
+    "Vitamin B-12, added (µg)": 0.0,
+    "Vitamin A, RAE (µg)": 118.229375,
+    "Retinol (µg)": 7.730208333333333,
+    "Carotene, beta (µg)": 1032.3051666666668,
+    "Carotene, alpha (µg)": 713.5646666666667,
+    "Cryptoxanthin, beta (µg)": 0.2795,
+    "Vitamin A, IU (IU)": 0.6391666666666668,
+    "Lycopene (µg)": 0.0325,
+    "Lutein + zeaxanthin (µg)": 0.48100000000000004,
+    "Vitamin E (alpha-tocopherol) (mg)": 0.23993291666666663,
+    "Vitamin E, added (mg)": 0.0,
+    "Vitamin D (D2 + D3), International Units (IU)": 0.0,
+    "Vitamin D (D2 + D3) (µg)": 0.0,
+    "Vitamin K (phylloquinone) (µg)": 2.815377777777778,
+    "Lipids (g)": 0.0,
+    "Fatty acids, total saturated (g)": 0.5854790277777777,
+    "SFA 4:0 (g)": 0.00550625,
+    "SFA 6:0 (g)": 0.002940625,
+    "SFA 8:0 (g)": 0.0016718749999999998,
+    "SFA 10:0 (g)": 0.0038179583333333334,
+    "SFA 12:0 (g)": 0.022272374999999997,
+    "SFA 14:0 (g)": 0.07664206944444443,
+    "SFA 16:0 (g)": 0.31319318055555556,
+    "SFA 18:0 (g)": 0.09410755555555554,
+    "Fatty acids, total monounsaturated (g)": 0.29187286111111105,
+    "MUFA 16:1 (g)": 0.0058105,
+    "MUFA 18:1 (g)": 0.15000475,
+    "MUFA 20:1 (g)": 0.0018375,
+    "MUFA 22:1 (g)": 0.0,
+    "Fatty acids, total polyunsaturated (g)": 0.161349875,
+    "PUFA 18:2 (g)": 0.14228708333333331,
+    "PUFA 18:3 (g)": 0.019026291666666664,
+    "PUFA 18:4 (g)": 0.0,
+    "PUFA 20:4 (g)": 0.000153125,
+    "PUFA 20:5 n-3 (EPA) (g)": 0.0,
+    "PUFA 22:5 n-3 (DPA) (g)": 0.0,
+    "PUFA 22:6 n-3 (DHA) (g)": 0.0,
+    "Cholesterol (mg)": 12.895138888888889,
+    "Amino acids (g)": 0.0,
+    "Alcohol, ethyl (g)": 0.12040000000000001,
+    "Caffeine (mg)": 0.0,
+    "Theobromine (mg)": 0.0,
+    "Fluoride, F (µg)": 0.005,
+    "Fatty acids, total trans (g)": 0.0,
+    "Phytosterols (mg)": 0.05633333333333334,
+    "Tryptophan (g)": 0.00010616666666666668,
+    "Threonine (g)": 0.0002946666666666667,
+    "Isoleucine (g)": 0.00031633333333333334,
+    "Leucine (g)": 0.0005481666666666667,
+    "Lysine (g)": 0.0005265000000000001,
+    "Methionine (g)": 0.00016900000000000002,
+    "Cystine (g)": 0.0001256666666666667,
+    "Phenylalanine (g)": 0.00031633333333333334,
+    "Tyrosine (g)": 0.0002946666666666667,
+    "Valine (g)": 0.00048533333333333344,
+    "Arginine (g)": 0.0003596666666666667,
+    "Histidine (g)": 0.00025350000000000004,
+    "Alanine (g)": 0.0003596666666666667,
+    "Aspartic acid (g)": 0.0009490000000000001,
+    "Glutamic acid (g)": 0.0008016666666666667,
+    "Glycine (g)": 0.0004225000000000001,
+    "Proline (g)": 0.0009078333333333334,
+    "Serine (g)": 0.0004225000000000001,
+    "Sucrose (g)": 4.333333333333334e-05,
+    "Glucose (g)": 0.0022533333333333338,
+    "Fructose (g)": 0.0024050000000000005,
+    "Lactose (g)": 0.3622222222222222,
+    "Maltose (g)": 0.0,
+    "Galactose (g)": 0.08880555555555554,
+    "Tocopherol, beta (mg)": 0.0,
+    "Tocopherol, gamma (mg)": 0.02262,
+    "Tocopherol, delta (mg)": 0.0005633333333333334,
+    "Tocotrienol, alpha (mg)": 0.0,
+    "Tocotrienol, beta (mg)": 0.0,
+    "Tocotrienol, gamma (mg)": 0.0,
+    "Tocotrienol, delta (mg)": 0.0,
+    "Vitamin K (Dihydrophylloquinone) (µg)": 0.0,
+    "SFA 13:0 (g)": 0.0,
+    "SFA 15:0 (g)": 0.0,
+    "SFA 17:0 (g)": 0.0002946666666666667,
+    "SFA 20:0 (g)": 0.0,
+    "SFA 22:0 (g)": 0.0,
+    "SFA 24:0 (g)": 0.0,
+    "MUFA 14:1 (g)": 0.0,
+    "MUFA 15:1 (g)": 0.0,
+    "MUFA 17:1 (g)": 0.0,
+    "MUFA 18:1 c (g)": 0.1166302222222222,
+    "MUFA 24:1 c (g)": 0.0,
+    "PUFA 18:3 n-3 c,c,c (ALA) (g)": 2.3833333333333334e-05,
+    "PUFA 18:3 n-6 c,c,c (g)": 0.0,
+    "PUFA 20:2 n-6 c,c (g)": 0.0,
+    "PUFA 20:3 (g)": 0.0,
+    "Fatty acids, total trans-monoenoic (g)": 0.0,
+    "TFA 18:1 t (g)": 0.0,
+    "Hydroxyproline (g)": 0.0,
+    "PUFA 20:5 n-3 (EPA) (µg)": 0.0,
+    "Sugars, Total (g)": 0.45102777777777775,
+    "Iodine, I (µg)": 5.872222222222223,
+    "Vitamin A (mg)": 0.0,
+    "Vitamin D2 (ergocalciferol) (µg)": 0.0,
+    "Vitamin D3 (cholecalciferol) (µg)": 0.0,
+    "Vitamin K (Menaquinone-4) (µg)": 0.13888888888888887,
+    "PUFA 18:2 n-6 c,c (g)": 0.014652777777777777
+  },
+  "macros": {
+    "protein": {
+      "grams": 6.4,
+      "percent": 27.8
+    },
+    "carbs": {
+      "grams": 13.0,
+      "percent": 56.6
+    },
+    "fat": {
+      "grams": 1.6,
+      "percent": 15.6
+    }
+  }
+}
