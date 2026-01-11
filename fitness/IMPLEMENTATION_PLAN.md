@@ -54,12 +54,18 @@ The system will track fitness metrics including body measurements and exercise p
 
 3. **Create `routine_schema.json`**
    - Create `fitness/schemas/routine_schema.json` with JSON Schema specification
-   - Define structure for routine files stored in `fitness/routines/` or as part of snapshot:
+   - Schema description: "Schema for routine files representing a single week of workouts"
+   - Define structure for routine files stored in `fitness/routines/` directory:
      - `date` (string, ISO 8601 date format, required) - date when this routine was active
-     - `exercises` (array, required):
-       - Each element contains:
+     - `sessions` (array, required) - list of workout sessions for the week (each session represents "what am I doing today?")
+       - Each session is an array of exercises
+       - Each exercise contains:
          - `exercise_name` (string, required, must reference an exercise file in `exercises/` directory)
-         - `sets_per_week` (integer, required, positive)
+         - `sets` (integer, required) - number of sets for this exercise in this session
+         - `reps` (integer, required) - number of reps per set
+         - `percent_1rm` (object, required) - percentage of 1RM to use
+           - `percent` (number, required) - the percentage value
+         - Note: `weight` is computed from exercise 1rm * percent_1rm, not defined by user
    - Add validation rules:
      - Ensure `exercise_name` references valid exercise files (custom validation)
      - Add appropriate type constraints and value ranges
@@ -88,6 +94,7 @@ The system will track fitness metrics including body measurements and exercise p
    - Script should accept a snapshot file path as argument
    - For now, just print a placeholder message indicating validation will be implemented later
    - Structure the script to be ready for future validation logic
+   - When implemented, validate that `bodyfat_percentage` is between 0 and 1 (inclusive)
 
 2. **Create `fitness/scripts/validate_exercise.py`**
    - Create a no-op validation script for exercise files
@@ -100,6 +107,7 @@ The system will track fitness metrics including body measurements and exercise p
    - Script should accept a routine file path as argument
    - For now, just print a placeholder message indicating validation will be implemented later
    - Structure the script to be ready for future validation logic
+   - When implemented, validate that `percent_1rm` is between 0 and 1 (inclusive) for all exercises in all sessions
 
 ### Deliverables:
 - `fitness/scripts/validate_snapshot.py` - No-op validation script for snapshots
@@ -175,10 +183,13 @@ The system will track fitness metrics including body measurements and exercise p
      - Scan `exercises/` directory to find all existing exercise files
      - Extract exercise names from existing exercise files
      - Auto-populate exercise options based on exercises found in `exercises/` folder
-     - Prompt user for routine entries:
-       - For each exercise in the routine:
-         - Exercise name (required, selected from auto-populated list of existing exercises)
-         - Sets per week (required, positive integer)
+     - Prompt user for routine entries (representing a single week):
+       - For each workout session (ask how many sessions per week):
+         - For each exercise in the session:
+           - Exercise name (required, selected from auto-populated list of existing exercises)
+           - Sets (required, positive integer) - number of sets for this exercise in this session
+           - Reps (required, positive integer) - number of reps per set
+           - Percent 1RM (required, positive number) - percentage of 1RM to use (weight will be computed)
      - Save routine data to `fitness/routines/YYYY-MM-DD_routine.json`
      - Filename format: `YYYY-MM-DD_routine.json`
 

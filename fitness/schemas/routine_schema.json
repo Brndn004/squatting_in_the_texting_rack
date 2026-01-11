@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Schema for routine files representing a single week of workouts",
+  "type": "object",
+  "required": ["date", "sessions"],
+  "properties": {
+    "date": {
+      "type": "string"
+    },
+    "sessions": {
+      "type": "array",
+      "description": "List of workout sessions for the week (each session represents 'what am I doing today?')",
+      "items": {
+        "type": "array",
+        "description": "A single workout session containing a list of exercises",
+        "items": {
+          "type": "object",
+          "required": ["exercise_name", "sets", "reps", "percent_1rm"],
+          "properties": {
+            "exercise_name": {
+              "type": "string",
+              "description": "Name of the exercise (must reference an exercise file in exercises/ directory)"
+            },
+            "sets": {
+              "type": "integer",
+              "description": "Number of sets for this exercise in this session"
+            },
+            "reps": {
+              "type": "integer",
+              "description": "Number of reps per set"
+            },
+            "percent_1rm": {
+              "type": "number",
+              "description": "Percentage of 1RM to use for this exercise (weight is computed from exercise 1rm * percent_1rm)"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

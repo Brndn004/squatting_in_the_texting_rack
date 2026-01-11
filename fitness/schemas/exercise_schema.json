@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["exercise_name", "1rm", "date"],
+  "properties": {
+    "exercise_name": {
+      "type": "string"
+    },
+    "1rm": {
+      "type": "object",
+      "oneOf": [
+        {"required": ["lb"]},
+        {"required": ["kg"]}
+      ],
+      "properties": {
+        "lb": {
+          "type": "number"
+        },
+        "kg": {
+          "type": "number"
+        }
+      }
+    },
+    "date": {
+      "type": "string"
+    }
+  }
+}
+

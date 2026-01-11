@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["date", "body_metrics"],
+  "properties": {
+    "date": {
+      "type": "string"
+    },
+    "body_metrics": {
+      "type": "object",
+      "required": ["bodyweight", "bodyfat_percentage", "height"],
+      "properties": {
+        "bodyweight": {
+          "type": "object",
+          "oneOf": [
+            {"required": ["lb"]},
+            {"required": ["kg"]}
+          ],
+          "properties": {
+            "lb": {
+              "type": "number"
+            },
+            "kg": {
+              "type": "number"
+            }
+          }
+        },
+        "bodyfat_percentage": {
+          "type": "number"
+        },
+        "height": {
+          "type": "object",
+          "oneOf": [
+            {"required": ["in"]},
+            {"required": ["cm"]}
+          ],
+          "properties": {
+            "in": {
+              "type": "number"
+            },
+            "cm": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
