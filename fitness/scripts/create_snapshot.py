@@ -4,10 +4,10 @@
 Creates a new fitness snapshot file with body metrics.
 """
 
-import json
 from pathlib import Path
 
 import date_utils
+import file_utils
 import fitness_paths
 import validate_snapshot
 
@@ -140,20 +140,6 @@ def create_snapshot_data(datetime_str: str, bodyweight: dict, bodyfat_percentage
     }
 
 
-def save_snapshot_file(snapshot_data: dict, filepath: Path) -> None:
-    """Save snapshot data to JSON file.
-    
-    Args:
-        snapshot_data: Snapshot data dictionary.
-        filepath: Path where file should be saved.
-        
-    Raises:
-        OSError: If file cannot be written.
-    """
-    filepath.parent.mkdir(parents=True, exist_ok=True)
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(snapshot_data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
 
 
 def get_snapshot_filepath(datetime_str: str) -> Path:
@@ -212,7 +198,7 @@ def create_snapshot() -> None:
     height = prompt_height()
     
     snapshot_data = create_snapshot_data(datetime_str, bodyweight, bodyfat_percentage, height)
-    save_snapshot_file(snapshot_data, filepath)
+    file_utils.save_json_file(snapshot_data, filepath)
     
     print(f"\nSnapshot saved to: {filepath}")
     

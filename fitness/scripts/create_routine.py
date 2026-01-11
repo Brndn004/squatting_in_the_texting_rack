@@ -4,11 +4,11 @@
 Creates a new fitness routine file with workout sessions for a week.
 """
 
-import json
 import re
 from pathlib import Path
 
 import date_utils
+import file_utils
 import fitness_paths
 import validate_routine
 
@@ -60,11 +60,7 @@ def get_available_sessions() -> list[tuple[str, str]]:
     sessions = []
     for session_file in session_files:
         try:
-            with open(session_file, "r", encoding="utf-8") as f:
-                session_data = json.load(f)
-            
-            if not isinstance(session_data, dict):
-                raise ValueError(f"Session file is not a valid JSON object: {session_file}")
+            session_data = file_utils.load_json_file(session_file)
             
             if "name" not in session_data:
                 raise ValueError(f"Session file missing 'name' field: {session_file}")
@@ -88,8 +84,8 @@ def get_available_sessions() -> list[tuple[str, str]]:
                 raise ValueError(f"Session name slug cannot be empty in {session_file}")
             
             sessions.append((name, session_name))
-        except json.JSONDecodeError as e:
-            raise ValueError(f"Failed to parse session file {session_file}: {e}")
+        except (FileNotFoundError, ValueError) as e:
+            raise ValueError(f"Failed to load session file {session_file}: {e}")
     
     if not sessions:
         raise ValueError("No valid sessions found")
@@ -215,20 +211,6 @@ def create_routine_data(routine_name: str, datetime_str: str, session_names: lis
     }
 
 
-def save_routine_file(routine_data: dict, filepath: Path) -> None:
-    """Save routine data to JSON file.
-    
-    Args:
-        routine_data: Routine data dictionary.
-        filepath: Path where file should be saved.
-        
-    Raises:
-        OSError: If file cannot be written.
-    """
-    filepath.parent.mkdir(parents=True, exist_ok=True)
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(routine_data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
 
 
 def get_routine_filepath(routine_name: str, datetime_str: str) -> Path:
@@ -298,7 +280,7 @@ def create_routine() -> None:
     
     filepath = get_routine_filepath(routine_name, datetime_str)
     routine_data = create_routine_data(routine_name, datetime_str, session_names)
-    save_routine_file(routine_data, filepath)
+    file_utils.save_json_file(routine_data, filepath)
     
     print(f"\nRoutine saved to: {filepath}")
     

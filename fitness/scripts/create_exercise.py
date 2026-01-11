@@ -4,11 +4,11 @@
 Creates a new fitness exercise file with exercise name and 1RM.
 """
 
-import json
 import re
 from pathlib import Path
 
 import date_utils
+import file_utils
 import fitness_paths
 import validate_exercise
 
@@ -109,20 +109,6 @@ def create_exercise_data(name: str, exercise_name: str, datetime_str: str, one_r
     }
 
 
-def save_exercise_file(exercise_data: dict, filepath: Path) -> None:
-    """Save exercise data to JSON file.
-    
-    Args:
-        exercise_data: Exercise data dictionary.
-        filepath: Path where file should be saved.
-        
-    Raises:
-        OSError: If file cannot be written.
-    """
-    filepath.parent.mkdir(parents=True, exist_ok=True)
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(exercise_data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
 
 
 def get_exercise_filepath(exercise_name: str, datetime_str: str) -> Path:
@@ -181,7 +167,7 @@ def create_single_exercise() -> None:
     one_rm = prompt_1rm()
     
     exercise_data = create_exercise_data(name, exercise_name, datetime_str, one_rm)
-    save_exercise_file(exercise_data, filepath)
+    file_utils.save_json_file(exercise_data, filepath)
     
     print(f"\nExercise saved to: {filepath}")
     

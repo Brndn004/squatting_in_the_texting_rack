@@ -4,11 +4,11 @@
 Creates a new fitness session file with exercises.
 """
 
-import json
 import re
 from pathlib import Path
 
 import date_utils
+import file_utils
 import fitness_paths
 import validate_session
 
@@ -60,11 +60,7 @@ def get_available_exercises() -> list[tuple[str, str]]:
     exercises = []
     for exercise_file in exercise_files:
         try:
-            with open(exercise_file, "r", encoding="utf-8") as f:
-                exercise_data = json.load(f)
-            
-            if not isinstance(exercise_data, dict):
-                raise ValueError(f"Exercise file is not a valid JSON object: {exercise_file}")
+            exercise_data = file_utils.load_json_file(exercise_file)
             
             if "name" not in exercise_data:
                 raise ValueError(f"Exercise file missing 'name' field: {exercise_file}")
@@ -88,8 +84,8 @@ def get_available_exercises() -> list[tuple[str, str]]:
                 raise ValueError(f"Exercise name slug cannot be empty in {exercise_file}")
             
             exercises.append((name, exercise_name))
-        except json.JSONDecodeError as e:
-            raise ValueError(f"Failed to parse exercise file {exercise_file}: {e}")
+        except (FileNotFoundError, ValueError) as e:
+            raise ValueError(f"Failed to load exercise file {exercise_file}: {e}")
     
     if not exercises:
         raise ValueError("No valid exercises found")
@@ -290,20 +286,6 @@ def create_session_data(name: str, session_name: str, datetime_str: str, exercis
     }
 
 
-def save_session_file(session_data: dict, filepath: Path) -> None:
-    """Save session data to JSON file.
-    
-    Args:
-        session_data: Session data dictionary.
-        filepath: Path where file should be saved.
-        
-    Raises:
-        OSError: If file cannot be written.
-    """
-    filepath.parent.mkdir(parents=True, exist_ok=True)
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(session_data, f, indent=2, ensure_ascii=False)
-        f.write("\n")
 
 
 def get_session_filepath(session_name: str, datetime_str: str) -> Path:
@@ -368,7 +350,7 @@ def create_single_session() -> None:
     exercises = prompt_session_exercises(available_exercises)
     
     session_data = create_session_data(name, session_name, datetime_str, exercises)
-    save_session_file(session_data, filepath)
+    file_utils.save_json_file(session_data, filepath)
     
     print(f"\nSession saved to: {filepath}")
     
