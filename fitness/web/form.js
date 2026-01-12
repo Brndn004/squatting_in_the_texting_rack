@@ -1,125 +1,320 @@
-// Basic form validation and settings toggle
-// Full form logic will be added in Phase 5
+// Main form initialization and event handlers
 
-const settingsToggle = document.getElementById('settingsToggle');
-const settingsContent = document.getElementById('settingsContent');
-const patTokenInput = document.getElementById('patToken');
+const REPO_OWNER = 'Brndn004';
+const REPO_NAME = 'squatting_in_the_texting_rack';
 
-if (!settingsToggle) {
-    throw new Error('Settings toggle element not found');
-}
-
-if (!settingsContent) {
-    throw new Error('Settings content element not found');
-}
-
-if (!patTokenInput) {
-    throw new Error('PAT token input element not found');
-}
-
-// Load token from localStorage if available
-const savedToken = localStorage.getItem('github_pat_token');
-if (savedToken) {
-    patTokenInput.value = savedToken;
-    settingsToggle.textContent = 'Hide Settings';
-    settingsContent.classList.add('visible');
-}
-
-settingsToggle.addEventListener('click', () => {
-    if (settingsContent.classList.contains('visible')) {
-        settingsContent.classList.remove('visible');
-        settingsToggle.textContent = 'Show Settings';
-    } else {
-        settingsContent.classList.add('visible');
-        settingsToggle.textContent = 'Hide Settings';
-    }
-});
-
-// Save token to localStorage when changed
-patTokenInput.addEventListener('change', () => {
-    if (patTokenInput.value) {
-        localStorage.setItem('github_pat_token', patTokenInput.value);
-    } else {
-        localStorage.removeItem('github_pat_token');
-    }
-});
-
-// Basic form validation
-const form = document.getElementById('workoutForm');
-if (!form) {
-    throw new Error('Workout form element not found');
-}
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+function initializeForm() {
+    log('Initializing workout form...');
     
-    // Clear previous errors
-    document.querySelectorAll('.error').forEach(el => {
-        el.textContent = '';
-    });
+    populateSessionDropdown();
+    setupSessionChangeHandler();
+    loadSavedToken();
+    setupSettingsToggle();
+    setupTokenChangeHandler();
+    setupFormSubmitHandler();
     
-    let isValid = true;
-    
-    // Validate PAT token
-    const patToken = patTokenInput.value.trim();
-    if (!patToken) {
-        const patTokenError = document.getElementById('patTokenError');
-        if (!patTokenError) {
-            throw new Error('PAT token error element not found');
-        }
-        patTokenError.textContent = 'GitHub PAT token is required';
-        isValid = false;
+    log('Form initialization complete');
+}
+
+function populateSessionDropdown() {
+    if (typeof SESSIONS === 'undefined') {
+        throw new Error('SESSIONS not found in embedded_data.js');
     }
     
-    // Validate session
     const sessionSelect = document.getElementById('sessionSelect');
     if (!sessionSelect) {
         throw new Error('Session select element not found');
     }
-    if (!sessionSelect.value) {
-        const sessionSelectError = document.getElementById('sessionSelectError');
-        if (!sessionSelectError) {
-            throw new Error('Session select error element not found');
+    
+    const sessions = getAllSessions();
+    
+    sessions.forEach(session => {
+        const option = document.createElement('option');
+        option.value = session.name;
+        option.textContent = session.data.name || session.name;
+        sessionSelect.appendChild(option);
+    });
+    
+    log(`Loaded ${sessions.length} sessions into dropdown`);
+}
+
+function getAllSessions() {
+    const sessions = [];
+    for (const sessionName in SESSIONS) {
+        if (SESSIONS.hasOwnProperty(sessionName)) {
+            sessions.push({
+                name: sessionName,
+                data: SESSIONS[sessionName]
+            });
         }
-        sessionSelectError.textContent = 'Please select a session';
+    }
+    return sessions;
+}
+
+function setupSessionChangeHandler() {
+    const sessionSelect = document.getElementById('sessionSelect');
+    if (!sessionSelect) {
+        throw new Error('Session select element not found');
+    }
+    
+    sessionSelect.addEventListener('change', () => {
+        const selectedSession = sessionSelect.value;
+        if (!selectedSession) {
+            hideExercisesSection();
+            return;
+        }
+        
+        try {
+            const sessionData = loadSession(selectedSession);
+            populateExerciseForm(sessionData);
+        } catch (error) {
+            log(`Error loading session: ${error.message}`);
+            showErrorMessage(error.message);
+        }
+    });
+}
+
+function hideExercisesSection() {
+    const exercisesSection = document.getElementById('exercisesSection');
+    if (exercisesSection) {
+        exercisesSection.style.display = 'none';
+    }
+}
+
+function showErrorMessage(message) {
+    const messageDiv = document.getElementById('message');
+    if (messageDiv) {
+        messageDiv.textContent = `Error: ${message}`;
+        messageDiv.className = 'message error';
+    }
+}
+
+function loadSavedToken() {
+    const savedToken = loadToken();
+    const patTokenInput = document.getElementById('patToken');
+    const settingsToggle = document.getElementById('settingsToggle');
+    const settingsContent = document.getElementById('settingsContent');
+    
+    if (savedToken && patTokenInput) {
+        patTokenInput.value = savedToken;
+        if (settingsToggle) {
+            settingsToggle.textContent = 'Hide Settings';
+        }
+        if (settingsContent) {
+            settingsContent.classList.add('visible');
+        }
+    }
+}
+
+function setupSettingsToggle() {
+    const settingsToggle = document.getElementById('settingsToggle');
+    const settingsContent = document.getElementById('settingsContent');
+    
+    if (!settingsToggle || !settingsContent) {
+        return;
+    }
+    
+    settingsToggle.addEventListener('click', () => {
+        if (settingsContent.classList.contains('visible')) {
+            settingsContent.classList.remove('visible');
+            settingsToggle.textContent = 'Show Settings';
+        } else {
+            settingsContent.classList.add('visible');
+            settingsToggle.textContent = 'Hide Settings';
+        }
+    });
+}
+
+function setupTokenChangeHandler() {
+    const patTokenInput = document.getElementById('patToken');
+    if (!patTokenInput) {
+        return;
+    }
+    
+    patTokenInput.addEventListener('change', () => {
+        if (patTokenInput.value) {
+            saveToken(patTokenInput.value);
+        } else {
+            clearToken();
+        }
+    });
+}
+
+function setupFormSubmitHandler() {
+    const form = document.getElementById('workoutForm');
+    if (!form) {
+        throw new Error('Workout form element not found');
+    }
+    
+    form.addEventListener('submit', handleFormSubmit);
+}
+
+function handleFormSubmit(e) {
+    e.preventDefault();
+    
+    log('=== Starting form submission ===');
+    
+    clearPreviousErrors();
+    clearMessage();
+    
+    if (!validateFormInputs()) {
+        log('Form validation failed');
+        return;
+    }
+    
+    try {
+        const workoutData = collectFormData();
+        validateFormData(workoutData);
+        
+        log(`Form data collected: ${JSON.stringify(workoutData, null, 2)}`);
+        
+        saveTokenIfProvided();
+        
+        // Form submission to GitHub API will be handled in Phase 6
+        log('Form validation passed (submission logic in Phase 6)');
+        showSuccessMessage('Form validation passed. Submission will be implemented in Phase 6.');
+    } catch (error) {
+        log(`Error: ${error.message}`);
+        showErrorMessage(error.message);
+    }
+}
+
+function clearPreviousErrors() {
+    document.querySelectorAll('.error').forEach(el => {
+        el.textContent = '';
+    });
+}
+
+function clearMessage() {
+    const messageDiv = document.getElementById('message');
+    if (messageDiv) {
+        messageDiv.textContent = '';
+        messageDiv.className = '';
+    }
+}
+
+function validateFormInputs() {
+    let isValid = true;
+    
+    if (!validatePatToken()) {
         isValid = false;
     }
     
-    // Validate bodyweight
+    if (!validateSession()) {
+        isValid = false;
+    }
+    
+    if (!validateBodyweightInput()) {
+        isValid = false;
+    }
+    
+    if (!validateExercisesPresent()) {
+        isValid = false;
+    }
+    
+    return isValid;
+}
+
+function validatePatToken() {
+    const patTokenInput = document.getElementById('patToken');
+    if (!patTokenInput) {
+        throw new Error('PAT token input element not found');
+    }
+    
+    const patToken = patTokenInput.value.trim();
+    if (!patToken) {
+        const patTokenError = document.getElementById('patTokenError');
+        if (patTokenError) {
+            patTokenError.textContent = 'GitHub PAT token is required';
+        }
+        return false;
+    }
+    
+    return true;
+}
+
+function validateSession() {
+    const sessionSelect = document.getElementById('sessionSelect');
+    if (!sessionSelect) {
+        throw new Error('Session select element not found');
+    }
+    
+    if (!sessionSelect.value) {
+        const sessionSelectError = document.getElementById('sessionSelectError');
+        if (sessionSelectError) {
+            sessionSelectError.textContent = 'Please select a session';
+        }
+        return false;
+    }
+    
+    return true;
+}
+
+function validateBodyweightInput() {
     const bodyweightInput = document.getElementById('bodyweight');
     if (!bodyweightInput) {
         throw new Error('Bodyweight input element not found');
     }
+    
     const bodyweight = parseFloat(bodyweightInput.value);
     if (isNaN(bodyweight)) {
         const bodyweightError = document.getElementById('bodyweightError');
-        if (!bodyweightError) {
-            throw new Error('Bodyweight error element not found');
+        if (bodyweightError) {
+            bodyweightError.textContent = 'Bodyweight must be a number';
         }
-        bodyweightError.textContent = 'Bodyweight must be a number';
-        isValid = false;
-    } else if (bodyweight <= 0) {
-        const bodyweightError = document.getElementById('bodyweightError');
-        if (!bodyweightError) {
-            throw new Error('Bodyweight error element not found');
-        }
-        bodyweightError.textContent = 'Bodyweight must be greater than 0';
-        isValid = false;
+        return false;
     }
     
-    // Validate exercises (will be implemented in Phase 5)
+    if (bodyweight <= 0) {
+        const bodyweightError = document.getElementById('bodyweightError');
+        if (bodyweightError) {
+            bodyweightError.textContent = 'Bodyweight must be greater than 0';
+        }
+        return false;
+    }
+    
+    return true;
+}
+
+function validateExercisesPresent() {
     const exercisesContainer = document.getElementById('exercisesContainer');
     if (!exercisesContainer) {
         throw new Error('Exercises container element not found');
     }
+    
     if (exercisesContainer.children.length === 0) {
-        isValid = false;
+        return false;
     }
     
-    if (!isValid) {
+    return true;
+}
+
+function saveTokenIfProvided() {
+    const patTokenInput = document.getElementById('patToken');
+    if (!patTokenInput) {
         return;
     }
     
-    // Form submission will be handled in Phase 5
-    console.log('Form validation passed (submission logic in Phase 5)');
+    const patToken = patTokenInput.value.trim();
+    if (patToken) {
+        saveToken(patToken);
+    }
+}
+
+function showSuccessMessage(message) {
+    const messageDiv = document.getElementById('message');
+    if (messageDiv) {
+        messageDiv.textContent = message;
+        messageDiv.className = 'message success';
+    }
+}
+
+// Initialize on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        initializeForm();
+    } catch (error) {
+        console.error('Initialization error:', error);
+        log(`Initialization error: ${error.message}`);
+    }
 });

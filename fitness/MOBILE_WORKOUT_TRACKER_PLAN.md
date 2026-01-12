@@ -132,8 +132,7 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
    - Define structure:
      - `date` (string, datetime format YYYY-MM-DD-<unix epoch seconds>, required)
      - `session_name` (string, required) - References a session file in `sessions/` directory
-     - `bodyweight` (object, required):
-       - `lb` (number, required) - Bodyweight in pounds
+     - `bodyweight_lb` (number, required) - Bodyweight in pounds (flat structure, not nested)
      - `exercises` (array, required) - List of exercises performed:
        - `exercise_name` (string, required) - References an exercise file in `exercises/` directory
        - `sets` (array, required) - Array of sets performed:
@@ -164,7 +163,7 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
      - Verify `exercise_name` references exist in `exercises/` directory
      - Validate datetime format (YYYY-MM-DD-<unix epoch seconds>)
      - Validate numeric ranges:
-       - `bodyweight.lb` > 0
+       - `bodyweight_lb` > 0
        - `lb` (weight) >= 0 for each set (allows 0 for skipped sets)
        - `reps` >= 0 for each set (allows 0 for skipped sets)
    - Use `print` statements (no logging)
@@ -236,14 +235,18 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
    - Use semantic HTML5 elements
    - Avoid complex styling, animations, or visual flourishes
 
-2. **Add form validation**
+2. **Add basic form validation script**
+   - Create `fitness/web/form.js` with basic form validation
    - Basic client-side validation before submission
    - Required field checking
    - Numeric validation (positive numbers only)
    - Simple error messages (plain text is fine)
+   - Settings toggle functionality
+   - localStorage integration for PAT token (save/load)
 
 ### Deliverables:
 - `fitness/web/index.html` - Simple, functional HTML form
+- `fitness/web/form.js` - Basic form validation and settings management
 - Form includes all necessary input fields
 - Works on mobile browsers (basic usability)
 - Basic client-side validation
@@ -253,47 +256,54 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 ## Phase 5: JavaScript for Form Logic
 
 ### Tasks:
-1. **Add JavaScript to `fitness/web/index.html`**
-   - Functions:
-     - `loadRoutines()` - Load routines from embedded_data.js
-     - `loadSession(sessionName)` - Load session data from embedded_data.js to populate exercises
-     - `populateExerciseForm(sessionData)` - Dynamically create exercise input fields based on session schema (number of sets comes from session, not user-configurable)
-     - `collectFormData()` - Collect all form data into workout log JSON structure
-     - `validateFormData(data)` - Validate collected data before submission
-   - Handle localStorage for PAT token:
+1. **Create modular JavaScript files** (organized into separate files for maintainability)
+   - `fitness/web/logging.js` - Logging functionality (replicates MVP pattern)
+     - `log(message)` - Appends timestamped messages to logs section and console
+   - `fitness/web/date_utils.js` - Date/time utilities
+     - `getCurrentDatetime()` - Generate current datetime in format: `YYYY-MM-DD-<unix epoch seconds>`
+   - `fitness/web/token_storage.js` - localStorage token management
      - `saveToken(token)` - Save PAT to localStorage
      - `loadToken()` - Load PAT from localStorage
      - `clearToken()` - Clear PAT from localStorage
-   - Form state management:
-     - Show/hide settings section based on token presence
-     - Update exercise form when session changes
-     - Handle form reset
+   - `fitness/web/data_loader.js` - Data loading from embedded_data.js
+     - `loadRoutines()` - Load routines from embedded_data.js
+     - `loadSession(sessionName)` - Load session data from embedded_data.js
+     - `getExerciseName(exerciseName)` - Get human-readable exercise name
+   - `fitness/web/form_generator.js` - Dynamic form generation
+     - `populateExerciseForm(sessionData)` - Dynamically create exercise input fields based on session schema (number of sets comes from session, not user-configurable)
+     - Helper functions for creating exercise and set elements
+   - `fitness/web/form_collector.js` - Form data collection
+     - `collectFormData()` - Collect all form data into workout log JSON structure
+     - Helper functions for collecting session, bodyweight, and exercise data
+   - `fitness/web/form_validator.js` - Form data validation
+     - `validateFormData(data)` - Validate collected data before submission
+     - Helper functions for validating each data field
+   - `fitness/web/form.js` - Main form initialization and event handlers
+     - `initializeForm()` - Initialize form on page load
+     - Form state management (show/hide settings, update exercise form on session change)
+     - Form submission handler
 
-2. **Add date/time utilities**
-   - Generate current datetime in format: `YYYY-MM-DD-<unix epoch seconds>`
-   - Use JavaScript Date object for timestamp generation
+2. **Update `fitness/web/index.html`**
+   - Add script tags for all JavaScript modules (in correct dependency order)
+   - Logs section already added in Phase 4
 
-3. **Add logging functionality (replicate MVP pattern)**
-   - Create `log(message)` function that:
-     - Appends timestamped messages to a logs section on the page
-     - Also logs to browser console
-     - Auto-scrolls logs to show latest entries
-   - Add logs section to HTML (below form, similar to MVP)
+3. **Logging functionality (replicate MVP pattern)**
    - Log all major operations:
      - Form submission start
      - Data collection steps
-     - API calls (URLs, status codes, responses)
-     - Branch creation steps
-     - File creation steps
+     - API calls (URLs, status codes, responses) - will be added in Phase 6
+     - Branch creation steps - will be added in Phase 6
+     - File creation steps - will be added in Phase 6
      - Success/error states
    - This logging proved invaluable in MVP for debugging - replicate the pattern
 
 ### Deliverables:
-- JavaScript functions for form logic and data collection
+- Modular JavaScript files for form logic and data collection
 - localStorage integration for PAT token
 - Dynamic form generation based on session data
 - Form validation and data collection
 - Comprehensive logging system matching MVP implementation
+- Well-organized code structure for maintainability
 
 ---
 
@@ -498,7 +508,16 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 
 - **GitHub API Authentication**: Uses Personal Access Token (PAT) stored in browser localStorage
 - **File Storage**: Workout logs stored in `fitness/workout_logs/` directory with format `YYYY-MM-DD-<unix epoch seconds>_workout.json`
-- **Data Format**: JSON files matching `workout_log_schema.json`
+- **Data Format**: JSON files matching `workout_log_schema.json` (uses flat `bodyweight_lb` field, not nested object)
+- **JavaScript Structure**: Modular design with separate files:
+  - `logging.js` - Logging functionality
+  - `date_utils.js` - Date/time utilities
+  - `token_storage.js` - localStorage token management
+  - `data_loader.js` - Data loading from embedded_data.js
+  - `form_generator.js` - Dynamic form generation
+  - `form_collector.js` - Form data collection
+  - `form_validator.js` - Form data validation
+  - `form.js` - Main form initialization and event handlers
 - **Hosting**: 
   - **Local Development**: Use Python's built-in HTTP server (`python3 -m http.server 8000` from `fitness/web/` directory) for quick iteration. No need to restart server when files change - just refresh browser.
   - **Production**: Static HTML form hosted on GitHub Pages (free, no server required) for real-world use. Access at `https://<username>.github.io/<repo>/fitness/web/index.html` when deployed from root.
@@ -530,5 +549,14 @@ These are optional features that could be added later if they prove useful. Don'
 - Add weight/rep suggestions based on previous workouts
 - Add rest timer between sets
 - Add workout templates/pre-sets
+
+## Security Enhancements (Optional - Only if Needed)
+
+These are optional security improvements that could be added if token storage security becomes a concern:
+- **Encrypted localStorage**: Encrypt PAT token before storing in localStorage, decrypt on load. Note: Encryption key must be stored somewhere (often defeats the purpose), adds complexity, and still vulnerable if key is accessible.
+- **Browser Password Manager**: Use browser's native password manager for PAT token storage. Pros: Uses browser's secure storage, can sync across devices. Cons: Requires JavaScript to read it back (not always reliable), browser-dependent behavior, may not auto-fill reliably.
+- **Hybrid: Encrypted + user-provided key**: User provides a passphrase, encrypt token with it before storing. Pros: Token encrypted with user secret, persists across sessions, more secure than plain localStorage. Cons: User must remember/enter passphrase each time, adds complexity, still vulnerable if passphrase is compromised.
+
+**Note:** Current localStorage approach is acceptable for personal tool use case. These enhancements add complexity and may not provide significant security benefit for a single-user personal application.
 
 **Remember: Keep it simple. A basic form that works is better than a fancy form that's hard to maintain.**
