@@ -1,0 +1,13 @@
+{
+  "name": "Test",
+  "session_name": "test",
+  "exercises": [
+    {
+      "exercise_name": "barbell_squat",
+      "sets": 1,
+      "reps": 2,
+      "percent_1rm": 0.5
+    }
+  ],
+  "date_created": "2026-01-11-1768178312"
+}

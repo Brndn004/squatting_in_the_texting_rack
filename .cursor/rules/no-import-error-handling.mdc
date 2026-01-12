@@ -1,0 +1,35 @@
+---
+description: Never wrap imports in try/except ImportError blocks
+globs: '*'
+alwaysApply: true
+---
+
+# No Import Error Handling
+
+Never wrap imports in try/except ImportError blocks. If a dependency is required, import it directly. Let ImportError propagate naturally - the user will handle dependency management themselves (via virtualenv, requirements.txt, etc.).
+
+## Guidelines
+
+- **Never catch ImportError** for required dependencies
+- **Import directly** - if the module isn't available, let Python raise ImportError
+- **Document dependencies** in requirements.txt, setup.py, or README if needed
+- **Let the user manage dependencies** - don't try to be helpful with installation instructions in code
+
+## Examples
+
+### ❌ Bad
+```python
+try:
+    import jsonschema
+except ImportError:
+    raise ImportError(
+        "jsonschema library is required. Install it with: pip install jsonschema"
+    )
+```
+
+### ✅ Good
+```python
+import jsonschema
+```
+
+If jsonschema isn't installed, Python will raise ImportError naturally. The user will handle dependency management themselves.

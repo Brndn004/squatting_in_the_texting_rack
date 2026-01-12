@@ -69,3 +69,22 @@ def get_scripts_dir() -> Path:
         Path to the scripts directory.
     """
     return get_fitness_dir() / "scripts"
+
+
+def get_workout_logs_dir() -> Path:
+    """Get the workout logs directory path.
+    
+    Returns:
+        Path to the workout logs directory.
+    """
+    return get_fitness_dir() / "workout_logs"
+
+
+def get_web_dir() -> Path:
+    """Get the web directory path (docs/ directory at repository root).
+    
+    Returns:
+        Path to the docs/ directory at repository root.
+    """
+    # docs/ is at repository root, which is parent of fitness/
+    return get_fitness_dir().parent / "docs"

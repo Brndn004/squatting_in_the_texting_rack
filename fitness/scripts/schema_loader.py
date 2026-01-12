@@ -101,6 +101,21 @@ def load_routine_schema() -> dict:
     return load_schema("routine_schema.json")
 
 
+def load_workout_log_schema() -> dict:
+    """Load workout log schema.
+    
+    Returns:
+        Dictionary containing the workout log schema.
+        
+    Raises:
+        FileNotFoundError: If workout log schema file does not exist.
+        ValueError: If workout log schema file does not contain a dictionary.
+        json.JSONDecodeError: If workout log schema file contains invalid JSON.
+        OSError: If workout log schema file cannot be read.
+    """
+    return load_schema("workout_log_schema.json")
+
+
 def load_all_schemas() -> dict[str, dict]:
     """Load all schemas.
     
