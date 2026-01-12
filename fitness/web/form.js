@@ -31,7 +31,10 @@ function populateSessionDropdown() {
     sessions.forEach(session => {
         const option = document.createElement('option');
         option.value = session.name;
-        option.textContent = session.data.name || session.name;
+        if (!session.data.name) {
+            throw new Error(`Session ${session.name} missing name field in data`);
+        }
+        option.textContent = session.data.name;
         sessionSelect.appendChild(option);
     });
     
@@ -149,7 +152,7 @@ function setupFormSubmitHandler() {
     form.addEventListener('submit', handleFormSubmit);
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
     e.preventDefault();
     
     log('=== Starting form submission ===');
@@ -162,6 +165,26 @@ function handleFormSubmit(e) {
         return;
     }
     
+    const submitButton = document.getElementById('submitButton');
+    if (!submitButton) {
+        throw new Error('Submit button element not found');
+    }
+    
+    const patTokenInput = document.getElementById('patToken');
+    if (!patTokenInput) {
+        throw new Error('PAT token input element not found');
+    }
+    
+    const patToken = patTokenInput.value.trim();
+    if (!patToken) {
+        throw new Error('GitHub PAT token is required');
+    }
+    
+    // Disable submit button and show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = 'Submitting...';
+    showLoadingMessage('Submitting workout to GitHub...');
+    
     try {
         const workoutData = collectFormData();
         validateFormData(workoutData);
@@ -170,12 +193,27 @@ function handleFormSubmit(e) {
         
         saveTokenIfProvided();
         
-        // Form submission to GitHub API will be handled in Phase 6
-        log('Form validation passed (submission logic in Phase 6)');
-        showSuccessMessage('Form validation passed. Submission will be implemented in Phase 6.');
+        // Commit workout log to GitHub
+        log('Committing workout log to GitHub...');
+        const result = await commitWorkoutLog(patToken, workoutData);
+        
+        log(`Workout log committed successfully. Branch: ${result.branchName}, File: ${result.filename}`);
+        showSuccessMessage(`Success! Workout log saved to branch: ${result.branchName}`);
+        
+        // Reset form after successful submission
+        const form = document.getElementById('workoutForm');
+        if (form) {
+            form.reset();
+            hideExercisesSection();
+            log('Form reset after successful submission');
+        }
     } catch (error) {
         log(`Error: ${error.message}`);
         showErrorMessage(error.message);
+    } finally {
+        // Re-enable submit button
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Workout';
     }
 }
 
@@ -303,10 +341,21 @@ function saveTokenIfProvided() {
 
 function showSuccessMessage(message) {
     const messageDiv = document.getElementById('message');
-    if (messageDiv) {
-        messageDiv.textContent = message;
-        messageDiv.className = 'message success';
+    if (!messageDiv) {
+        throw new Error('Message div element not found');
     }
+    messageDiv.textContent = message;
+    messageDiv.className = 'message success';
+}
+
+function showLoadingMessage(message) {
+    const messageDiv = document.getElementById('message');
+    if (!messageDiv) {
+        throw new Error('Message div element not found');
+    }
+    messageDiv.textContent = message;
+    messageDiv.className = 'message';
+    messageDiv.style.color = '#0066cc';
 }
 
 // Initialize on DOMContentLoaded
