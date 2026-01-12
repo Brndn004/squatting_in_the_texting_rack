@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        
+        h1 {
+            margin-top: 0;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .section-title {
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .settings-toggle {
+            background: none;
+            border: none;
+            color: #0066cc;
+            text-decoration: underline;
+            cursor: pointer;
+            padding: 0;
+            font-size: 1em;
+        }
+        
+        .settings-content {
+            display: none;
+            margin-top: 10px;
+        }
+        
+        .settings-content.visible {
+            display: block;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="number"] {
+            appearance: textfield;
+            -moz-appearance: textfield;
+        }
+        
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            appearance: none;
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+        .exercise {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        
+        .exercise-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .set {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        
+        .set-label {
+            min-width: 60px;
+            font-weight: 500;
+        }
+        
+        .set-input {
+            flex: 1;
+        }
+        
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0052a3;
+        }
+        
+        button[type="submit"]:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .error {
+            color: #d32f2f;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        #logs {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+        }
+        
+        #logs.visible {
+            display: block;
+        }
+        
+        #logsContent {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Workout Tracker</h1>
+    
+    <form id="workoutForm">
+        <div class="section">
+            <h2 class="section-title">Settings</h2>
+            <button type="button" class="settings-toggle" id="settingsToggle">Show Settings</button>
+            <div class="settings-content" id="settingsContent">
+                <label for="patToken">GitHub PAT Token:</label>
+                <input type="password" id="patToken" placeholder="Enter your GitHub Personal Access Token">
+                <div class="error" id="patTokenError"></div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Workout Details</h2>
+            
+            <label for="sessionSelect">Session:</label>
+            <select id="sessionSelect" required>
+                <option value="">-- Select a session --</option>
+            </select>
+            <div class="error" id="sessionSelectError"></div>
+            
+            <label for="bodyweight">Bodyweight (lb):</label>
+            <input type="number" id="bodyweight" step="0.1" min="0" required>
+            <div class="error" id="bodyweightError"></div>
+        </div>
+        
+        <div class="section" id="exercisesSection" style="display: none;">
+            <h2 class="section-title">Exercises</h2>
+            <div id="exercisesContainer"></div>
+        </div>
+        
+        <button type="submit" id="submitButton">Submit Workout</button>
+    </form>
+    
+    <div id="message"></div>
+    
+    <div id="logs">
+        <strong>Logs:</strong>
+        <div id="logsContent"></div>
+    </div>
+    
+    <script src="embedded_data.js"></script>
+    <script src="form.js"></script>
+</body>
+</html>
