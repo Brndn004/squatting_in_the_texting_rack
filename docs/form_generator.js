@@ -23,6 +23,9 @@ function populateExerciseForm(sessionData) {
         throw new Error('Exercises section element not found');
     }
     
+    // Clean up all active timers before clearing exercises
+    cleanupAllTimers();
+    
     exercisesContainer.innerHTML = '';
     
     if (sessionData.exercises.length === 0) {
@@ -107,6 +110,9 @@ function createExerciseElement(exerciseName, exerciseNameKey, exerciseIndex, num
     return exerciseDiv;
 }
 
+// Timer management - stores active timers by checkbox ID
+const activeTimers = new Map();
+
 function createSetElement(exerciseIndex, setIndex, reps, weight) {
     if (typeof reps !== 'number' || reps < 0) {
         throw new Error(`Invalid reps value for exercise ${exerciseIndex}, set ${setIndex}: ${reps}`);
@@ -119,15 +125,34 @@ function createSetElement(exerciseIndex, setIndex, reps, weight) {
     const setDiv = document.createElement('div');
     setDiv.className = 'set';
     
+    // Create checkbox container with timer
+    const checkboxContainer = document.createElement('div');
+    checkboxContainer.className = 'checkbox-container';
+    
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.id = `set-checkbox-${exerciseIndex}-${setIndex}`;
     checkbox.setAttribute('data-exercise-index', exerciseIndex);
     checkbox.setAttribute('data-set-index', setIndex);
+    
+    const timerDisplay = document.createElement('div');
+    timerDisplay.className = 'set-timer';
+    timerDisplay.id = `timer-${exerciseIndex}-${setIndex}`;
+    timerDisplay.textContent = '1:30';
+    
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(timerDisplay);
+    setDiv.appendChild(checkboxContainer);
+    
+    // Add change event listener for timer
     checkbox.addEventListener('change', function() {
-        checkbox.checked = checkbox.checked;
+        const timerId = `timer-${exerciseIndex}-${setIndex}`;
+        if (checkbox.checked) {
+            startTimer(timerId, timerDisplay);
+        } else {
+            stopTimer(timerId, timerDisplay);
+        }
     });
-    setDiv.appendChild(checkbox);
     
     const setLabel = document.createElement('div');
     setLabel.className = 'set-label';
@@ -151,6 +176,65 @@ function createSetElement(exerciseIndex, setIndex, reps, weight) {
     setDiv.appendChild(weightLabel);
     
     return setDiv;
+}
+
+function startTimer(timerId, timerDisplay) {
+    // Stop any existing timer for this checkbox
+    stopTimer(timerId, timerDisplay);
+    
+    // Show timer
+    timerDisplay.classList.add('active');
+    
+    // Initialize timer state: 90 seconds (1 min 30 sec)
+    let remainingSeconds = 90;
+    updateTimerDisplay(timerDisplay, remainingSeconds);
+    
+    // Start countdown interval
+    const intervalId = setInterval(() => {
+        remainingSeconds--;
+        if (remainingSeconds < 0) {
+            remainingSeconds = 0;
+        }
+        updateTimerDisplay(timerDisplay, remainingSeconds);
+        
+        // Keep timer at 0:00, don't clear interval
+        if (remainingSeconds === 0) {
+            // Timer stays at 0:00 forever until checkbox is unchecked
+        }
+    }, 1000);
+    
+    // Store interval ID for cleanup
+    activeTimers.set(timerId, intervalId);
+}
+
+function stopTimer(timerId, timerDisplay) {
+    // Clear interval if exists
+    const intervalId = activeTimers.get(timerId);
+    if (intervalId) {
+        clearInterval(intervalId);
+        activeTimers.delete(timerId);
+    }
+    
+    // Hide timer
+    timerDisplay.classList.remove('active');
+    
+    // Reset timer display to initial value
+    timerDisplay.textContent = '1:30';
+}
+
+function updateTimerDisplay(timerDisplay, seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const formattedSeconds = remainingSeconds.toString().padStart(2, '0');
+    timerDisplay.textContent = `${minutes}:${formattedSeconds}`;
+}
+
+function cleanupAllTimers() {
+    // Clear all active timers
+    for (const [timerId, intervalId] of activeTimers.entries()) {
+        clearInterval(intervalId);
+    }
+    activeTimers.clear();
 }
 
 function createNumberInput(field, exerciseIndex, setIndex, step) {
