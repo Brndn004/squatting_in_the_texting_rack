@@ -298,8 +298,17 @@ async function commitWorkoutLog(token, workoutData) {
     const jsonContent = JSON.stringify(workoutData, null, 2);
     log(`JSON content generated (${jsonContent.length} characters)`);
     
-    // Generate branch name from timestamp: workout-YYYY-MM-DD-<unix epoch seconds>
-    const branchName = `workout-${dateStr}`;
+    // Generate branch name: workout-<session-name>-YYYY-MM-DD-<unix epoch seconds>
+    const sessionName = workoutData.session_name;
+    if (!sessionName) {
+        throw new Error('Workout data missing session_name field');
+    }
+    
+    if (typeof sessionName !== 'string') {
+        throw new Error('Workout data session_name must be a string');
+    }
+    
+    const branchName = `workout-${sessionName}-${dateStr}`;
     log(`Branch name: ${branchName}`);
     
     // Follow MVP pattern for branch creation:
@@ -321,9 +330,14 @@ async function commitWorkoutLog(token, workoutData) {
     await createFile(token, filePath, jsonContent, branchName, commitMessage);
     
     log('=== Workout log commit completed successfully ===');
+    
+    // Generate compare page URL (compare default branch to workout branch)
+    const compareUrl = `https://github.com/${REPO_OWNER}/${REPO_NAME}/compare/${defaultBranch}...${branchName}`;
+    
     return {
         branchName: branchName,
         filePath: filePath,
-        filename: filename
+        filename: filename,
+        branchUrl: compareUrl
     };
 }

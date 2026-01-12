@@ -420,7 +420,7 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
    - Select your branch (e.g., `brandon/form_for_phone` or merge to `main` first)
    - Select `/ (root)` as the folder (GitHub Pages only offers root/ or docs/)
    - Click Save
-   - **Note:** Even though you select "root", files in `fitness/web/` will be accessible at `https://<username>.github.io/<repo>/fitness/web/index.html`
+   - **Note:** After Phase 10 migration, files in `docs/` will be accessible at `https://<username>.github.io/<repo>/index.html` (shorter URL)
    - Wait 1-2 minutes for GitHub Pages to build and deploy
    - Verify site is accessible at the expected URL
 
@@ -430,7 +430,7 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
    - Verify CORS works correctly (GitHub API allows requests from GitHub Pages - validated in MVP)
 
 3. **Add README for setup instructions**
-   - Create `fitness/web/README.md` with:
+   - Create `docs/README.md` with:
      - Instructions for generating GitHub PAT
      - How to use the form (both local dev and production)
      - GitHub Pages URL format
@@ -445,7 +445,49 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 
 ---
 
-## Phase 10: Testing and Refinement
+## Phase 10: Migrate to docs/ Directory for Shorter URL
+
+### Tasks:
+1. **Move files from fitness/web/ to docs/**
+   - Move all files from `fitness/web/` directory to `docs/` directory at repository root
+   - This includes: `index.html`, all JavaScript files (`*.js`), `DEVELOPMENT.md`, `README.md` (if exists)
+   - Maintain same file structure within `docs/` directory
+
+2. **Update GitHub Pages configuration**
+   - Go to Settings → Pages
+   - Under "Source", select "Deploy from a branch"
+   - Select your branch
+   - Select `/docs` as the folder (instead of root)
+   - Click Save
+   - **Note:** Files in `docs/` will be accessible at `https://<username>.github.io/<repo>/index.html` (shorter URL)
+   - Wait 1-2 minutes for GitHub Pages to rebuild and deploy
+
+3. **Update script references**
+   - Update `fitness/scripts/fitness_paths.py`: Change `get_web_dir()` to return `docs/` directory at repository root
+   - Update `fitness/scripts/generate_embedded_data.py`: Update output path to write to `docs/embedded_data.js`
+   - Update `fitness/scripts/validate_html_up_to_date.py`: Update path to read from `docs/embedded_data.js`
+   - Verify all path references are updated
+
+4. **Update documentation**
+   - Update `docs/DEVELOPMENT.md`: Change references from `fitness/web/` to `docs/`
+   - Update local server instructions: Change `cd fitness/web` to `cd docs`
+   - Update any other documentation that references `fitness/web/` path
+
+5. **Update HTML file paths**
+   - Verify all script tags in `docs/index.html` use relative paths (should already be correct)
+   - Test that all JavaScript files load correctly from new location
+
+### Deliverables:
+- All files moved from `fitness/web/` to `docs/` directory
+- GitHub Pages configured to serve from `docs/` folder
+- Scripts updated to reference `docs/` directory
+- Documentation updated with new paths
+- Shorter URL: `https://<username>.github.io/<repo>/index.html` instead of `https://<username>.github.io/<repo>/fitness/web/index.html`
+- Form accessible at shorter URL and works correctly
+
+---
+
+## Phase 11: Testing and Refinement
 
 ### Tasks:
 1. **Test on mobile device**
@@ -475,11 +517,11 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 
 ---
 
-## Phase 11: Documentation and Maintenance
+## Phase 12: Documentation and Maintenance
 
 ### Tasks:
 1. **Create user documentation**
-   - Write `fitness/web/USER_GUIDE.md`:
+   - Write `docs/USER_GUIDE.md`:
      - How to generate a GitHub PAT
      - How to enter the PAT in the form
      - How to record a workout
@@ -519,8 +561,8 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
   - `form_validator.js` - Form data validation
   - `form.js` - Main form initialization and event handlers
 - **Hosting**: 
-  - **Local Development**: Use Python's built-in HTTP server (`python3 -m http.server 8000` from `fitness/web/` directory) for quick iteration. No need to restart server when files change - just refresh browser.
-  - **Production**: Static HTML form hosted on GitHub Pages (free, no server required) for real-world use. Access at `https://<username>.github.io/<repo>/fitness/web/index.html` when deployed from root.
+  - **Local Development**: Use Python's built-in HTTP server (`python3 -m http.server 8000` from `docs/` directory) for quick iteration. No need to restart server when files change - just refresh browser.
+  - **Production**: Static HTML form hosted on GitHub Pages (free, no server required) for real-world use. Access at `https://<username>.github.io/<repo>/index.html` when deployed from docs folder.
 - **CORS**: GitHub API supports CORS for GitHub Pages origins (validated in MVP)
 - **Error Handling**: All errors raise hard exceptions with clear messages (no defaults or fallbacks)
 - **Mobile Optimization**: Form designed for basic mobile usability - large enough touch targets, readable text. No fancy UI needed - simple form filler is the goal.

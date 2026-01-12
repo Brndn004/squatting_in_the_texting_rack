@@ -1,8 +1,5 @@
 // Main form initialization and event handlers
 
-const REPO_OWNER = 'Brndn004';
-const REPO_NAME = 'squatting_in_the_texting_rack';
-
 function initializeForm() {
     log('Initializing workout form...');
     
@@ -198,7 +195,13 @@ async function handleFormSubmit(e) {
         const result = await commitWorkoutLog(patToken, workoutData);
         
         log(`Workout log committed successfully. Branch: ${result.branchName}, File: ${result.filename}`);
-        showSuccessMessage(`Success! Workout log saved to branch: ${result.branchName}`);
+        
+        if (!result.branchUrl) {
+            throw new Error('GitHub API response missing branchUrl');
+        }
+        
+        const successMessage = `Success! Workout log saved to branch: <a href="${result.branchUrl}" target="_blank">${result.branchName}</a>`;
+        showSuccessMessage(successMessage);
         
         // Reset form after successful submission
         const form = document.getElementById('workoutForm');
@@ -233,21 +236,32 @@ function clearMessage() {
 
 function validateFormInputs() {
     let isValid = true;
+    const errors = [];
     
     if (!validatePatToken()) {
         isValid = false;
+        errors.push('GitHub PAT token is required');
     }
     
     if (!validateSession()) {
         isValid = false;
+        errors.push('Please select a session');
     }
     
     if (!validateBodyweightInput()) {
         isValid = false;
+        errors.push('Bodyweight validation failed');
     }
     
     if (!validateExercisesPresent()) {
         isValid = false;
+        errors.push('No exercises found');
+    }
+    
+    if (!isValid) {
+        const errorMessage = 'Validation failed: ' + errors.join(', ');
+        log(errorMessage);
+        showErrorMessage(errorMessage);
     }
     
     return isValid;
@@ -264,6 +278,15 @@ function validatePatToken() {
         const patTokenError = document.getElementById('patTokenError');
         if (patTokenError) {
             patTokenError.textContent = 'GitHub PAT token is required';
+        }
+        // Show settings section if hidden so user can see the error
+        const settingsContent = document.getElementById('settingsContent');
+        const settingsToggle = document.getElementById('settingsToggle');
+        if (settingsContent && !settingsContent.classList.contains('visible')) {
+            settingsContent.classList.add('visible');
+            if (settingsToggle) {
+                settingsToggle.textContent = 'Hide Settings';
+            }
         }
         return false;
     }
@@ -344,7 +367,7 @@ function showSuccessMessage(message) {
     if (!messageDiv) {
         throw new Error('Message div element not found');
     }
-    messageDiv.textContent = message;
+    messageDiv.innerHTML = message;
     messageDiv.className = 'message success';
 }
 
