@@ -6,9 +6,9 @@ This guide explains how to set up and use a local development server for quick i
 
 ### Starting the Server
 
-1. Navigate to the `fitness/web/` directory:
+1. Navigate to the `docs/` directory:
    ```bash
-   cd fitness/web
+   cd docs
    ```
 
 2. Start Python's built-in HTTP server on port 8000:
