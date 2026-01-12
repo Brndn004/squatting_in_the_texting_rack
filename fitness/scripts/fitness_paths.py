@@ -78,3 +78,12 @@ def get_workout_logs_dir() -> Path:
         Path to the workout logs directory.
     """
     return get_fitness_dir() / "workout_logs"
+
+
+def get_web_dir() -> Path:
+    """Get the web directory path.
+    
+    Returns:
+        Path to the web directory.
+    """
+    return get_fitness_dir() / "web"
