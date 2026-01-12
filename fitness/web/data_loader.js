@@ -87,3 +87,29 @@ function getExerciseName(exerciseName) {
     
     return exerciseData.name;
 }
+
+function getExerciseData(exerciseName) {
+    if (!exerciseName) {
+        throw new Error('Exercise name cannot be empty');
+    }
+    
+    if (typeof EXERCISES === 'undefined') {
+        throw new Error('EXERCISES not found in embedded_data.js');
+    }
+    
+    if (typeof EXERCISES !== 'object' || EXERCISES === null) {
+        throw new Error('EXERCISES must be an object');
+    }
+    
+    if (!(exerciseName in EXERCISES)) {
+        throw new Error(`Exercise '${exerciseName}' not found in EXERCISES`);
+    }
+    
+    const exerciseData = EXERCISES[exerciseName];
+    
+    if (!exerciseData) {
+        throw new Error(`Exercise data for '${exerciseName}' is null or undefined`);
+    }
+    
+    return exerciseData;
+}
