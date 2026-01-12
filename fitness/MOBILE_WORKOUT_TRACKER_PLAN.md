@@ -188,24 +188,28 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 1. **Create `fitness/scripts/github_api_utils.py`**
    - Create utility module for GitHub API operations
    - Functions:
-     - `get_file_content(token: str, repo: str, path: str) -> dict` - Get file content from GitHub
-     - `create_or_update_file(token: str, repo: str, path: str, content: str, message: str, branch: str = None, sha: str | None = None) -> dict` - Create or update file via GitHub API. Creates a new branch by default (branch name generated from timestamp if not provided). If branch doesn't exist, GitHub will create it automatically.
-     - `get_repo_info(token: str, repo: str) -> dict` - Get repository information
+     - `get_repo_info(token: str, repo: str) -> dict` - Get repository information (including default branch)
+     - `get_branch_sha(token: str, repo: str, branch: str) -> str` - Get SHA of a branch's HEAD commit
+     - `create_branch(token: str, repo: str, branch_name: str, base_branch_sha: str) -> None` - Create a new branch from a base branch SHA (required before creating files on new branch)
+     - `get_file_content(token: str, repo: str, path: str, branch: str = None) -> dict` - Get file content from GitHub
+     - `create_or_update_file(token: str, repo: str, path: str, content: str, message: str, branch: str, sha: str | None = None) -> dict` - Create or update file via GitHub API. **Important:** Branch must already exist (use `create_branch` first). If updating existing file, provide `sha` parameter.
    - Handle API errors gracefully (raise hard exceptions with clear messages)
    - Include proper type hints and docstrings
    - Use `requests` library for HTTP calls
    - Handle authentication via PAT token
+   - **Note:** GitHub does NOT automatically create branches when creating files. You must create the branch first using `create_branch()`, then create the file on that branch.
 
 2. **Add error handling**
    - Handle 401 (unauthorized) errors
    - Handle 404 (not found) errors
-   - Handle 422 (validation) errors
+   - Handle 422 (validation) errors - including "branch already exists" (which is okay)
    - Provide clear error messages for each case
 
 ### Deliverables:
 - `fitness/scripts/github_api_utils.py` - GitHub API utility module
-- Functions handle file creation/updates via GitHub REST API
+- Functions handle branch creation and file creation/updates via GitHub REST API
 - Proper error handling with clear messages
+- Branch creation pattern matches MVP implementation
 
 ---
 
@@ -269,11 +273,27 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
    - Generate current datetime in format: `YYYY-MM-DD-<unix epoch seconds>`
    - Use JavaScript Date object for timestamp generation
 
+3. **Add logging functionality (replicate MVP pattern)**
+   - Create `log(message)` function that:
+     - Appends timestamped messages to a logs section on the page
+     - Also logs to browser console
+     - Auto-scrolls logs to show latest entries
+   - Add logs section to HTML (below form, similar to MVP)
+   - Log all major operations:
+     - Form submission start
+     - Data collection steps
+     - API calls (URLs, status codes, responses)
+     - Branch creation steps
+     - File creation steps
+     - Success/error states
+   - This logging proved invaluable in MVP for debugging - replicate the pattern
+
 ### Deliverables:
 - JavaScript functions for form logic and data collection
 - localStorage integration for PAT token
 - Dynamic form generation based on session data
 - Form validation and data collection
+- Comprehensive logging system matching MVP implementation
 
 ---
 
@@ -285,24 +305,30 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
      - Generate filename: `YYYY-MM-DD-<unix epoch seconds>_workout.json`
      - Convert workout data to JSON string
      - Generate branch name from timestamp (e.g., `workout-YYYY-MM-DD-<unix epoch seconds>`)
-     - Use GitHub API to create file in `fitness/workout_logs/` directory on a new branch
-     - GitHub will automatically create the branch if it doesn't exist
+     - **Important:** Follow MVP pattern for branch creation:
+       1. Get default branch name using `getDefaultBranch()` (replicate MVP `getDefaultBranch` function)
+       2. Get default branch SHA using `getBranchSha()` (replicate MVP `getBranchSha` function)
+       3. Create new branch using `createBranch()` (replicate MVP `createBranch` function)
+       4. Create file on new branch using `createFile()` (replicate MVP `createFile` function)
+     - **GitHub does NOT automatically create branches** - you must create the branch first, then create the file
      - Handle API response and errors
    - Note: Session and routine data is loaded from embedded_data.js (no API calls needed for reading)
    - Use `fetch()` API for HTTP requests
-   - Handle CORS if needed (may require CORS proxy or GitHub Pages hosting)
+   - CORS works correctly from GitHub Pages (validated in MVP)
 
 2. **Add error handling and user feedback**
    - Display success message after successful commit
    - Display error messages for API failures
    - Show loading states during API calls
    - Handle network errors gracefully
+   - Log all API operations to the logs section (replicate MVP logging pattern)
 
 ### Deliverables:
 - GitHub API integration functions
-- File creation via GitHub REST API
+- Branch creation and file creation via GitHub REST API (following MVP pattern)
 - Error handling and user feedback
 - Loading states and success/error messages
+- Comprehensive logging of all API operations
 
 ---
 
@@ -349,24 +375,28 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 
 ### Tasks:
 1. **Set up local development server for quick iteration**
-   - Create simple script or instructions for running local server:
+   - Simple instructions for running local server:
      - Python: `python3 -m http.server 8000` (from `fitness/web/` directory)
      - Uses Python's built-in HTTP server (no additional dependencies needed)
-   - Document how to access from phone:
-     - Find computer's IP address on local network
-     - Access via `http://<ip-address>:8000` from phone browser
+     - **Note:** Server does NOT need to be restarted when files change - just refresh browser
+   - Document how to access:
+     - **From laptop:** `http://localhost:8000/index.html` (or just `http://localhost:8000/` if index.html is default)
+     - **From phone:** Find computer's IP address on local network, then access `http://<ip-address>:8000/index.html`
      - Both devices must be on same Wi-Fi network
+   - **Recommendation:** Test locally on laptop first (faster iteration), then test on phone via local network or GitHub Pages
 
 2. **Add development instructions**
    - Create `fitness/web/DEVELOPMENT.md` with:
      - How to start local server
-     - How to access from phone
-     - Quick iteration workflow
+     - How to access from laptop vs phone
+     - Quick iteration workflow (edit → refresh browser → test)
+     - When to use local server vs GitHub Pages
 
 ### Deliverables:
 - Local development server setup documented
 - Can quickly test changes locally before deploying
-- Form accessible from phone on local network
+- Form accessible from laptop and phone on local network
+- Development workflow validated (matches MVP workflow)
 
 ---
 
@@ -375,18 +405,25 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 ### Tasks:
 1. **Configure GitHub Pages**
    - Enable GitHub Pages in repository settings
-   - Set source to `/fitness/web/` directory (or root if using docs folder)
-   - Verify site is accessible at `https://<username>.github.io/<repo>/`
+   - Go to Settings → Pages
+   - Under "Source", select "Deploy from a branch"
+   - Select your branch (e.g., `brandon/form_for_phone` or merge to `main` first)
+   - Select `/ (root)` as the folder (GitHub Pages only offers root/ or docs/)
+   - Click Save
+   - **Note:** Even though you select "root", files in `fitness/web/` will be accessible at `https://<username>.github.io/<repo>/fitness/web/index.html`
+   - Wait 1-2 minutes for GitHub Pages to build and deploy
+   - Verify site is accessible at the expected URL
 
 2. **Update HTML for GitHub Pages**
-   - Ensure all paths are relative
+   - Ensure all paths are relative (already done if using relative paths like `embedded_data.js`)
    - Test that form works when hosted on GitHub Pages
-   - Verify CORS works correctly (GitHub API allows requests from GitHub Pages)
+   - Verify CORS works correctly (GitHub API allows requests from GitHub Pages - validated in MVP)
 
 3. **Add README for setup instructions**
    - Create `fitness/web/README.md` with:
      - Instructions for generating GitHub PAT
      - How to use the form (both local dev and production)
+     - GitHub Pages URL format
      - Troubleshooting tips
 
 ### Deliverables:
@@ -394,6 +431,7 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 - Form works correctly when hosted
 - Setup documentation for users
 - Can use GitHub Pages URL for real workouts, local server for quick testing
+- Deployment process validated (matches MVP deployment)
 
 ---
 
@@ -462,13 +500,21 @@ Create an absolute bare-minimum proof-of-concept to validate the entire workflow
 - **File Storage**: Workout logs stored in `fitness/workout_logs/` directory with format `YYYY-MM-DD-<unix epoch seconds>_workout.json`
 - **Data Format**: JSON files matching `workout_log_schema.json`
 - **Hosting**: 
-  - **Local Development**: Use Python's built-in HTTP server (`python3 -m http.server 8000`) for quick iteration and testing on phone via local network
-  - **Production**: Static HTML form hosted on GitHub Pages (free, no server required) for real-world use
-- **CORS**: GitHub API supports CORS for GitHub Pages origins
+  - **Local Development**: Use Python's built-in HTTP server (`python3 -m http.server 8000` from `fitness/web/` directory) for quick iteration. No need to restart server when files change - just refresh browser.
+  - **Production**: Static HTML form hosted on GitHub Pages (free, no server required) for real-world use. Access at `https://<username>.github.io/<repo>/fitness/web/index.html` when deployed from root.
+- **CORS**: GitHub API supports CORS for GitHub Pages origins (validated in MVP)
 - **Error Handling**: All errors raise hard exceptions with clear messages (no defaults or fallbacks)
 - **Mobile Optimization**: Form designed for basic mobile usability - large enough touch targets, readable text. No fancy UI needed - simple form filler is the goal.
 - **Validation**: Both client-side (JavaScript) and server-side (Python validation script) validation
 - **Security**: PAT stored in localStorage (acceptable risk for personal tool, mitigated by phone security)
+- **Logging**: Comprehensive logging system on the page (replicate MVP pattern) - logs all operations with timestamps, very helpful for debugging
+- **Branch Creation**: **Critical:** GitHub does NOT automatically create branches when creating files. You must:
+  1. Get default branch name
+  2. Get default branch SHA
+  3. Create new branch from that SHA
+  4. Then create file on the new branch
+  This pattern was validated in MVP and must be replicated in all GitHub API operations.
+- **Language**: Use JavaScript (not TypeScript) for simplicity - validated in MVP as sufficient for this project
 
 ---
 

@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Schema for workout log files representing actual workout performance data",
+  "type": "object",
+  "required": ["date", "session_name", "bodyweight_lb", "exercises"],
+  "properties": {
+    "date": {
+      "type": "string",
+      "description": "Datetime in format YYYY-MM-DD-<unix epoch seconds>"
+    },
+    "session_name": {
+      "type": "string",
+      "description": "Name of the session (must reference a session file in sessions/ directory)"
+    },
+    "bodyweight_lb": {
+      "type": "number",
+      "description": "Bodyweight in pounds"
+    },
+    "exercises": {
+      "type": "array",
+      "description": "List of exercises performed in this workout",
+      "items": {
+        "type": "object",
+        "required": ["exercise_name", "sets"],
+        "properties": {
+          "exercise_name": {
+            "type": "string",
+            "description": "Name of the exercise (must reference an exercise file in exercises/ directory)"
+          },
+          "sets": {
+            "type": "array",
+            "description": "Array of sets performed for this exercise",
+            "items": {
+              "type": "object",
+              "required": ["reps", "lb"],
+              "properties": {
+                "reps": {
+                  "type": "integer",
+                  "description": "Number of reps completed"
+                },
+                "lb": {
+                  "type": "number",
+                  "description": "Weight used in pounds"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
