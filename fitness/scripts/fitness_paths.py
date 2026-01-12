@@ -69,3 +69,12 @@ def get_scripts_dir() -> Path:
         Path to the scripts directory.
     """
     return get_fitness_dir() / "scripts"
+
+
+def get_workout_logs_dir() -> Path:
+    """Get the workout logs directory path.
+    
+    Returns:
+        Path to the workout logs directory.
+    """
+    return get_fitness_dir() / "workout_logs"
