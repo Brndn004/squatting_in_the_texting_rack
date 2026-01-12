@@ -1,0 +1,1 @@
+Make a rule in .cursor/rules/ that explains what we just talked about and corrected so that it never happens again.
