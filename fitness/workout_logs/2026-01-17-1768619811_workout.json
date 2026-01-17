@@ -1,0 +1,80 @@
+{
+  "date": "2026-01-17-1768619811",
+  "session_name": "hinge_vertical_pushpull",
+  "bodyweight_lb": 158,
+  "exercises": [
+    {
+      "exercise_name": "barbell_deadlift",
+      "sets": [
+        {
+          "reps": 6,
+          "lb": 140
+        },
+        {
+          "reps": 6,
+          "lb": 140
+        }
+      ]
+    },
+    {
+      "exercise_name": "barbell_overhead_press",
+      "sets": [
+        {
+          "reps": 8,
+          "lb": 50
+        },
+        {
+          "reps": 8,
+          "lb": 50
+        },
+        {
+          "reps": 8,
+          "lb": 50
+        }
+      ]
+    },
+    {
+      "exercise_name": "assisted_pull_up",
+      "sets": [
+        {
+          "reps": 10,
+          "lb": 60
+        },
+        {
+          "reps": 10,
+          "lb": 60
+        },
+        {
+          "reps": 10,
+          "lb": 60
+        }
+      ]
+    },
+    {
+      "exercise_name": "dumbell_triceps_extension",
+      "sets": [
+        {
+          "reps": 15,
+          "lb": 25
+        },
+        {
+          "reps": 15,
+          "lb": 25
+        }
+      ]
+    },
+    {
+      "exercise_name": "dumbell_lateral_raise",
+      "sets": [
+        {
+          "reps": 15,
+          "lb": 15
+        },
+        {
+          "reps": 15,
+          "lb": 15
+        }
+      ]
+    }
+  ]
+}
