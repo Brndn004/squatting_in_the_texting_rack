@@ -1,0 +1,84 @@
+{
+  "date": "2026-01-18-1768763162",
+  "session_name": "squat_upper_hypertrophy",
+  "bodyweight_lb": 157,
+  "exercises": [
+    {
+      "exercise_name": "barbell_squat",
+      "sets": [
+        {
+          "reps": 8,
+          "lb": 135
+        },
+        {
+          "reps": 8,
+          "lb": 135
+        },
+        {
+          "reps": 8,
+          "lb": 135
+        }
+      ]
+    },
+    {
+      "exercise_name": "barbell_bent_over_row",
+      "sets": [
+        {
+          "reps": 8,
+          "lb": 100
+        },
+        {
+          "reps": 8,
+          "lb": 100
+        },
+        {
+          "reps": 8,
+          "lb": 100
+        }
+      ]
+    },
+    {
+      "exercise_name": "dumbell_incline_bench_press",
+      "sets": [
+        {
+          "reps": 12,
+          "lb": 25
+        },
+        {
+          "reps": 12,
+          "lb": 25
+        },
+        {
+          "reps": 12,
+          "lb": 25
+        }
+      ]
+    },
+    {
+      "exercise_name": "dumbell_biceps_curl",
+      "sets": [
+        {
+          "reps": 15,
+          "lb": 25
+        },
+        {
+          "reps": 15,
+          "lb": 25
+        }
+      ]
+    },
+    {
+      "exercise_name": "dumbell_triceps_extension",
+      "sets": [
+        {
+          "reps": 9,
+          "lb": 30
+        },
+        {
+          "reps": 15,
+          "lb": 27
+        }
+      ]
+    }
+  ]
+}
