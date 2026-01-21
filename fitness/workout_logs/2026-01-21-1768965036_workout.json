@@ -1,0 +1,84 @@
+{
+  "date": "2026-01-21-1768965036",
+  "session_name": "squat_horizontal_pushpull",
+  "bodyweight_lb": 155,
+  "exercises": [
+    {
+      "exercise_name": "barbell_squat",
+      "sets": [
+        {
+          "reps": 8,
+          "lb": 128
+        },
+        {
+          "reps": 8,
+          "lb": 128
+        },
+        {
+          "reps": 8,
+          "lb": 128
+        }
+      ]
+    },
+    {
+      "exercise_name": "barbell_bench_press",
+      "sets": [
+        {
+          "reps": 8,
+          "lb": 108
+        },
+        {
+          "reps": 8,
+          "lb": 108
+        },
+        {
+          "reps": 8,
+          "lb": 108
+        }
+      ]
+    },
+    {
+      "exercise_name": "barbell_bent_over_row",
+      "sets": [
+        {
+          "reps": 10,
+          "lb": 0
+        },
+        {
+          "reps": 10,
+          "lb": 0
+        },
+        {
+          "reps": 10,
+          "lb": 0
+        }
+      ]
+    },
+    {
+      "exercise_name": "dumbell_lateral_raise",
+      "sets": [
+        {
+          "reps": 10,
+          "lb": 17
+        },
+        {
+          "reps": 10,
+          "lb": 17
+        }
+      ]
+    },
+    {
+      "exercise_name": "dumbell_biceps_curl",
+      "sets": [
+        {
+          "reps": 15,
+          "lb": 0
+        },
+        {
+          "reps": 15,
+          "lb": 0
+        }
+      ]
+    }
+  ]
+}
